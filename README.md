@@ -1,3 +1,3 @@
 # Jeu_du_pendu
 
-Tu pèses quentin
+Tu pèses de ouf quentin
