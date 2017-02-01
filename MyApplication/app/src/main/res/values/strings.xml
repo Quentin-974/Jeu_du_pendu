@@ -4,4 +4,8 @@
     <string name="nomJoueur1">Joueur 1</string>
     <string name="nomJoueur2">Joueur 2</string>
     <string name="nombreMots">Nombre de mots</string>
+    <string name="titreDifficulte">DIFFICULTÉS</string>
+    <string name="libelleFacile">Moins de 5 lettres</string>
+    <string name="libelleMoyen">Entre 5 et 10 lettres</string>
+    <string name="libelleDifficile">Plus de 10 lettres</string>
 </resources>

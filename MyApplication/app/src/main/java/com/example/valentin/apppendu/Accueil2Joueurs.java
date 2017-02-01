@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.NumberPicker;
 
-public class Accueil2Joueur extends AppCompatActivity {
+public class Accueil2Joueurs extends AppCompatActivity {
 
     private NumberPicker nbMots;
     @Override

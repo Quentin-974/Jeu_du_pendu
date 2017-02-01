@@ -11,13 +11,14 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".Accueil2Joueur">
+        <activity android:name=".Accueil2Joueurs">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Difficultes"></activity>
     </application>
 
 </manifest>
