@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.syldu.pendu.MainActivity">
+
+    <TextView
+        android:id="@+id/titre2Joueurs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titre2Joueur"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"/>
+
+    <View
+        android:id="@+id/barre"
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:layout_marginTop="15dip"
+        android:layout_marginBottom="15dip"
+        android:layout_below="@id/titre2Joueurs"
+        android:background="#0000FF" />
+
+    <EditText
+        android:id="@+id/nomJoueur1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/barre"
+        android:hint="@string/nomJoueur1" />
+
+    <EditText
+        android:id="@+id/nomJoueur2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nomJoueur1"
+        android:layout_marginTop="20dp"
+        android:hint="@string/nomJoueur2" />
+
+    <TextView
+        android:id="@+id/texteNombreMots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nombreMots"
+        android:layout_below="@id/nomJoueur2"
+        android:layout_marginTop="80dp"
+        android:textSize="15dp"/>
+
+    <NumberPicker
+        android:id="@+id/nombreMots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/nomJoueur2"
+        android:layout_marginTop="160dp"
+        android:layout_toRightOf="@id/texteNombreMots"
+        />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="Precedent "
+        android:layout_alignParentBottom="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Suivant " />
+</RelativeLayout>
