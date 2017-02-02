@@ -1,4 +1,7 @@
 <resources>
+    <string name="app_name">Pendu</string>
+
+    <!-- Accueil 2 Joueurs -->
     <string name="app_name">AppPendu</string>
     <string name="label_onglet1">Facile</string>
     <string name="label_onglet2">Normal</string>
@@ -8,6 +11,8 @@
     <string name="nomJoueur1">Joueur 1</string>
     <string name="nomJoueur2">Joueur 2</string>
     <string name="nombreMots">Nombre de mots</string>
+
+    <!-- Pages difficultés -->
     <string name="titreDifficulte">DIFFICULTÉS</string>
     <string name="libelleFacile">Moins de 5 lettres</string>
     <string name="libelleMoyen">Entre 5 et 10 lettres</string>
@@ -20,5 +25,8 @@
 
     <!-- GestionCategories -->
     <string name="libelle_GestionCategorie">Gestion des catégories</string>
+
+    <!-- Main categorie -->
+    <string name="libelle_MainCategorie">Categories</string>
 
 </resources>

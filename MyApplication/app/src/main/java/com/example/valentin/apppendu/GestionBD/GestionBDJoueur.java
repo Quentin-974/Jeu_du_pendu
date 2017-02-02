@@ -1,4 +1,4 @@
-package com.example.valentin.apppendu;
+package com.example.valentin.apppendu.GestionBD;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

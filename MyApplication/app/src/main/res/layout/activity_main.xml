@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.valentin.apppendu.MainActivity">
+    tools:context="com.example.valentin.apppendu.Activity.MainActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -42,7 +42,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/imageViewPendu"
-        android:id="@+id/button1Joueur" />
+        android:id="@+id/button1Joueur"
+        android:onClick="choixCategorie"/>
 
     <Button
         android:text="@string/libelleButton2Joueur"
@@ -51,7 +52,8 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/button1Joueur"
         android:layout_centerHorizontal="true"
-        android:id="@+id/button2Joueurs" />
+        android:id="@+id/button2Joueurs"
+        android:onClick="page2Joueur" />
 
     <Button
         android:text="@string/libelleButtonParametres"
@@ -60,6 +62,7 @@
         android:layout_marginTop="10dp"
         android:id="@+id/buttonParametres"
         android:layout_below="@+id/button2Joueurs"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="parametres"/>
 
 </RelativeLayout>

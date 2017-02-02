@@ -12,6 +12,8 @@
 
         </activity>
         <activity android:name=".Accueil2Joueurs">
+        <activity android:name=".Activity.MainActivity"></activity>
+        <activity android:name=".Activity.Accueil2Joueurs">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,6 +22,9 @@
         </activity>
         <activity android:name=".Classements" />
         <activity android:name=".FinPartie1Joueur"></activity>
+        <activity android:name=".Activity.Difficultes" />
+        <activity android:name=".Activity.GestionCategories"></activity>
+        <activity android:name=".Activity.MainCategories"></activity>
     </application>
 
 </manifest>
