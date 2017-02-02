@@ -18,7 +18,7 @@
         android:textSize="30dp"
         android:gravity="center"
         android:layout_marginBottom="20dp"
-        android:text="@string/libelle_GestionCategorie"/>
+        android:text="@string/libelle_MainCategorie"/>
 
     <ImageButton
         android:layout_width="wrap_content"

@@ -21,4 +21,7 @@
     <!-- GestionCategories -->
     <string name="libelle_GestionCategorie">Gestion des catégories</string>
 
+    <!-- Main categorie -->
+    <string name="libelle_MainCategorie">Categories</string>
+
 </resources>

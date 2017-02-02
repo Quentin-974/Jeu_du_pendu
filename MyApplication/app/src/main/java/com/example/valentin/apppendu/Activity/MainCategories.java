@@ -1,13 +1,16 @@
-package com.example.valentin.apppendu;
+package com.example.valentin.apppendu.Activity;
 
-import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-public class GestionCategories extends Activity {
+import com.example.valentin.apppendu.GestionBD.GestionBDCategorie;
+import com.example.valentin.apppendu.R;
+
+public class MainCategories extends AppCompatActivity {
 
     /** Numéro de version de la base de données */
     private static final int VERSION = 3;
@@ -29,11 +32,11 @@ public class GestionCategories extends Activity {
 
     /** Liste contenant les valeurs présentes dans la table catégorie */
     private ListView listeView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gestion_categories);
+        setContentView(R.layout.activity_main_categories);
+
 
         listeView = (ListView) findViewById(R.id.listeView_categorie);
 
@@ -47,14 +50,12 @@ public class GestionCategories extends Activity {
         curseur = base.rawQuery(GestionBDCategorie.REQUETE_CATEGORIE_ALL, null);
 
         adaptateur = new SimpleCursorAdapter(this,
-                                                R.layout.ligne_liste, curseur,
-                                                new String[] {GestionBDCategorie.CATEGORIE_CLEF,
-                                                              GestionBDCategorie.CATEGORIE_NOM},
-                                                new int[] {R.id.id_categorie,
-                                                           R.id.nom_categorie}, 0);
+                R.layout.ligne_liste, curseur,
+                new String[] {GestionBDCategorie.CATEGORIE_CLEF,
+                        GestionBDCategorie.CATEGORIE_NOM},
+                new int[] {R.id.id_categorie,
+                        R.id.nom_categorie}, 0);
 
         listeView.setAdapter(adaptateur);
-
-
     }
 }
