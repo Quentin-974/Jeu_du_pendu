@@ -42,7 +42,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/imageViewPendu"
-        android:id="@+id/button1Joueur" />
+        android:id="@+id/button1Joueur"/>
 
     <Button
         android:text="@string/libelleButton2Joueur"
@@ -51,7 +51,8 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/button1Joueur"
         android:layout_centerHorizontal="true"
-        android:id="@+id/button2Joueurs" />
+        android:id="@+id/button2Joueurs"
+        android:onClick="page2Joueur" />
 
     <Button
         android:text="@string/libelleButtonParametres"
@@ -60,6 +61,7 @@
         android:layout_marginTop="10dp"
         android:id="@+id/buttonParametres"
         android:layout_below="@+id/button2Joueurs"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="parametres"/>
 
 </RelativeLayout>

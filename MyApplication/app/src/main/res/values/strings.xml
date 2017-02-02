@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">Pendu</string>
+
+    <!-- Accueil 2 Joueurs -->
     <string name="titre2Joueur">2 Joueurs</string>
     <string name="nomJoueur1">Joueur 1</string>
     <string name="nomJoueur2">Joueur 2</string>
     <string name="nombreMots">Nombre de mots</string>
+
+    <!-- Pages difficultés -->
     <string name="titreDifficulte">DIFFICULTÉS</string>
     <string name="libelleFacile">Moins de 5 lettres</string>
     <string name="libelleMoyen">Entre 5 et 10 lettres</string>
