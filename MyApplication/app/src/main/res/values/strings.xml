@@ -24,5 +24,8 @@
 
     <!-- Main categorie -->
     <string name="libelle_MainCategorie">Categories</string>
+    <string name="titreNom">Entrez votre nom!</string>
+    <string name="boutonPositif">Ok </string>
+    <string name="boutonNegatif">Annuler </string>
 
 </resources>
