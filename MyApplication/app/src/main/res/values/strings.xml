@@ -8,4 +8,13 @@
     <string name="libelleFacile">Moins de 5 lettres</string>
     <string name="libelleMoyen">Entre 5 et 10 lettres</string>
     <string name="libelleDifficile">Plus de 10 lettres</string>
+
+    <!-- Main Activity -->
+    <string name="libelleButton1Joueur">1 Joueur</string>
+    <string name="libelleButton2Joueur">2 Joueur</string>
+    <string name="libelleButtonParametres">Paramètres</string>
+
+    <!-- GestionCategories -->
+    <string name="libelle_GestionCategorie">Gestion des catégories</string>
+
 </resources>

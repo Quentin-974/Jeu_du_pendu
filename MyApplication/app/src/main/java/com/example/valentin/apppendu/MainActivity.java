@@ -9,9 +9,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Je fais un test lol
-        // ok
-        // c'est drole ca dis donc grosse merde
 
     }
 }
