@@ -48,7 +48,7 @@ public class MainJeu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_jeu);
-
+        /* lol*/
         ibQuitter = (ImageButton) findViewById(R.id.imageButtonQuitter);
 
         ibQuitter.setOnClickListener(
