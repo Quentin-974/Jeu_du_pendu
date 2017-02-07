@@ -23,6 +23,13 @@ public class Difficultes extends Activity {
     /** Identifiant pour le passage de donnée */
     private final String DIFFICULTE_PARTIE = "DIFFICULTE";
 
+    /** Difficulté de la partie
+     * 1 -> Facile
+     * 2 -> Moyen
+     * 3 -> Difficile
+     */
+    private int difficulte;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +48,7 @@ public class Difficultes extends Activity {
      * @param bouton Bouton sur lequel va cliqué l'utilisateur
      */
     public void clicPrecedent(View bouton) {
-        Intent intent = new Intent(Difficultes.this,MainActivity.class);
+        Intent intent = new Intent(Difficultes.this,GestionCategories.class);
         startActivity(intent);
     }
 
@@ -52,15 +59,21 @@ public class Difficultes extends Activity {
     public void clicDifficulte(View bouton) {
         // Clique sur l'imageButton facile
         if(bouton.getId() == R.id.imgFacile) {
+            difficulte = 1;
             Intent intent = new Intent(Difficultes.this, MainActivity.class);
+            intent.putExtra(DIFFICULTE_PARTIE, difficulte);
             startActivity(intent);
         // Clique sur l'imageButton moyen
         } else if(bouton.getId() == R.id.imgMoyen) {
+            difficulte = 2;
             Intent intent = new Intent(Difficultes.this, MainActivity.class);
+            intent.putExtra(DIFFICULTE_PARTIE, difficulte);
             startActivity(intent);
             // Clique sur l'imageButton difficile
         } else {
+            difficulte = 3;
             Intent intent = new Intent(Difficultes.this, MainActivity.class);
+            intent.putExtra(DIFFICULTE_PARTIE, difficulte);
             startActivity(intent);
         }
     }

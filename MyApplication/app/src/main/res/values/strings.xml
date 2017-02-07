@@ -20,13 +20,17 @@
 
     <!-- Main Activity -->
     <string name="libelleButton1Joueur">1 Joueur</string>
-    <string name="libelleButton2Joueur">2 Joueur</string>
+    <string name="libelleButton2Joueur">2 Joueurs</string>
     <string name="libelleButtonParametres">Paramètres</string>
+    <string name="libelleButtonHistorique">Historique</string>
 
     <!-- GestionCategories -->
     <string name="libelle_GestionCategorie">Gestion des catégories</string>
 
     <!-- Main categorie -->
     <string name="libelle_MainCategorie">Categories</string>
+    <string name="titreNom">Entrez votre nom!</string>
+    <string name="boutonPositif">Ok </string>
+    <string name="boutonNegatif">Annuler </string>
 
 </resources>
