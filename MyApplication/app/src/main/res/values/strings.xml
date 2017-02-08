@@ -2,6 +2,10 @@
     <string name="app_name">Pendu</string>
 
     <!-- Accueil 2 Joueurs -->
+    <string name="label_onglet1">Facile</string>
+    <string name="label_onglet2">Normal</string>
+    <string name="label_onglet3">Difficile</string>
+    <string name="label_score">Votre score :</string>
     <string name="titre2Joueur">2 Joueurs</string>
     <string name="nomJoueur1">Joueur 1</string>
     <string name="nomJoueur2">Joueur 2</string>

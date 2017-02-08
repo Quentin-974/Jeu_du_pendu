@@ -11,6 +11,12 @@ import com.example.valentin.apppendu.R;
 
 public class Difficultes extends Activity {
 
+    /** Identifiant pour le passage de donnée */
+    public static final String CATEGORIE_PARTIE = "CATEGORIE";
+
+    /** Identifiant pour le passage de donnée */
+    public static final String JOUEUR_PARTIE = "JOUEUR";
+
     /** Bouton pour la difficulté facile */
     private ImageButton btnFacile;
     /** Bouton pour la difficulté Moyen */
@@ -22,6 +28,12 @@ public class Difficultes extends Activity {
 
     /** Identifiant pour le passage de donnée */
     private final String DIFFICULTE_PARTIE = "DIFFICULTE";
+
+    /** Categorie des mots  */
+    private String categorie;
+
+    /** Nom du joueur de la partie */
+    private String joueur;
 
     /** Difficulté de la partie
      * 1 -> Facile
@@ -48,7 +60,8 @@ public class Difficultes extends Activity {
      * @param bouton Bouton sur lequel va cliqué l'utilisateur
      */
     public void clicPrecedent(View bouton) {
-        Intent intent = new Intent(Difficultes.this,GestionCategories.class);
+        Intent intent = new Intent(Difficultes.this,MainCategories.class);
+        intent.putExtra(JOUEUR_PARTIE,joueur);
         startActivity(intent);
     }
 
@@ -57,25 +70,38 @@ public class Difficultes extends Activity {
      * @param bouton Bouton sur lequel va cliqué l'utilisateur
      */
     public void clicDifficulte(View bouton) {
+
+        Bundle extras = getIntent().getExtras();
+        if(extras!= null){
+            categorie = extras.getString(MainCategories.CATEGORIE_PARTIE);
+            joueur = extras.getString(MainCategories.JOUEUR_PARTIE);
+        }
         // Clique sur l'imageButton facile
         if(bouton.getId() == R.id.imgFacile) {
             difficulte = 1;
-            Intent intent = new Intent(Difficultes.this, MainActivity.class);
+            Intent intent = new Intent(Difficultes.this, MainJeu.class);
             intent.putExtra(DIFFICULTE_PARTIE, difficulte);
+            intent.putExtra(CATEGORIE_PARTIE,categorie);
+            intent.putExtra(JOUEUR_PARTIE,joueur);
             startActivity(intent);
         // Clique sur l'imageButton moyen
         } else if(bouton.getId() == R.id.imgMoyen) {
             difficulte = 2;
-            Intent intent = new Intent(Difficultes.this, MainActivity.class);
+            Intent intent = new Intent(Difficultes.this, MainJeu.class);
             intent.putExtra(DIFFICULTE_PARTIE, difficulte);
+            intent.putExtra(CATEGORIE_PARTIE,categorie);
+            intent.putExtra(JOUEUR_PARTIE,joueur);
             startActivity(intent);
             // Clique sur l'imageButton difficile
         } else {
             difficulte = 3;
-            Intent intent = new Intent(Difficultes.this, MainActivity.class);
+            Intent intent = new Intent(Difficultes.this, MainJeu.class);
             intent.putExtra(DIFFICULTE_PARTIE, difficulte);
+            intent.putExtra(CATEGORIE_PARTIE,categorie);
+            intent.putExtra(JOUEUR_PARTIE,joueur);
             startActivity(intent);
         }
     }
+
 
 }
