@@ -8,25 +8,21 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="Activity.Accueil2Joueurs"/>
-        <activity android:name=".Activity.MainActivity"/>
-        <activity android:name=".Activity.Accueil2Joueurs"/>
-        <activity android:name="Activity.MainActivity" />
-        <activity android:name=".Activity.Difficultes"/>
-        <activity android:name=".Activity.GestionCategories" />
-        <activity android:name=".Activity.MainCategories" />
-        <activity android:name=".Activity.Mots2Joueurs">
+        <activity android:name=".Activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Classements"/>
-        <activity android:name=".FinPartie1Joueur"/>
-        <activity android:name="Activity.Difficultes"/>
-        <activity android:name="Activity.GestionCategories"/>
-        <activity android:name="Activity.MainCategories"/>
+        <activity android:name=".Activity.Accueil2Joueurs" />
+        <activity android:name=".Activity.Difficultes">
+        </activity>
+        <activity android:name=".Activity.GestionCategories" />
+        <activity android:name=".Activity.MainCategories" />
+        <activity android:name=".Activity.Mots2Joueurs">
+        </activity>
+        <activity android:name=".Activity.MainJeu"></activity>
     </application>
 
 </manifest>
