@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.valentin.apppendu.GestionBD.GestionBD;
 import com.example.valentin.apppendu.GestionBD.GestionBDCategorie;
 import com.example.valentin.apppendu.R;
 
@@ -34,10 +35,7 @@ public class MainCategories extends AppCompatActivity {
     /** Numéro de version de la base de données */
     private static final int VERSION = 3;
     /** Instance de la classe de gestion des categories dans la base de données */
-    private GestionBDCategorie gestionBDCategorie;
-
-    /** Nom de la base de données dans laquelle seront conservé les catégories */
-    private static final String NOM_BD = "pendu.db";
+    private GestionBD gestionBD;
 
     /** Base de données crée */
     private SQLiteDatabase base;
@@ -98,13 +96,14 @@ public class MainCategories extends AppCompatActivity {
         listeView = (ListView) findViewById(R.id.listeView_categorie);
 
         // Gestionnaire de la table et création de la base de données si elle n'existe pas
-        gestionBDCategorie = new GestionBDCategorie(this, NOM_BD, null, VERSION);
+        gestionBD = GestionBD.getInstance(this);
 
-        // Récupération de la base de données -> indique que l'on veut seulement la lire
-        base = gestionBDCategorie.getReadableDatabase();
+        // Récupération de la base de données
+        base = gestionBD.getWritableDatabase();
 
         // Initialisation d'un curseur pour récupérer toutes les données de la table
         curseur = base.rawQuery(GestionBDCategorie.REQUETE_CATEGORIE_ALL, null);
+
         adaptateur = new SimpleCursorAdapter(this,
                 R.layout.ligne_liste, curseur,
                 new String[] {GestionBDCategorie.CATEGORIE_CLEF,

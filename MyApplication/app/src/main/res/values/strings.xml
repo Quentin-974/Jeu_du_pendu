@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Pendu</string>
 
+    <string name="oui">Oui</string>
+    <string name="non">Non</string>
+
     <!-- Accueil 2 Joueurs -->
     <string name="label_onglet1">Facile</string>
     <string name="label_onglet2">Normal</string>
@@ -26,10 +29,26 @@
     <!-- GestionCategories -->
     <string name="libelle_GestionCategorie">Gestion des catégories</string>
 
+    <!-- GestionMots -->
+    <string name="libelle_GestionMot">Gestion des mots</string>
+
+    <!-- Menu contextuel categories -->
+    <string name="libelle_menu_modifier_categories">Modifier</string>
+    <string name="libelle_menu_supprimer_categories">Supprimer</string>
+
     <!-- Main categorie -->
     <string name="libelle_MainCategorie">Categories</string>
     <string name="titreNom">Entrez votre nom!</string>
     <string name="boutonPositif">Ok </string>
     <string name="boutonNegatif">Annuler </string>
+
+    <!-- Boite de dialogue -->
+    <string name="titre_boite_dialog_modification">Modification Catégorie</string>
+    <string name="titre_boite_dialog_suppression">Suppression Catégorie</string>
+    <string name="titre_boite_dialog_ajout">Ajout Catégorie</string>
+    <string name="bouton_positif_modif_categorie">Valider</string>
+    <string name="bouton_negatif_categorie">Annuler</string>
+    <string name="modif_categorie_reussie">Modification effectuée</string>
+    <string name="ajout_categorie">Ajouter la catégorie : </string>
 
 </resources>

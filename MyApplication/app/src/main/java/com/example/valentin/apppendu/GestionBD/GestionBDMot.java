@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by thibaut on 01/02/2017.
  */
 
-public class GestionBDMot extends SQLiteOpenHelper {
+public class GestionBDMot {
 
     /** Nom de la table categorie */
     public static final String NOM_TABLE_MOT = "mot";
@@ -24,60 +24,37 @@ public class GestionBDMot extends SQLiteOpenHelper {
     public static final String MOT_DIFFICULTE = "difficulte";
 
     /** Nom du champ correspondant à la catégorie du mot */
-    public static final String MOT_CATEGORIE = "categorie";
+    public static final String MOT_CATEGORIE = "idCategorie";
 
     /** Requête de création de la table mot */
     public static final String CREATION_TABLE_MOT =
-            "CREATE TABLE " + NOM_TABLE_MOT + " ("
-                    + MOT_CLEF + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + MOT_NOM + " TEXT NOT NULL, "
-                    + MOT_DIFFICULTE + " INTEGER NOT NULL, "
-                    + MOT_CATEGORIE + " INTEGER NOT NULL, "
-                    + "FOREIGN KEY (" + MOT_CATEGORIE
-                    + ") REFERENCES " + GestionBDCategorie.NOM_TABLE_CATEGORIE + " ("
-                    + GestionBDCategorie.CATEGORIE_CLEF + "));";
 
-    /** Requête pour sélectionner toutes les catégories */
+
+
+    "CREATE TABLE " + NOM_TABLE_MOT + " ("
+            + MOT_CLEF + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + MOT_NOM + " TEXT NOT NULL, "
+            + MOT_DIFFICULTE + " INTEGER NOT NULL, "
+            + MOT_CATEGORIE + " INTEGER NOT NULL, "
+            + "FOREIGN KEY (" + MOT_CATEGORIE + ")"
+            + " REFERENCES " + GestionBDCategorie.NOM_TABLE_CATEGORIE
+            +" (" + GestionBDCategorie.CATEGORIE_CLEF + ")"
+            + ");";
+
+    /** Requête pour sélectionner tous les mots */
     public static final String REQUETE_MOT_ALL =
             "SELECT "
                     + MOT_CLEF + ", "
                     + MOT_NOM + ", "
                     + MOT_DIFFICULTE + ", "
-                    + MOT_CATEGORIE + ", "
+                    + MOT_CATEGORIE
                     + " FROM " + NOM_TABLE_MOT
                     + " ORDER BY " + MOT_NOM + ";";
 
-    private static final String SUPPRIMER_TABLE_MOT =
+    /** Requête pour sélectionner les mots d'une catégorie */
+    public static final String REQUETE_MOT_CATEGORIE =
+            "SELECT * FROM " + NOM_TABLE_MOT + " WHERE " + MOT_CATEGORIE + " = ?";
+
+    public static final String SUPPRIMER_TABLE_MOT =
             "DROP TABLE IF EXISTS " + NOM_TABLE_MOT + ";";
-
-    public GestionBDMot (Context contexte, String nom, SQLiteDatabase.CursorFactory fabrique, int version) {
-        super(contexte, nom, fabrique, version);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db){
-        db.execSQL(CREATION_TABLE_MOT);	// Création de la table
-
-        ContentValues enregistrement = new ContentValues();
-
-        // Insertion des mots dans la table
-
-        //============ M O T  1 ============//
-        enregistrement.put(MOT_NOM, "mot");
-        enregistrement.put(MOT_DIFFICULTE, "1");
-        enregistrement.put(MOT_CATEGORIE, "1");
-        db.insert(NOM_TABLE_MOT, MOT_NOM, enregistrement);
-
-        //============  ==================//
-
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int ancienneVersion, int nouvelleVersion) {
-        db.execSQL(SUPPRIMER_TABLE_MOT);	// Destruction de la table
-        onCreate(db);
-    }
-
-
-
 }

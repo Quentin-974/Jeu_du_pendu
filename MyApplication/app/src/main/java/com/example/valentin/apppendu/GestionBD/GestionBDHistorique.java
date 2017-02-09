@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by thibaut on 01/02/2017.
  */
 
-public class GestionBDHistorique extends SQLiteOpenHelper {
+public class GestionBDHistorique {
 
     /** Nom de la table categorie */
     public static final String NOM_TABLE_HISTORIQUE = "historique";
@@ -39,7 +39,7 @@ public class GestionBDHistorique extends SQLiteOpenHelper {
                     + HISTORIQUE_HEURE + " TEXT NOT NULL, "
                     + HISTORIQUE_NB_COUPS + "INTEGER NOT NULL, "
                     + HISTORIQUE_NB_GAGNES + "INTEGER NOT NULL, "
-                    + HISTORIQUE_JOUEUR + "INTEGER NOT NULL;"
+                    + HISTORIQUE_JOUEUR + "INTEGER NOT NULL, "
                     + "FOREIGN KEY (" + HISTORIQUE_JOUEUR
                     + ") REFERENCES " + GestionBDJoueur.NOM_TABLE_JOUEUR + " ("
                     + GestionBDJoueur.JOUEUR_CLEF + "));";
@@ -58,22 +58,4 @@ public class GestionBDHistorique extends SQLiteOpenHelper {
 
     private static final String SUPPRIMER_TABLE_HISTORIQUE =
             "DROP TABLE IF EXISTS " + NOM_TABLE_HISTORIQUE + ";";
-
-    public GestionBDHistorique (Context contexte, String nom, SQLiteDatabase.CursorFactory fabrique, int version) {
-        super(contexte, nom, fabrique, version);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db){
-        db.execSQL(CREATION_TABLE_HISTORIQUE);	// Création de la table
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int ancienneVersion, int nouvelleVersion) {
-        db.execSQL(SUPPRIMER_TABLE_HISTORIQUE);	// Destruction de la table
-        onCreate(db);
-    }
-
-
-
 }
