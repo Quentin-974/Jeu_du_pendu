@@ -34,8 +34,7 @@
         android:layout_width="@dimen/tailleImgEssai"
         android:layout_height="@dimen/tailleImgEssai"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/fleche"
-        android:onClick="clicPrecedent"/>
+        android:src="@drawable/fleche"/>
 
     <ImageButton
         android:id="@+id/imgSuivantMots"
@@ -44,7 +43,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:src="@drawable/fleche"
-        android:onClick="clicPrecedent"
-        android:rotation="180"/>
+        android:rotation="180"
+        android:onClick="clicSuivantMots"/>
 
 </RelativeLayout>
