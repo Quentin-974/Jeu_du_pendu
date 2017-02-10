@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 /**
  * Activité du tableau de jeu
- * Là tu le détecte le changement !!!
+ * Détecte mon putain de changement !!!!!
  */
 public class MainJeu extends AppCompatActivity {
     /**
