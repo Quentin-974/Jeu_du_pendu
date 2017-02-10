@@ -9,10 +9,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.valentin.apppendu.Activity.MainJeu">
+    tools:context="com.example.valentin.apppendu.activity.MainJeu">
+
+    <!-- Et celui là tu le détecte ou pas !!-->
 
     <TextView
-        android:text="TextView"
+        android:text="Score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -26,52 +28,6 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/fleche"
         android:id="@+id/imageButtonQuitter" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/dab"
-        android:id="@+id/imageViewPendu"
-        android:layout_weight="0.25"
-        android:layout_marginTop="31dp"
-        android:layout_below="@+id/imageButtonQuitter"
-        android:layout_alignParentStart="true" />
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/imageViewPendu"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp"
-        android:id="@+id/linearMot">
-
-    </LinearLayout>
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/a_gris"
-        android:layout_below="@+id/linearMot"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp"
-        android:id="@+id/ibA" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/b_gris"
-        android:layout_alignTop="@+id/ibA"
-        android:layout_toEndOf="@+id/imageButtonQuitter"
-        android:id="@+id/ibB" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/c_gris"
-        android:layout_alignTop="@+id/ibB"
-        android:layout_toEndOf="@+id/ibB"
-        android:id="@+id/ibC" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -100,30 +56,6 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/h_gris"
-        android:layout_below="@+id/ibA"
-        android:layout_toStartOf="@+id/ibB"
-        android:id="@+id/ibH" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/i_gris"
-        android:layout_below="@+id/ibB"
-        android:layout_toEndOf="@+id/ibA"
-        android:id="@+id/ibI" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/j_gris"
-        android:id="@+id/ibJ"
-        android:layout_below="@+id/ibC"
-        android:layout_toEndOf="@+id/ibB" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:srcCompat="@mipmap/k_gris"
         android:id="@+id/ibK"
         android:layout_below="@+id/ibD"
@@ -148,50 +80,10 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/p_gris"
-        android:layout_below="@+id/ibH"
-        android:layout_toEndOf="@+id/ibO"
-        android:id="@+id/ibP" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/r_gris"
-        android:id="@+id/ibR"
-        android:layout_below="@+id/ibK"
-        android:layout_alignStart="@+id/ibK" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/s_gris"
-        android:id="@+id/ibS"
-        android:layout_below="@+id/ibK"
-        android:layout_toEndOf="@+id/ibK" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/t_gris"
-        android:id="@+id/ibT"
-        android:layout_below="@+id/ibM"
-        android:layout_alignStart="@+id/ibM" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:srcCompat="@mipmap/m_gris"
         android:id="@+id/ibM"
         android:layout_below="@+id/ibE"
         android:layout_toEndOf="@+id/ibE" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/u_gris"
-        android:id="@+id/ibU"
-        android:layout_below="@+id/ibN"
-        android:layout_toEndOf="@+id/ibT" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -204,58 +96,166 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/x_gris"
-        android:layout_below="@+id/ibQ"
-        android:layout_toStartOf="@+id/ibS"
-        android:id="@+id/ibX" />
+        app:srcCompat="@mipmap/j_gris"
+        android:id="@+id/ibJ"
+        android:layout_below="@+id/ibC"
+        android:layout_toStartOf="@+id/ibD" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/c_gris"
+        android:id="@+id/ibC"
+        android:layout_alignTop="@+id/ibB"
+        android:layout_toStartOf="@+id/ibD" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/b_gris"
+        android:id="@+id/ibB"
+        android:layout_above="@+id/ibH"
+        android:layout_toStartOf="@+id/ibJ" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/i_gris"
+        android:id="@+id/ibI"
+        android:layout_below="@+id/ibB"
+        android:layout_toEndOf="@+id/ibH" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/y_gris"
         android:id="@+id/ibY"
-        android:layout_below="@+id/ibS"
-        android:layout_toEndOf="@+id/ibR" />
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/ibX" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/z_gris"
-        android:layout_below="@+id/ibT"
-        android:layout_toEndOf="@+id/ibY"
-        android:id="@+id/ibZ" />
+        android:id="@+id/ibZ"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/ibY" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/o_gris"
-        android:id="@+id/ibO"
-        android:layout_below="@+id/ibH"
-        android:layout_alignStart="@+id/ibH" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/v_gris"
-        android:id="@+id/ibV"
-        android:layout_below="@+id/ibP"
-        android:layout_toStartOf="@+id/ibQ" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/q_gris"
-        android:id="@+id/ibQ"
-        android:layout_below="@+id/ibJ"
-        android:layout_toStartOf="@+id/ibR" />
+        app:srcCompat="@mipmap/x_gris"
+        android:id="@+id/ibX"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/ibW" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/w_gris"
         android:id="@+id/ibW"
-        android:layout_below="@+id/ibR"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/ibP" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/v_gris"
+        android:id="@+id/ibV"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/ibW" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/p_gris"
+        android:id="@+id/ibP"
+        android:layout_above="@+id/ibW"
+        android:layout_toEndOf="@+id/ibO" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/q_gris"
+        android:id="@+id/ibQ"
+        android:layout_alignTop="@+id/ibP"
         android:layout_toEndOf="@+id/ibV" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/r_gris"
+        android:id="@+id/ibR"
+        android:layout_above="@+id/ibY"
+        android:layout_toEndOf="@+id/ibW" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/s_gris"
+        android:id="@+id/ibS"
+        android:layout_alignTop="@+id/ibR"
+        android:layout_toEndOf="@+id/ibR" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/t_gris"
+        android:id="@+id/ibT"
+        android:layout_above="@+id/ibZ"
+        android:layout_toEndOf="@+id/ibS" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/u_gris"
+        android:id="@+id/ibU"
+        android:layout_alignTop="@+id/ibT"
+        android:layout_toEndOf="@+id/ibZ" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/o_gris"
+        android:id="@+id/ibO"
+        android:layout_alignTop="@+id/ibP"
+        android:layout_alignStart="@+id/ibH" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/h_gris"
+        android:id="@+id/ibH"
+        android:layout_above="@+id/ibO"
+        android:layout_toStartOf="@+id/ibB" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/a_gris"
+        android:id="@+id/ibA"
+        android:layout_above="@+id/ibH"
+        android:layout_alignStart="@+id/ibH" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/dab"
+        android:id="@+id/imageViewPendu"
+        android:layout_weight="0.25"
+        android:layout_below="@+id/imageButtonQuitter"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/linearMot" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/linearMot"
+        android:layout_above="@+id/ibD"
+        android:layout_alignStart="@+id/ibA">
+
+    </LinearLayout>
 
 
 </RelativeLayout>
