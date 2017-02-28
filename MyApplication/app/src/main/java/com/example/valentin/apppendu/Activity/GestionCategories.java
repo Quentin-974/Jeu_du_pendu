@@ -22,6 +22,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.valentin.apppendu.ClasseMetier.Categorie;
+import com.example.valentin.apppendu.DAO.CategorieDAO;
 import com.example.valentin.apppendu.GestionBD.GestionBD;
 import com.example.valentin.apppendu.GestionBD.GestionBDCategorie;
 import com.example.valentin.apppendu.R;
@@ -34,11 +36,8 @@ public class GestionCategories extends Activity implements View.OnClickListener,
     /** Bouton de retour vers le menu */
     private ImageButton buttonRetour;
 
-    /** Instance de la classe de gestion des categories dans la base de données */
-    private GestionBD gestionBD;
-
-    /** Base de données crée */
-    private SQLiteDatabase base;
+    /** DAO pour les catégories */
+    private CategorieDAO categorieDAO;
 
     /** Curseur utilisé pour la lecture de données dans la base de données */
     private Cursor curseur;
@@ -49,7 +48,26 @@ public class GestionCategories extends Activity implements View.OnClickListener,
     /** Liste contenant les valeurs présentes dans la table catégorie */
     private ListView listeView;
 
+    private Categorie categorieModif;
+
+    private Categorie categorieSupprimer;
+
+    /** Extra */
     public final static String ID_CATEGORIE = "id_categorie" ;
+    public final static String NOM_CATEGORIE = "nom_categorie" ;
+
+    @Override
+    protected void onResume() {
+        categorieDAO.open();
+        // TODO Refresh la liste
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        categorieDAO.close();
+        super.onPause();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +78,9 @@ public class GestionCategories extends Activity implements View.OnClickListener,
         floatingActionButton = (FloatingActionButton) findViewById(R.id.fabCategories);
         floatingActionButton.setOnClickListener(GestionCategories.this);
 
+        categorieDAO = new CategorieDAO(this);
+        categorieDAO.open();
+
         // Bouton de retour vers le menu principal
         buttonRetour = (ImageButton) findViewById(R.id.buttonRetourGestionCategoriesMenu);
         buttonRetour.setOnClickListener(this);
@@ -67,14 +88,8 @@ public class GestionCategories extends Activity implements View.OnClickListener,
         // Listview affichant toutes les catégories
         listeView = (ListView) findViewById(R.id.listeView_categorie);
 
-        // Gestionnaire de la table et création de la base de données si elle n'existe pas
-        gestionBD = GestionBD.getInstance(this);
-
-        // Récupération de la base de données
-        base = gestionBD.getWritableDatabase();
-
         // Initialisation d'un curseur pour récupérer toutes les données de la table
-        curseur = base.rawQuery(GestionBDCategorie.REQUETE_CATEGORIE_ALL, null);
+        curseur = categorieDAO.getAllCategories();
 
         // Adapatateur qui permet de faire le lien entre la listeView et le curseur
         adaptateur = new SimpleCursorAdapter(this,
@@ -95,12 +110,17 @@ public class GestionCategories extends Activity implements View.OnClickListener,
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.fabCategories) {
+        if (view.getId() == R.id.fabCategories) {
             ajouterCategorie();
         } else if (view.getId() == R.id.buttonRetourGestionCategoriesMenu) {
             // Arrêt de l'activité
             this.finish();
         }
+    }
+
+    public void refreshListe() {
+        curseur = categorieDAO.getAllCategories();
+        adaptateur.swapCursor(curseur);
     }
 
     /*
@@ -109,10 +129,12 @@ public class GestionCategories extends Activity implements View.OnClickListener,
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         int identifiant = curseur.getInt(curseur.getColumnIndex("_id"));
+        String nomCategorie = curseur.getString(curseur.getColumnIndex("nom"));
 
         // Lancement de l'activité de gestion des mots d'une catégorie
         Intent intent = new Intent(GestionCategories.this, GestionMots.class);
         intent.putExtra(ID_CATEGORIE, identifiant);
+        intent.putExtra(NOM_CATEGORIE, nomCategorie);
         startActivity(intent);
 
     }
@@ -124,7 +146,7 @@ public class GestionCategories extends Activity implements View.OnClickListener,
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        new MenuInflater(this).inflate(R.menu.menu_contextuel_categories, menu);
+        new MenuInflater(this).inflate(R.menu.menu_contextuel_modifier_supprimer, menu);
     }
 
     @Override
@@ -133,10 +155,10 @@ public class GestionCategories extends Activity implements View.OnClickListener,
         AdapterView.AdapterContextMenuInfo information =
                 (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
-        if (item.getItemId() == R.id.menuContextModifierCategories) {
+        if (item.getItemId() == R.id.menuContextModifier) {
             modifierCategorieDialog(information.position);
 
-        } else if (item.getItemId() == R.id.menuContextSupprimerCategories) {
+        } else if (item.getItemId() == R.id.menuContextSupprimer) {
             supprimerCategorie(information.position);
         }
 
@@ -148,12 +170,12 @@ public class GestionCategories extends Activity implements View.OnClickListener,
         final View boiteDialog =
                         getLayoutInflater().inflate(R.layout.modification_categorie_dialog, null);
 
-        String nom = "";
-
         // Valeur sélectionnée
         if (curseur != null) {
             if (curseur.moveToPosition(position)) {
-                nom = curseur.getString(curseur.getColumnIndex("nom"));
+                categorieModif = new Categorie(
+                        curseur.getInt(curseur.getColumnIndex(GestionBDCategorie.CATEGORIE_CLEF)),
+                        curseur.getString(curseur.getColumnIndex(GestionBDCategorie.CATEGORIE_NOM)));
             }
         }
 
@@ -174,19 +196,22 @@ public class GestionCategories extends Activity implements View.OnClickListener,
         dialogModif.setView(boiteDialog);
 
         EditText editTextDialog = (EditText) boiteDialog.findViewById(R.id.editTextDialog);
-        editTextDialog.setText(nom);
+        editTextDialog.setText(categorieModif.getLibelle());
 
-        dialogModif.setPositiveButton(getResources().getString(R.string.bouton_positif_modif_categorie),
+        dialogModif.setPositiveButton(getResources().getString(R.string.bouton_positif_Valider),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int leBouton) {
                         EditText modifSaisie = (EditText) boiteDialog.findViewById(R.id.editTextDialog);
                         String saisie = modifSaisie.getText().toString();   // Nom de la catégorie modifiée
-                        // TODO APPEL METHODE BD (modifier)
+                        // APPEL METHODE BD (modifier)
+                        categorieModif.setLibelle(saisie);
+                        categorieDAO.updateCategorie(categorieModif);
+                        refreshListe();
                     }
                 });
 
         dialogModif.setNegativeButton(getResources()
-                          .getString(R.string.bouton_negatif_categorie), null);
+                          .getString(R.string.bouton_negatif_Annuler), null);
         dialogModif.show();
     }
 
@@ -200,8 +225,9 @@ public class GestionCategories extends Activity implements View.OnClickListener,
         // Valeur sélectionnée
         if (curseur != null) {
             if (curseur.moveToPosition(position)) {
-                nom = curseur.getString(curseur.getColumnIndex("nom"));
-                idCategorie = curseur.getInt(curseur.getColumnIndex("_id"));
+                categorieSupprimer = new Categorie(
+                        curseur.getInt(curseur.getColumnIndex(GestionBDCategorie.CATEGORIE_CLEF)),
+                        curseur.getString(curseur.getColumnIndex(GestionBDCategorie.CATEGORIE_NOM)));
             }
         }
 
@@ -229,8 +255,16 @@ public class GestionCategories extends Activity implements View.OnClickListener,
         dialogSuppression.setPositiveButton(getResources().getString(R.string.oui),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int leBouton) {
-                        Toast.makeText(GestionCategories.this, "Suppression ok", Toast.LENGTH_SHORT).show();
-                        // TODO APPEL METHODE BD (supprimer)
+                        // APPEL METHODE BD (supprimer)
+                        int nbLignesSupp = 0;
+                        nbLignesSupp = categorieDAO.deleteCategorie(categorieSupprimer);
+
+                        if (nbLignesSupp >= 1) {
+                            Toast.makeText(GestionCategories.this, "Catégorie \"" + categorieSupprimer.getLibelle() + " \" supprimée", Toast.LENGTH_SHORT).show();
+                            refreshListe();
+                        } else {
+                            Toast.makeText(GestionCategories.this, "Erreur lors de la suppression", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
@@ -259,20 +293,32 @@ public class GestionCategories extends Activity implements View.OnClickListener,
 
         dialogAjout.setView(boiteDialog);
 
-        dialogAjout.setPositiveButton(getResources().getString(R.string.bouton_positif_modif_categorie),
+        dialogAjout.setPositiveButton(getResources().getString(R.string.bouton_positif_Valider),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int leBouton) {
                         EditText ajout = (EditText) boiteDialog.findViewById(R.id.editTextAjoutCategorie);
                         String saisie = ajout.getText().toString();   // Nom de la catégorie ajoutée
-                        Toast.makeText(GestionCategories.this, saisie, Toast.LENGTH_SHORT).show();
-                        // TODO APPEL METHODE BD (ajout)
-                        // TODO MESSAGE DIALOG INSERTION CATEGORIE
+                        if (!saisie.equals("")) {
+                            // APPEL METHODE BD (ajout)
+                            categorieDAO.createCategorie(saisie);
+                            refreshListe();
+                            Toast.makeText(GestionCategories.this, "La catégorie \"" + saisie + "\" a été ajoutée", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(GestionCategories.this, "Erreur lors de l'ajout de la catégorie", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
         dialogAjout.setNegativeButton(getResources()
-                .getString(R.string.bouton_negatif_categorie), null);
+                .getString(R.string.bouton_negatif_Annuler), null);
         dialogAjout.show();
     }
 
+    public Categorie getCategorieModif() {
+        return categorieModif;
+    }
+
+    public Categorie getCategorieSupprimer() {
+        return categorieSupprimer;
+    }
 }

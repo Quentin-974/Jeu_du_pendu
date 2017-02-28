@@ -14,6 +14,11 @@ public class Categorie {
         this.libelle = libelle;
     }
 
+    public Categorie() {
+        id = -1;
+        libelle = "Undefined";
+    }
+
     public int getId() {
         return id;
     }

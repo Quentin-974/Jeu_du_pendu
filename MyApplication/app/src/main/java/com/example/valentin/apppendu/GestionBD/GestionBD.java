@@ -12,12 +12,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class GestionBD extends SQLiteOpenHelper {
 
     /** Numéro de version de la base de données */
-    public static final int VERSION = 6;
+    private static final int VERSION = 6;
 
     /** Nom de la base de données dans laquelle seront conservé les catégories */
-    public static final String NOM_BD = "pendu.db";
+    private static final String NOM_BD = "pendu.db";
 
-    /** Instance unique */
+    /** Instance unique de gestionBD */
     private static GestionBD instance;
 
     private GestionBD(Context contexte) {
@@ -58,8 +58,8 @@ public class GestionBD extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int ancienneVersion, int nouvelleVersion) {
         if (ancienneVersion < 4) {
-            db.execSQL(GestionBDCategorie.SUPPRIMER_TABLE_CATEGORIE);	// Destruction de la table
             db.execSQL(GestionBDMot.SUPPRIMER_TABLE_MOT);	// Destruction de la table
+            db.execSQL(GestionBDCategorie.SUPPRIMER_TABLE_CATEGORIE);	// Destruction de la table
             onCreate(db);
         }
 

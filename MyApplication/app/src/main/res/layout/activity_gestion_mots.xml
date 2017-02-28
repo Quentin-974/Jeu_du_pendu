@@ -36,7 +36,7 @@
         android:id="@+id/buttonRetourGestionCategories" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabCategories"
+        android:id="@+id/fabMots"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"

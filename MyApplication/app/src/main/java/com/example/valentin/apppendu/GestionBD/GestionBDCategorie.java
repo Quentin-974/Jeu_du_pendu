@@ -32,6 +32,4 @@ public class GestionBDCategorie {
     public static final String SUPPRIMER_TABLE_CATEGORIE =
             "DROP TABLE IF EXISTS " + NOM_TABLE_CATEGORIE + ";";
 
-
-
 }
