@@ -1,4 +1,4 @@
-package com.example.valentin.apppendu.activity;
+package com.example.valentin.apppendu.Activity;
 
 import android.app.Activity;
 import android.content.Intent;

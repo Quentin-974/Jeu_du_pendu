@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.valentin.apppendu.activity.MainJeu">
+    tools:context="com.example.valentin.apppendu.Activity.MainJeu">
 
     <TextView
         android:text="Score"
@@ -28,212 +28,204 @@
         android:id="@+id/imageButtonQuitter" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/d_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/d_gris"
         android:layout_alignTop="@+id/ibC"
         android:layout_centerHorizontal="true"
         android:id="@+id/ibD" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/e_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/e_gris"
         android:layout_alignTop="@+id/ibD"
         android:layout_toEndOf="@+id/ibD"
         android:id="@+id/ibE" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/f_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/f_gris"
         android:layout_alignTop="@+id/ibE"
         android:layout_toEndOf="@+id/ibE"
         android:id="@+id/ibF" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/k_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/k_gris"
         android:id="@+id/ibK"
         android:layout_below="@+id/ibD"
         android:layout_alignStart="@+id/ibD" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/l_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/l_gris"
         android:layout_below="@+id/ibE"
         android:layout_toEndOf="@+id/ibD"
         android:id="@+id/ibL" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/n_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/n_gris"
         android:layout_below="@+id/ibG"
         android:layout_toEndOf="@+id/ibF"
         android:id="@+id/ibN" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/m_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/m_gris"
         android:id="@+id/ibM"
         android:layout_below="@+id/ibE"
         android:layout_toEndOf="@+id/ibE" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/g_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/g_gris"
         android:id="@+id/ibG"
         android:layout_alignTop="@+id/ibF"
         android:layout_toEndOf="@+id/ibF" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/j_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/j_gris"
         android:id="@+id/ibJ"
         android:layout_below="@+id/ibC"
         android:layout_toStartOf="@+id/ibD" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/c_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/c_gris"
         android:id="@+id/ibC"
         android:layout_alignTop="@+id/ibB"
         android:layout_toStartOf="@+id/ibD" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/b_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/b_gris"
         android:id="@+id/ibB"
         android:layout_above="@+id/ibH"
         android:layout_toStartOf="@+id/ibJ" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/i_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/i_gris"
         android:id="@+id/ibI"
         android:layout_below="@+id/ibB"
         android:layout_toEndOf="@+id/ibH" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/y_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/y_gris"
         android:id="@+id/ibY"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/ibX" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/z_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/z_gris"
         android:id="@+id/ibZ"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/ibY" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/x_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/x_gris"
         android:id="@+id/ibX"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/ibW" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/w_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/w_gris"
         android:id="@+id/ibW"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/ibP" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/v_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/v_gris"
         android:id="@+id/ibV"
         android:layout_alignParentBottom="true"
         android:layout_toStartOf="@+id/ibW" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/p_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/p_gris"
         android:id="@+id/ibP"
         android:layout_above="@+id/ibW"
         android:layout_toEndOf="@+id/ibO" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/q_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/q_gris"
         android:id="@+id/ibQ"
         android:layout_alignTop="@+id/ibP"
         android:layout_toEndOf="@+id/ibV" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/r_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/r_gris"
         android:id="@+id/ibR"
         android:layout_above="@+id/ibY"
         android:layout_toEndOf="@+id/ibW" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/s_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/s_gris"
         android:id="@+id/ibS"
         android:layout_alignTop="@+id/ibR"
         android:layout_toEndOf="@+id/ibR" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/t_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/t_gris"
         android:id="@+id/ibT"
         android:layout_above="@+id/ibZ"
         android:layout_toEndOf="@+id/ibS" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/u_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/u_gris"
         android:id="@+id/ibU"
         android:layout_alignTop="@+id/ibT"
         android:layout_toEndOf="@+id/ibZ" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/o_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/o_gris"
         android:id="@+id/ibO"
         android:layout_alignTop="@+id/ibP"
         android:layout_alignStart="@+id/ibH" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/h_gris"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/h_gris"
         android:id="@+id/ibH"
         android:layout_above="@+id/ibO"
         android:layout_toStartOf="@+id/ibB" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/a_gris"
-        android:id="@+id/ibA"
-        android:layout_above="@+id/ibH"
-        android:layout_alignStart="@+id/ibH" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -254,6 +246,14 @@
         android:layout_alignStart="@+id/ibA">
 
     </LinearLayout>
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/a_gris"
+        android:id="@+id/ibA"
+        android:layout_below="@+id/linearMot"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

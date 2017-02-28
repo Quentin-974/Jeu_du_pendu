@@ -1,4 +1,4 @@
-package com.example.valentin.apppendu.activity;
+package com.example.valentin.apppendu.Activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,8 +9,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import com.example.valentin.apppendu.R;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
+
 import java.util.ArrayList;
 
 /**
@@ -51,8 +50,6 @@ public class MainJeu extends AppCompatActivity {
                             } else {
                                 Toast.makeText(MainJeu.this, "Il y est pas déso :/", Toast.LENGTH_SHORT).show();
                                 ib.setClickable(false);
-                                /**String path = "../../../../../../res/mipmap/a_rouge.png";
-                                FileInputStream fis = openFileInput(path);*/
                             }
                         }
                     }

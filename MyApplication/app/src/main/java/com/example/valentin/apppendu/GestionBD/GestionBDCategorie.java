@@ -1,9 +1,4 @@
-package com.example.valentin.apppendu.gestionBD;
-
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+package com.example.valentin.apppendu.GestionBD;
 
 /**
  * Created by thibaut on 01/02/2017.

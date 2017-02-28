@@ -1,4 +1,4 @@
-package com.example.valentin.apppendu.activity;
+package com.example.valentin.apppendu.Activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -24,7 +24,6 @@ import android.widget.Toast;
 
 import com.example.valentin.apppendu.GestionBD.GestionBD;
 import com.example.valentin.apppendu.GestionBD.GestionBDCategorie;
-import com.example.valentin.apppendu.gestionBD.GestionBDCategorie;
 import com.example.valentin.apppendu.R;
 
 public class GestionCategories extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener {

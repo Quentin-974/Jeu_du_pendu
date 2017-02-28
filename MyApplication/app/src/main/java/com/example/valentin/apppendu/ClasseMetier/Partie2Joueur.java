@@ -1,4 +1,4 @@
-package com.example.valentin.apppendu.classeMetier;
+package com.example.valentin.apppendu.ClasseMetier;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.valentin.apppendu.activity;
+package com.example.valentin.apppendu.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.valentin.apppendu.Activity.Accueil2Joueurs;
+import com.example.valentin.apppendu.Activity.MainActivity;
 import com.example.valentin.apppendu.R;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.valentin.apppendu.activity;
+package com.example.valentin.apppendu.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -66,7 +66,7 @@ public class Accueil2Joueurs extends AppCompatActivity {
         // Compteur initialisé à 1 pour l'affichage de la page 1 Joueur
         compteur = 1;
         // Passage des valeurs à la prochaine activité
-        Intent intent = new Intent(Accueil2Joueurs.this, Mots2Joueurs.class);
+        Intent intent = new Intent(Accueil2Joueurs.this, com.example.valentin.apppendu.Activity.Mots2Joueurs.class);
         intent.putExtra(NBCOUPS, nbCoup);
         intent.putExtra(NOM_JOUEUR1, joueur1);
         intent.putExtra(NOM_JOUEUR2, joueur2);
