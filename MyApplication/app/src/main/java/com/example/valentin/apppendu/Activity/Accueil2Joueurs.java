@@ -1,4 +1,4 @@
-package com.example.valentin.apppendu.Activity;
+package com.example.valentin.apppendu.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

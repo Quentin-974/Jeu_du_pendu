@@ -1,4 +1,4 @@
-package com.example.valentin.apppendu.ClasseMetier;
+package com.example.valentin.apppendu.classeMetier;
 
 /**
  * Created by syldu on 02/02/2017.
