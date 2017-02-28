@@ -72,4 +72,20 @@ public class Mot {
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
     }
+
+    /**
+     * Détermination de la difficulté d'un mot passé en argument
+     * @param mot mot dont l'on cherche la difficuté d'un mot
+     * @return 0 si le mot est facile, 1 si il est moyen, 2 si il est difficile
+     */
+    public int difficultes(String mot) {
+        if (mot.length() < 5 ) {
+            return 0;
+        } else if (mot.length() >= 5  && mot.length() < 10) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+
 }
