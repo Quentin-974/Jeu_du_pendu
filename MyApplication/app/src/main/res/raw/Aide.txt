@@ -1,0 +1,26 @@
+
+Le jeu du pendu !
+
+En mode un joueur le but va être de trouver un maximum de mot.
+Vous devrez donc choisir un nom d'utilisateur si vous voulez
+que votre score soit enregistré. Sinon vous pourrais jouer sans
+rentrez de nom alors votre score ne sera pas enregistré.
+Ensuite vous choisirez une catégorie et une difficulté. Vous arriverez
+sur la page de jeu. Il vous faudra trouver le mot en 10 coups.
+La seule information dont il dispose au départ est le nombre de lettres du mot.
+Il va choisir une lettre et si celle-ci n'est pas présente
+dans le mot, il va perdre un point, sachant qu'en début de partie il dispose de 10 points.
+Cette valeur correspond au nombre de traits nécessaires pour dessiner une potence et un pendu.
+
+En mode classique, ce jeu oppose deux joueurs. Les deux joueurs choissisent le nombre de manche. 
+Le premier joueur entre un mot du dictionnaire à l'abri des regards de l'adversaire.
+Le deuxième à son tour fais la même chose.
+Le deuxième va devoir découvrir le premier mot comme dans une partie à un joueur.
+Après que le deuxième et trouver le mot ou est perdu le premier joueur va essayer à son tour
+de trouver le premier mot.
+
+On ne fera pas de distinction entre les lettres majuscules et minuscules.
+Si un joueur donne une lettre qu'il a déjà proposée, il perdra un point.
+Un mot contiendra au plus 25 lettres, à l'exclusion de tout autre caractére. Ainsi, le trait d'union
+
+et l'apostrophe ne seront pas acceptés. Les lettres accentuées ne seront pas gérées non plus.
