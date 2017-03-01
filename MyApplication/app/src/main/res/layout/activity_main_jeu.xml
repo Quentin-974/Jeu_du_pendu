@@ -244,7 +244,13 @@
         android:id="@+id/linearMot"
         android:layout_above="@+id/ibD"
         android:layout_alignStart="@+id/ibA">
-
+        <TextView
+            android:id="@+id/tvMot"
+            android:textSize="40dp"
+            android:letterSpacing="0.5"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <ImageButton
