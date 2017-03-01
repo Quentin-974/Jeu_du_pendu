@@ -15,7 +15,9 @@ import com.example.valentin.apppendu.Activity.Accueil2Joueurs;
 import com.example.valentin.apppendu.Activity.MainActivity;
 import com.example.valentin.apppendu.R;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class Mots2Joueurs extends Activity {
 
@@ -120,8 +122,9 @@ public class Mots2Joueurs extends Activity {
             // Stockage des différents mots saisie dans une liste
             for (int i = 0; i < nbCoup; i++) {
                 if (!(tab_mots[i].getText().toString().equals(""))) {
-                    listeJ1.add(tab_mots[i].getText().toString().trim());
-                    //Toast.makeText(this, listeJ1.get(i), Toast.LENGTH_SHORT).show();
+                    String noAccent = sansAccent(tab_mots[i].getText().toString().trim());
+                    listeJ1.add(noAccent);
+                   // Toast.makeText(this, listeJ1.get(i), Toast.LENGTH_SHORT).show();
                 }
             }
             // Incrementation du compteur pour avoir l'affichage de la page pour le joueur 2
@@ -140,7 +143,9 @@ public class Mots2Joueurs extends Activity {
             // Stockage des différents mots saisie dans une liste
             for (int i = 0; i < nbCoup; i++) {
                 if (!(tab_mots[i].getText().toString().equals(""))) {
-                    listeJ2.add(tab_mots[i].getText().toString().trim());
+                    String noAccent = sansAccent(tab_mots[i].getText().toString().trim());
+                    listeJ2.add(noAccent);
+                  //  Toast.makeText(this, listeJ2.get(i), Toast.LENGTH_SHORT).show();
                 }
             }
             Intent intent = new Intent(Mots2Joueurs.this, MainActivity.class);
@@ -152,5 +157,54 @@ public class Mots2Joueurs extends Activity {
         }
 
     }
+
+    /**
+     * Vérification que le mot contient la lettre passée en argument
+     * @param lettre lettre pour laquelle on va vérifier la présence dans le mot
+     * @return true si lettre présente, false sinon
+     */
+    @Deprecated
+    public static boolean contientLettre(char lettre,String mot) {
+        boolean resultat;
+        return resultat = mot.indexOf(lettre) > 0 ? true : false;
+
+    }
+
+    /**
+     * Renvoie un tableau avec les indices auxquelles la lettre se situe dans le mot
+     * @param lettre lettre pour laquelle on chercher ses indices dans le mot
+     * @return un tableau contenant les indice ou null
+     */
+    @Deprecated
+    public int[] indiceLettre(char lettre,String mot) {
+        // Tableau dans lequel on va stocker les indices
+        int[] indice = new int[mot.length()];
+        int compteur = 0;
+        // on vérifier que la lettre est présente dans le mot
+        if (contientLettre(lettre,mot)) {
+            for (int i = 0 ; i < mot.length(); i++ ) {
+                if(mot.charAt(i) == lettre) {
+                    indice[compteur] = i;
+                    compteur ++;
+                }
+            }
+            return indice;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Reformate le texte saisie en remplaçant toute les lettres accentuées
+     * @param s chaine contenant des lettres accentuées ou non
+     * @return une chaine formatée
+     */
+    public static String sansAccent(String s) {
+
+        String strTemp = Normalizer.normalize(s, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(strTemp).replaceAll("");
+    }
+
 
 }

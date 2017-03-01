@@ -20,7 +20,8 @@
         <activity android:name=".Activity.GestionCategories" />
         <activity android:name=".Activity.MainCategories" />
         <activity android:name=".Activity.Mots2Joueurs"></activity>
-        <activity android:name=".Activity.MainJeu"/>
+        <activity android:name=".Activity.MainJeu" />
+        <activity android:name=".Activity.Aide"></activity>
     </application>
 
 </manifest>

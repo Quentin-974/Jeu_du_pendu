@@ -131,7 +131,4 @@ public class MainCategories extends AppCompatActivity {
         Intent intent = new Intent(MainCategories.this, MainActivity.class);
         startActivity(intent);
     }
-
-
-
 }
