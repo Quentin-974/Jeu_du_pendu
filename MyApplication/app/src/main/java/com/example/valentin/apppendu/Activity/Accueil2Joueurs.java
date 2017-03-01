@@ -48,7 +48,7 @@ public class Accueil2Joueurs extends AppCompatActivity {
 
         // Initialisation du numberPicker
         nbMots.setMinValue(1);
-        nbMots.setMaxValue(100);
+        nbMots.setMaxValue(10);
         nbMots.setWrapSelectorWheel(true);
     }
 
