@@ -8,18 +8,27 @@ import java.util.List;
 
 public class Mot {
 
+    private static final int MOT_FACILE = 5;
+    private static final int MOT_NORMAL = 10;
+
     private int id;
     private String libelle;
     private int difficulte;
-    private List<Mot> dejaJoue;
+    // private List<Mot> dejaJoue;  --> TODO déplacer dans Partie1joueur
     private Categorie categorie;
 
-    public Mot(int id, String libelle, int difficulte, List<Mot> dejaJoue, Categorie categorie) {
+    public Mot(int id, String libelle, int difficulte, Categorie categorie) {
         this.id = id;
         this.libelle = libelle;
         this.difficulte = difficulte;
-        this.dejaJoue = dejaJoue;
         this.categorie = categorie;
+    }
+
+    public Mot() {
+        id = -1;
+        libelle = "Undefined";
+        difficulte = -1;
+        categorie = null;
     }
 
     /**
@@ -52,17 +61,8 @@ public class Mot {
         return difficulte;
     }
 
-
     public void setDifficulte(int difficulte) {
         this.difficulte = difficulte;
-    }
-
-    public List<Mot> getDejaJoue() {
-        return dejaJoue;
-    }
-
-    public void setDejaJoue(List<Mot> dejaJoue) {
-        this.dejaJoue = dejaJoue;
     }
 
     public Categorie getCategorie() {
@@ -78,10 +78,10 @@ public class Mot {
      * @param mot mot dont l'on cherche la difficuté d'un mot
      * @return 0 si le mot est facile, 1 si il est moyen, 2 si il est difficile
      */
-    public int difficultes(String mot) {
-        if (mot.length() < 5 ) {
+    public static int difficultes(String mot) {
+        if (mot.length() < MOT_FACILE ) {
             return 0;
-        } else if (mot.length() >= 5  && mot.length() < 10) {
+        } else if (mot.length() >= MOT_FACILE  && mot.length() < MOT_NORMAL) {
             return 1;
         } else {
             return 2;

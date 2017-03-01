@@ -31,8 +31,6 @@ public class MainCategories extends AppCompatActivity {
 
     private String nomJoueur;
 
-    /** Numéro de version de la base de données */
-    private static final int VERSION = 3;
     /** Instance de la classe de gestion des categories dans la base de données */
     private GestionBD gestionBD;
 

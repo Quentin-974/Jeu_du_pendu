@@ -41,14 +41,19 @@
     <string name="titreNom">Entrez votre nom!</string>
     <string name="boutonPositif">Ok </string>
     <string name="boutonNegatif">Annuler </string>
+    <string name="texteSaisieNom">Veuillez entrez votre nom pour jouer</string>
+
 
     <!-- Boite de dialogue -->
     <string name="titre_boite_dialog_modification">Modification Catégorie</string>
+    <string name="titre_boite_dialog_modification_Mot">Modification Mot</string>
     <string name="titre_boite_dialog_suppression">Suppression Catégorie</string>
+    <string name="titre_boite_dialog_suppression_Mot">Suppression Mot</string>
     <string name="titre_boite_dialog_ajout">Ajout Catégorie</string>
-    <string name="bouton_positif_modif_categorie">Valider</string>
-    <string name="bouton_negatif_categorie">Annuler</string>
-    <string name="modif_categorie_reussie">Modification effectuée</string>
+    <string name="titre_boite_dialog_ajout_Mot">Ajout Mot</string>
+    <string name="bouton_positif_Valider">Valider</string>
+    <string name="bouton_negatif_Annuler">Annuler</string>
+    <string name="modif_reussie">Modification effectuée</string>
     <string name="ajout_categorie">Ajouter la catégorie : </string>
 
 </resources>
