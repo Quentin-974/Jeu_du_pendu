@@ -1,4 +1,3 @@
-
 Le jeu du pendu !
 
 En mode un joueur le but va être de trouver un maximum de mot.
