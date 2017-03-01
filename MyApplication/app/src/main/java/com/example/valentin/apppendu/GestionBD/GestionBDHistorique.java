@@ -18,9 +18,6 @@ public class GestionBDHistorique {
     /** Nom du champ correspondant à l'heure */
     public static final String HISTORIQUE_HEURE = "heure";
 
-    /** Nom du champ correspondant aux nombres de coups joués */
-    public static final String HISTORIQUE_NB_COUPS = "nb_coups";
-
     /** Nom du champ correspondant aux nombres de coups gagnés */
     public static final String HISTORIQUE_NB_GAGNES = "nb_gagnes";
 
@@ -33,7 +30,6 @@ public class GestionBDHistorique {
                     + HISTORIQUE_CLEF + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + HISTORIQUE_DATE + " TEXT NOT NULL, "
                     + HISTORIQUE_HEURE + " TEXT NOT NULL, "
-                    + HISTORIQUE_NB_COUPS + "INTEGER NOT NULL, "
                     + HISTORIQUE_NB_GAGNES + "INTEGER NOT NULL, "
                     + HISTORIQUE_JOUEUR + "INTEGER NOT NULL, "
                     + "FOREIGN KEY (" + HISTORIQUE_JOUEUR
@@ -46,7 +42,6 @@ public class GestionBDHistorique {
                     + HISTORIQUE_CLEF + ", "
                     + HISTORIQUE_DATE + ", "
                     + HISTORIQUE_HEURE + ", "
-                    + HISTORIQUE_NB_COUPS + ", "
                     + HISTORIQUE_NB_GAGNES + ", "
                     + HISTORIQUE_JOUEUR
                     + " FROM " + NOM_TABLE_HISTORIQUE

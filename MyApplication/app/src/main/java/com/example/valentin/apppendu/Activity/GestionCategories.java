@@ -59,7 +59,6 @@ public class GestionCategories extends Activity implements View.OnClickListener,
     @Override
     protected void onResume() {
         categorieDAO.open();
-        // TODO Refresh la liste
         super.onResume();
     }
 
@@ -128,8 +127,8 @@ public class GestionCategories extends Activity implements View.OnClickListener,
      */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        int identifiant = curseur.getInt(curseur.getColumnIndex("_id"));
-        String nomCategorie = curseur.getString(curseur.getColumnIndex("nom"));
+        int identifiant = curseur.getInt(curseur.getColumnIndex(GestionBDCategorie.CATEGORIE_CLEF));
+        String nomCategorie = curseur.getString(curseur.getColumnIndex(GestionBDCategorie.CATEGORIE_NOM));
 
         // Lancement de l'activité de gestion des mots d'une catégorie
         Intent intent = new Intent(GestionCategories.this, GestionMots.class);
@@ -207,6 +206,7 @@ public class GestionCategories extends Activity implements View.OnClickListener,
                         categorieModif.setLibelle(saisie);
                         categorieDAO.updateCategorie(categorieModif);
                         refreshListe();
+                        Toast.makeText(GestionCategories.this, "Catégorie modifiée", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -257,10 +257,11 @@ public class GestionCategories extends Activity implements View.OnClickListener,
                     public void onClick(DialogInterface dialog, int leBouton) {
                         // APPEL METHODE BD (supprimer)
                         int nbLignesSupp = 0;
+                        // TODO Suppression en cascade
                         nbLignesSupp = categorieDAO.deleteCategorie(categorieSupprimer);
 
                         if (nbLignesSupp >= 1) {
-                            Toast.makeText(GestionCategories.this, "Catégorie \"" + categorieSupprimer.getLibelle() + " \" supprimée", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GestionCategories.this, "\"" + categorieSupprimer.getLibelle() + "\" supprimée", Toast.LENGTH_SHORT).show();
                             refreshListe();
                         } else {
                             Toast.makeText(GestionCategories.this, "Erreur lors de la suppression", Toast.LENGTH_SHORT).show();
@@ -300,9 +301,9 @@ public class GestionCategories extends Activity implements View.OnClickListener,
                         String saisie = ajout.getText().toString();   // Nom de la catégorie ajoutée
                         if (!saisie.equals("")) {
                             // APPEL METHODE BD (ajout)
-                            categorieDAO.createCategorie(saisie);
+                            long id = categorieDAO.createCategorie(saisie);
                             refreshListe();
-                            Toast.makeText(GestionCategories.this, "La catégorie \"" + saisie + "\" a été ajoutée", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GestionCategories.this, "\"" + saisie + "\" a été ajoutée", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(GestionCategories.this, "Erreur lors de l'ajout de la catégorie", Toast.LENGTH_SHORT).show();
                         }

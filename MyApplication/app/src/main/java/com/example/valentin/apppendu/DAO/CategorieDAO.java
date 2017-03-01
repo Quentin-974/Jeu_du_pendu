@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.valentin.apppendu.ClasseMetier.Categorie;
 import com.example.valentin.apppendu.GestionBD.GestionBD;
 import com.example.valentin.apppendu.GestionBD.GestionBDCategorie;
+import com.example.valentin.apppendu.GestionBD.GestionBDMot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,25 +35,25 @@ public class CategorieDAO {
         gestionBD.close();
     }
 
-    public Categorie createCategorie(String nom) {
+    public long createCategorie(String nom) {
         ContentValues values = new ContentValues();
         values.put(GestionBDCategorie.CATEGORIE_NOM, nom);
-        database.insert(GestionBDCategorie.NOM_TABLE_CATEGORIE,
+        long id = database.insert(GestionBDCategorie.NOM_TABLE_CATEGORIE,
                 GestionBDCategorie.CATEGORIE_NOM, values);
 
-        Cursor cursor = database.rawQuery(GestionBDCategorie.REQUETE_CATEGORIE_ALL, null);
-
-        cursor.moveToFirst();
-        Categorie categorieRetourne = cursorToCategorie(cursor);
-        cursor.close();
-        return categorieRetourne;
+        return id;
     }
 
     public int deleteCategorie(Categorie categorie) {
         int id = categorie.getId();
 
+        // Suppression des mots dans la catégorie
+        int nbLignesSuppM = database.delete(GestionBDMot.NOM_TABLE_MOT,
+                GestionBDMot.MOT_CATEGORIE + "= ?", new String[] {String.valueOf(id)});
+
+        // Suppression de la catégorie
         int nbLignesSupp = database.delete(GestionBDCategorie.NOM_TABLE_CATEGORIE,
-                GestionBDCategorie.CATEGORIE_CLEF+ " = ?",
+                GestionBDCategorie.CATEGORIE_CLEF + " = ?",
                 new String[] {String.valueOf(id)});
 
         return nbLignesSupp;
@@ -71,10 +72,4 @@ public class CategorieDAO {
         return cursor;
     }
 
-    private Categorie cursorToCategorie(Cursor cursor) {
-        Categorie categorie = new Categorie();
-        categorie.setId(cursor.getInt(0));
-        categorie.setLibelle(cursor.getString(1));
-        return categorie;
-    }
 }

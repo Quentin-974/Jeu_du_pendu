@@ -5,9 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.valentin.apppendu.Activity.GestionMots;
 import com.example.valentin.apppendu.ClasseMetier.Categorie;
+import com.example.valentin.apppendu.ClasseMetier.Mot;
 import com.example.valentin.apppendu.GestionBD.GestionBD;
 import com.example.valentin.apppendu.GestionBD.GestionBDCategorie;
+import com.example.valentin.apppendu.GestionBD.GestionBDMot;
 
 /**
  * Created by thibaut on 28/02/2017.
@@ -31,47 +34,46 @@ public class MotDAO {
         gestionBD.close();
     }
 
-    public Categorie createMot(String nom) {
+    public long createMot(String nom, int idCategorie) {
         ContentValues values = new ContentValues();
-        values.put(GestionBDCategorie.CATEGORIE_NOM, nom);
-        database.insert(GestionBDCategorie.NOM_TABLE_CATEGORIE,
-                GestionBDCategorie.CATEGORIE_NOM, values);
 
-        Cursor cursor = database.rawQuery(GestionBDCategorie.REQUETE_CATEGORIE_ALL, null);
+        values.put(GestionBDMot.MOT_NOM, nom);
+        values.put(GestionBDMot.MOT_DIFFICULTE, Mot.difficultes(nom));
+        values.put(GestionBDMot.MOT_CATEGORIE, idCategorie);
+        long id = database.insert(GestionBDMot.NOM_TABLE_MOT,
+                GestionBDMot.MOT_NOM, values);
 
-        cursor.moveToFirst();
-        Categorie categorieRetourne = cursorToCategorie(cursor);
-        cursor.close();
-        return categorieRetourne;
+        return id;
     }
 
-    public int deleteMot(Categorie categorie) {
-        int id = categorie.getId();
+    public int deleteMot(Mot mot) {
+        int id = mot.getId();
 
-        int nbLignesSupp = database.delete(GestionBDCategorie.NOM_TABLE_CATEGORIE,
-                GestionBDCategorie.CATEGORIE_CLEF+ " = ?",
+        int nbLignesSupp = database.delete(GestionBDMot.NOM_TABLE_MOT,
+                GestionBDMot.MOT_CLEF + " = ?",
                 new String[] {String.valueOf(id)});
 
         return nbLignesSupp;
     }
 
-    public void updateMot(Categorie categorie) {
+    public void updateMot(Mot mot) {
         ContentValues enregistrement = new ContentValues();
 
-        enregistrement.put(GestionBDCategorie.CATEGORIE_NOM, categorie.getLibelle());
-        String[] param = {String.valueOf(categorie.getId())};
-        database.update(GestionBDCategorie.NOM_TABLE_CATEGORIE, enregistrement, GestionBDCategorie.CATEGORIE_CLEF + " = ?", param);
+        enregistrement.put(GestionBDMot.MOT_NOM, mot.getLibelle());
+        String[] param = {String.valueOf(mot.getId())};
+        database.update(GestionBDMot.NOM_TABLE_MOT, enregistrement, GestionBDMot.MOT_CLEF + " = ?", param);
     }
 
     public Cursor getAllMots() {
-        Cursor cursor = database.rawQuery(GestionBDCategorie.REQUETE_CATEGORIE_ALL, null);
+        Cursor cursor = database.rawQuery(GestionBDMot.REQUETE_MOT_ALL, null);
         return cursor;
     }
 
-    private Categorie cursorToCategorie(Cursor cursor) {
-        Categorie categorie = new Categorie();
-        categorie.setId(cursor.getInt(0));
-        categorie.setLibelle(cursor.getString(1));
-        return categorie;
+    public Cursor getMotsCategorie(int idCategorie) {
+        String[] param = {String.valueOf(idCategorie)};
+        Cursor cursor = database.rawQuery(GestionBDMot.REQUETE_MOTS_CATEGORIE, param);
+
+        return cursor;
     }
+
 }

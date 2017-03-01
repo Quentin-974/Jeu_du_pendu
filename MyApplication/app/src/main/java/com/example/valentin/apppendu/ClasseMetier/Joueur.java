@@ -15,11 +15,16 @@ public class Joueur {
         this.id = id;
     }
 
+    public Joueur() {
+        nom = "Undefined";
+        id = -1;
+    }
+
     public String getNom(){
         return this.nom;
     }
 
-    public int getIt(){
+    public int getId(){
         return this.id;
     }
 
@@ -27,7 +32,7 @@ public class Joueur {
         this.nom = nom;
     }
 
-    public void setIt(int id ){
+    public void setId(int id ){
         this.id = id;
     }
 }

@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SimpleCursorAdapter;
@@ -22,7 +21,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.valentin.apppendu.GestionBD.GestionBD;
+import com.example.valentin.apppendu.ClasseMetier.Categorie;
+import com.example.valentin.apppendu.ClasseMetier.Mot;
+import com.example.valentin.apppendu.DAO.MotDAO;
 import com.example.valentin.apppendu.GestionBD.GestionBDMot;
 import com.example.valentin.apppendu.R;
 
@@ -37,11 +38,8 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
     /** Titre de l'activité */
     private TextView textViewTitreGestionMot;
 
-    /** Instance de la classe de gestion des mots dans la base de données */
-    private GestionBD gestionBD;
-
-    /** base de données crée */
-    private SQLiteDatabase base;
+    /** DAO pour les mots */
+    private MotDAO motDAO;
 
     /** Curseur utilisé pour la lecture de données dans la base */
     private Cursor curseur;
@@ -58,6 +56,22 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
     /** Nom de la catégorie sélectionnée */
     private String nomCategorie = "Undefined";
 
+    private Mot motModif;
+
+    private Mot motSupprimer;
+
+    @Override
+    protected void onResume() {
+        motDAO.open();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        motDAO.close();
+        super.onPause();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,18 +81,15 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
         floatingActionButton = (FloatingActionButton) findViewById(R.id.fabMots);
         floatingActionButton.setOnClickListener(this);
 
+        motDAO = new MotDAO(this);
+        motDAO.open();
+
         // Bouton de retour vers la gestion des activités
         buttonRetour = (ImageButton) findViewById(R.id.buttonRetourGestionCategories);
         buttonRetour.setOnClickListener(this);
 
         // Listview affichant tous les mots d'une catégorie
         listeView = (ListView) findViewById(R.id.listeView_mot);
-
-        // Gestionnaire de la table et création de la base de données si elle n'existe pas
-        gestionBD = GestionBD.getInstance(this);
-
-        // Récupération de la base de données
-        base = gestionBD.getWritableDatabase();
 
         // Récupération de l'identifiant de la catégorie
         Intent intent = getIntent();
@@ -89,18 +100,15 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
         textViewTitreGestionMot = (TextView) findViewById(R.id.textViewTitreGestionMot);
         textViewTitreGestionMot.setText(nomCategorie);
 
-        // Tableau de paramètres pour la requête
-        String[] param = {String.valueOf(identifiantCategorie)};
-
         // Initialisation d'un curseur pour récupérer les données dans la table
         // curseur = base.rawQuery(GestionBDMot.REQUETE_MOT_CATEGORIE, param);
-        curseur = base.rawQuery(GestionBDMot.REQUETE_MOT_ALL, null);
+        curseur = motDAO.getMotsCategorie(identifiantCategorie);
 
         // Adaptateur qui permet de faire le lien entre la listView et le curseur
         adaptateur = new SimpleCursorAdapter(this,
                 R.layout.ligne_liste, curseur,
                 new String[] {GestionBDMot.MOT_NOM,
-                        GestionBDMot.MOT_DIFFICULTE},
+                        GestionBDMot.MOT_CATEGORIE},
                 new int[] {R.id.id_categorie,
                         R.id.nom_categorie}, 0);
 
@@ -121,6 +129,11 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
             // Arrêt de l'activité
             this.finish();
         }
+    }
+
+    public void refreshListe() {
+        curseur = motDAO.getMotsCategorie(identifiantCategorie);
+        adaptateur.swapCursor(curseur);
     }
 
     /*
@@ -166,7 +179,10 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
         // Valeur sélectionnée
         if (curseur != null) {
             if (curseur.moveToPosition(position)) {
-                nom = curseur.getString(curseur.getColumnIndex("nom"));
+                motModif = new Mot(curseur.getInt(curseur.getColumnIndex(GestionBDMot.MOT_CLEF)),
+                        curseur.getString(curseur.getColumnIndex(GestionBDMot.MOT_NOM)),
+                        curseur.getInt(curseur.getColumnIndex(GestionBDMot.MOT_DIFFICULTE)),
+                        new Categorie(identifiantCategorie, nomCategorie));
             }
         }
 
@@ -187,15 +203,18 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
         dialogModif.setView(boiteDialog);
 
         EditText editTextDialog = (EditText) boiteDialog.findViewById(R.id.editTextDialog);
-        editTextDialog.setText(nom);
+        editTextDialog.setText(motModif.getLibelle());
 
         dialogModif.setPositiveButton(getResources().getString(R.string.bouton_positif_Valider),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int leBouton) {
                         EditText modifSaisie = (EditText) boiteDialog.findViewById(R.id.editTextDialog);
                         String saisie = modifSaisie.getText().toString();   // Nom de la catégorie modifiée
-                        // TODO APPEL METHODE BD (modifier)
-                        Toast.makeText(GestionMots.this, saisie, Toast.LENGTH_SHORT).show();
+                        // APPEL METHODE BD
+                        motModif.setLibelle(saisie);
+                        motDAO.updateMot(motModif);
+                        refreshListe();
+                        Toast.makeText(GestionMots.this, "Mot modifié", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -216,13 +235,15 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
         // Valeur sélectionnée
         if (curseur != null) {
             if (curseur.moveToPosition(position)) {
-                nom = curseur.getString(curseur.getColumnIndex("nom"));
+                motSupprimer = new Mot(curseur.getInt(curseur.getColumnIndex(GestionBDMot.MOT_CLEF)),
+                        curseur.getString(curseur.getColumnIndex(GestionBDMot.MOT_NOM)),
+                        curseur.getInt(curseur.getColumnIndex(GestionBDMot.MOT_DIFFICULTE)),
+                        new Categorie(identifiantCategorie, nomCategorie));
             }
         }
 
         // Alert Dialog
         AlertDialog.Builder dialogSuppression = new AlertDialog.Builder(this);
-
 
         // Titre custom du alert dialog
         TextView title = new TextView(this);
@@ -244,8 +265,16 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
         dialogSuppression.setPositiveButton(getResources().getString(R.string.oui),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int leBouton) {
-                        Toast.makeText(GestionMots.this, "Supprimer mot", Toast.LENGTH_SHORT).show();
-                        // TODO APPEL METHODE BD (supprimer)
+                        // APPEL METHODE BD (supprimer)
+                        int nbLignesSupp = 0;
+                        nbLignesSupp = motDAO.deleteMot(motSupprimer);
+
+                        if (nbLignesSupp >= 1) {
+                            Toast.makeText(GestionMots.this, "\"" + motSupprimer.getLibelle() + "\" supprimé", Toast.LENGTH_SHORT).show();
+                            refreshListe();
+                        } else {
+                            Toast.makeText(GestionMots.this, "Erreur lors de la suppression", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
@@ -281,9 +310,14 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
                     public void onClick(DialogInterface dialog, int leBouton) {
                         EditText ajout = (EditText) boiteDialog.findViewById(R.id.editTextAjoutCategorie);
                         String saisie = ajout.getText().toString();   // Nom de la catégorie ajoutée
-                        Toast.makeText(GestionMots.this, saisie, Toast.LENGTH_SHORT).show();
-                        // TODO APPEL METHODE BD (ajout)
-                        // TODO MESSAGE DIALOG INSERTION CATEGORIE
+                        if (!saisie.equals("")) {
+                            // APPEL METHODE BD (ajout)
+                            motDAO.createMot(saisie, identifiantCategorie);
+                            refreshListe();
+                            Toast.makeText(GestionMots.this, "\"" + saisie + "\" a été ajouté", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(GestionMots.this, "Erreur lors de l'ajout du mot", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 

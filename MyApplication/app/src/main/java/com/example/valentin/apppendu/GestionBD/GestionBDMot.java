@@ -46,8 +46,8 @@ public class GestionBDMot {
                     + " FROM " + NOM_TABLE_MOT
                     + " ORDER BY " + MOT_NOM + ";";
 
-    /** Requête pour sélectionner les mots d'une catégorie */
-    public static final String REQUETE_MOT_CATEGORIE =
+    /** Requête pour sélectionner tous les mots d'une catégorie */
+    public static final String REQUETE_MOTS_CATEGORIE =
             "SELECT * FROM " + NOM_TABLE_MOT + " WHERE " + MOT_CATEGORIE + " = ?";
 
     public static final String SUPPRIMER_TABLE_MOT =

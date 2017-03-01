@@ -8,16 +8,25 @@ package com.example.valentin.apppendu.ClasseMetier;
 public class Score {
 
     private int id;
+    private String date;
+    private String heure;
     private int nbMotsTrouve;
-    private int classement;
-
     private Joueur joueur;
 
-    public Score(int id, int nbMotsTrouve,int classement,Joueur joueur){
+    public Score(int id, String date, String heure, int nbMotsTrouve, int classement, Joueur joueur){
         this.id = id;
+        this.date = date;
+        this.heure = heure;
         this.nbMotsTrouve = nbMotsTrouve;
-        this.classement = classement;
         this.joueur = joueur;
+    }
+
+    public Score() {
+        id = -1;
+        date = "Undefined";
+        heure = "Undefined";
+        nbMotsTrouve = -1;
+        joueur = null;
     }
 
     public int getId() {
@@ -28,20 +37,28 @@ public class Score {
         this.id = id;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getHeure() {
+        return heure;
+    }
+
+    public void setHeure(String heure) {
+        this.heure = heure;
+    }
+
     public int getNbMotsTrouve() {
         return nbMotsTrouve;
     }
 
     public void setNbMotsTrouve(int nbMotsTrouve) {
         this.nbMotsTrouve = nbMotsTrouve;
-    }
-
-    public int getClassement() {
-        return classement;
-    }
-
-    public void setClassement(int classement) {
-        this.classement = classement;
     }
 
     public Joueur getJoueur() {
