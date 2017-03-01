@@ -24,7 +24,7 @@
         app:srcCompat="@mipmap/ic_launcher"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:id="@+id/imageButtonScores" />
+        android:id="@+id/imageButtonScores"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -32,7 +32,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/imageButtonAide" />
+        android:id="@+id/imageButtonAide"
+        android:onClick="pageAide" />
 
     <Button
         android:text="@string/libelleButton1Joueur"

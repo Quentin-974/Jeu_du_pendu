@@ -30,4 +30,9 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, GestionCategories.class);
         startActivity(intent);
     }
+
+    public void pageAide(View view) {
+        Intent intent = new Intent(MainActivity.this, Aide.class);
+        startActivity(intent);
+    }
 }
