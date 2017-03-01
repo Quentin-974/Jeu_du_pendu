@@ -21,7 +21,7 @@
         <activity android:name=".Activity.GestionMots"/>
         <activity android:name=".Activity.MainCategories" />
         <activity android:name=".Activity.Mots2Joueurs"></activity>
-        <activity android:name=".Activity.MainJeu" />
+        <activity android:name=".Activity.MainJeu"/>
     </application>
 
 </manifest>

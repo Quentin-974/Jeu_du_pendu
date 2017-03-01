@@ -7,25 +7,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.valentin.apppendu.R;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 /**
  * Activité du tableau de jeu
- * Détecte mon putain de changement !!!!!
  */
 public class MainJeu extends AppCompatActivity {
     /**
      * Image button du bouton quitter
      */
     private ImageButton ibQuitter;
+    private TextView TextViewMotAChercher;
     /**
      * Liste contenant les images button des lettres
      */
     private ArrayList<ImageButton> listImageButton;
-    private String motTest = "CONSOLE";
+    private String motAChercher = "CONSOLE";
 
     /**
      * @param savedInstanceState
@@ -36,6 +39,12 @@ public class MainJeu extends AppCompatActivity {
         setContentView(R.layout.activity_main_jeu);
 
         initImageButton();
+        TextViewMotAChercher = (TextView) findViewById(R.id.tvMot);
+        String nbTirets = "";
+        for (int i = 0 ; i<motAChercher.length() ; i++){
+            nbTirets += "_";
+        }
+        TextViewMotAChercher.setText(nbTirets);
 
         for (final ImageButton ib : listImageButton) {
             ib.setOnClickListener(
@@ -44,12 +53,15 @@ public class MainJeu extends AppCompatActivity {
                         public void onClick(View v) {
                             String id = String.valueOf(getResources().getResourceEntryName(v.getId()));
                             char lettre = id.charAt(2);
-                            if (motTest.indexOf(lettre) != -1) {
-                                Toast.makeText(MainJeu.this, "Il est dedans !!!", Toast.LENGTH_SHORT).show();
-                                ib.setClickable(false);
+                            if (motAChercher.indexOf(lettre) != -1) {
+                                for (int i = 0 ; i<motAChercher.length() ; i++)
+                                    if (motAChercher.charAt(i) == lettre) {
+                                        StringBuilder tmp = new StringBuilder(TextViewMotAChercher.getText());
+                                        tmp.setCharAt(i, lettre);
+                                        TextViewMotAChercher.setText(tmp);
+                                    }
                             } else {
                                 Toast.makeText(MainJeu.this, "Il y est pas déso :/", Toast.LENGTH_SHORT).show();
-                                ib.setClickable(false);
                             }
                         }
                     }
