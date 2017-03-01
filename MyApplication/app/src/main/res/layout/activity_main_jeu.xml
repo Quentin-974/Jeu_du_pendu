@@ -230,7 +230,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/dab"
+        app:srcCompat="@drawable/pendu0"
         android:id="@+id/imageViewPendu"
         android:layout_weight="0.25"
         android:layout_below="@+id/imageButtonQuitter"
