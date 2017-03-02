@@ -161,6 +161,7 @@ public class Mots2Joueurs extends Activity {
                 Intent intent = new Intent(Mots2Joueurs.this, MainJeu.class);
                 intent.putExtra(Accueil2Joueurs.NOM_JOUEUR1, joueur1);
                 intent.putExtra(Accueil2Joueurs.NOM_JOUEUR2, joueur2);
+                intent.putExtra(Difficultes.MODE_PARTIE,Difficultes.modePartie);
                 intent.putStringArrayListExtra(LISTE_J1, listeJ1);
                 intent.putStringArrayListExtra(LISTE_J2, listeJ2);
                 startActivity(intent);
