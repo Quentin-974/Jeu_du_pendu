@@ -37,7 +37,7 @@ public class MainJeu extends AppCompatActivity {
     /** Nom du joueur actif */
     private String nomJoueur;
     /** Catégorie des mot */
-    private Categorie categorie;
+    private int categorie;
     /** Difficulté des mot */
     private int difficulte;
     /** Mode de jeu 1 ou 2 joueurs */
@@ -62,6 +62,20 @@ public class MainJeu extends AppCompatActivity {
         TextViewMotAChercher = (TextView) findViewById(R.id.tvMot);
         imagePendu = (ImageView) findViewById(R.id.imageViewPendu);
         String nbTirets = "";
+
+        // Recupère les infos de l'activité précédente
+        Intent intent = getIntent();
+
+        modeJeu = intent.getBooleanExtra("modePartie", false);
+        categorie = intent.getIntExtra("categorie", 0);
+        difficulte = intent.getIntExtra("difficulte", 1);
+        nomJoueur = intent.getStringExtra("joueur");
+
+        Toast.makeText(this, "mode de jeu : " + String.valueOf(modeJeu), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "catgegorie : " + categorie, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "difficulte : " + String.valueOf(difficulte), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "nom du joueur : " + nomJoueur, Toast.LENGTH_SHORT).show();
+
 
         // set le mode jeu
         modeJeu = false;
