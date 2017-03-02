@@ -30,6 +30,8 @@ public class GestionBD extends SQLiteOpenHelper {
         // Création des tables
         db.execSQL(GestionBDCategorie.CREATION_TABLE_CATEGORIE);
         db.execSQL(GestionBDMot.CREATION_TABLE_MOT);
+        db.execSQL(GestionBDJoueur.CREATION_TABLE_JOUEUR);
+        db.execSQL(GestionBDHistorique.CREATION_TABLE_HISTORIQUE);
 
         ContentValues enregistrement = new ContentValues();
 
@@ -196,13 +198,37 @@ public class GestionBD extends SQLiteOpenHelper {
         enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "2");
         enregistrement.put(GestionBDMot.MOT_CATEGORIE, "3");
         db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        // AJOUT lignes JOUEURS
+        enregistrement.put(GestionBDJoueur.JOUEUR_NOM, "Patrick");
+        db.insert(GestionBDJoueur.NOM_TABLE_JOUEUR, GestionBDJoueur.JOUEUR_NOM, enregistrement);
+
+        enregistrement.put(GestionBDJoueur.JOUEUR_NOM, "ZENNNN");
+        db.insert(GestionBDJoueur.NOM_TABLE_JOUEUR, GestionBDJoueur.JOUEUR_NOM, enregistrement);
+
+        // AJOUT lignes HISTORIQUE
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_DATE, "01/03/2017");
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_HEURE, "11h06");
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_NB_GAGNES, 5);
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_JOUEUR, 1);
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_DIFFICULTE, 0);
+        db.insert(GestionBDHistorique.NOM_TABLE_HISTORIQUE, GestionBDHistorique.HISTORIQUE_DATE, enregistrement);
+
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_DATE, "15/10/2017");
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_HEURE, "17h35");
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_NB_GAGNES, 3);
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_JOUEUR, 2);
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_DIFFICULTE, 2);
+        db.insert(GestionBDHistorique.NOM_TABLE_HISTORIQUE, GestionBDHistorique.HISTORIQUE_DATE, enregistrement);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int ancienneVersion, int nouvelleVersion) {
-        if (ancienneVersion < 4) {
+        if (ancienneVersion < VERSION) {
             db.execSQL(GestionBDMot.SUPPRIMER_TABLE_MOT);	// Destruction de la table
             db.execSQL(GestionBDCategorie.SUPPRIMER_TABLE_CATEGORIE);	// Destruction de la table
+            db.execSQL(GestionBDHistorique.SUPPRIMER_TABLE_HISTORIQUE);
+            db.execSQL(GestionBDJoueur.SUPPRIMER_TABLE_JOUEUR);
             onCreate(db);
         }
 

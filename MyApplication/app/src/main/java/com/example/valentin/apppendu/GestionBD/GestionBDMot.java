@@ -24,8 +24,6 @@ public class GestionBDMot {
     /** Requête de création de la table mot */
     public static final String CREATION_TABLE_MOT =
 
-
-
     "CREATE TABLE " + NOM_TABLE_MOT + " ("
             + MOT_CLEF + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + MOT_NOM + " TEXT NOT NULL, "

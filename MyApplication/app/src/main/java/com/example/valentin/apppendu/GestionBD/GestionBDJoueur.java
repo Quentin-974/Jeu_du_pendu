@@ -29,7 +29,7 @@ public class GestionBDJoueur {
                     + " FROM " + NOM_TABLE_JOUEUR
                     + " ORDER BY " + JOUEUR_NOM + ";";
 
-    private static final String SUPPRIMER_TABLE_JOUEUR =
+    public static final String SUPPRIMER_TABLE_JOUEUR =
             "DROP TABLE IF EXISTS " + NOM_TABLE_JOUEUR + ";";
 
 }

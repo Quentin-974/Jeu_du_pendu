@@ -53,6 +53,7 @@ public class MainCategories extends AppCompatActivity {
         setContentView(R.layout.activity_main_categories);
 
         Bundle extras = getIntent().getExtras();
+        // Si je joueur n'a pas de nom on lui affiche une boite de dialogue
         if(extras== null) {
 
 
@@ -116,8 +117,7 @@ public class MainCategories extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 curseur.moveToPosition(position);
-                // TODO passer l'id
-                categorie = curseur.getString(curseur.getColumnIndex("_id"));
+                categorie = curseur.getString(curseur.getColumnIndex("nom"));
                 Toast.makeText(MainCategories.this,categorie.toString(),Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainCategories.this, Difficultes.class);
                 intent.putExtra(CATEGORIE_PARTIE, categorie);
