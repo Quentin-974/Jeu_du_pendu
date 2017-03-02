@@ -2,6 +2,7 @@ package com.example.valentin.apppendu.Activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,36 +13,54 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.valentin.apppendu.ClasseMetier.Categorie;
+import com.example.valentin.apppendu.DAO.CategorieDAO;
+import com.example.valentin.apppendu.DAO.MotDAO;
+import com.example.valentin.apppendu.GestionBD.GestionBDMot;
 import com.example.valentin.apppendu.R;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Activité du tableau de jeu
  */
 public class MainJeu extends AppCompatActivity {
+
     /** Image button du bouton quitter*/
     private ImageButton ibQuitter;
+
     /** TextView qui affiche les lettres du mot à cherhcher */
     private TextView TextViewMotAChercher;
+
     /** Liste contenant les images button des lettres */
     private ArrayList<ImageButton> listImageButton;
-    /** Le mot à chercher par l'utilisateur */
-    private String motAChercher = "CONSOLE";
+
     /** Le nombre d'erreur commises par l'utilisateur */
     private int nbErreurs = 0;
+
     /** ImageView qui affiche le pendu en fonction du nombre d'erreurs */
     private ImageView imagePendu;
+
     /** Nom du joueur actif */
     private String nomJoueur;
+
     /** Catégorie des mot */
     private int categorie;
+
     /** Difficulté des mot */
     private int difficulte;
+
     /** Mode de jeu 1 ou 2 joueurs */
     private boolean modeJeu;
+
+    /** DAO */
+    private CategorieDAO categorieDAO;
+
+    /** Liste des mots à trouver pour un joueur */
+    private ArrayList<String> listeMot1Joueur;
 
     /**
      * @param savedInstanceState
@@ -52,16 +71,16 @@ public class MainJeu extends AppCompatActivity {
         setContentView(R.layout.activity_main_jeu);
 
         /*
-            TO DO :
+            TODO :
              - Récupérer les valeurs pour la catégorie du mot
              - Générer une liste de mot aléatoire avec les valeurs récupérées
              - Séparer les execution en fonction d'un boolean qui détermine si 1 ou 2 joueurs
          */
-
+        MotDAO categorieDAO = new MotDAO(this);
+        categorieDAO.open();
         initImageButton();
         TextViewMotAChercher = (TextView) findViewById(R.id.tvMot);
         imagePendu = (ImageView) findViewById(R.id.imageViewPendu);
-        String nbTirets = "";
 
         // Recupère les infos de l'activité précédente
         Bundle extras = getIntent().getExtras();
@@ -71,27 +90,34 @@ public class MainJeu extends AppCompatActivity {
             difficulte = extras.getInt(Difficultes.DIFFICULTE_PARTIE);
             nomJoueur = extras.getString(Difficultes.JOUEUR_PARTIE);
         }
-        Toast.makeText(this, "mode de jeu : " + String.valueOf(modeJeu), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "catgegorie : " + categorie, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "difficulte : " + String.valueOf(difficulte), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "nom du joueur : " + nomJoueur, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, String.valueOf(categorie), Toast.LENGTH_SHORT).show();
 
-
-        // set le mode jeu
-        modeJeu = false;
-
-        for (int i = 0 ; i<motAChercher.length() ; i++){
-            nbTirets += "_";
-        }
-        TextViewMotAChercher.setText(nbTirets);
 
         if(!modeJeu) {
+            //TODO générer une liste de mot à trouver
+            Cursor curseur = categorieDAO.getMotsCategorie(1, difficulte);
+
+            for(curseur.moveToFirst(); !curseur.isAfterLast(); curseur.moveToNext()) {
+                listeMot1Joueur.add(curseur.getString(curseur.getColumnIndex(GestionBDMot.MOT_NOM)));
+            }
+
+            final int nombreMot = listeMot1Joueur.size();
+
             for (final ImageButton ib : listImageButton) {
                 ib.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                modeJeu1Joueur(v);
+                                Random r = new Random();
+                                int tmp = r.nextInt(nombreMot);
+                                String motAChercher = listeMot1Joueur.get(tmp);
+                                String nbTirets = "";
+
+                                for (int i = 0 ; i<motAChercher.length() ; i++){
+                                    nbTirets += "_";
+                                }
+                                TextViewMotAChercher.setText(nbTirets);
+                                modeJeu1Joueur(v, motAChercher);
                             }
                         }
                 );
@@ -156,7 +182,7 @@ public class MainJeu extends AppCompatActivity {
         listImageButton.add((ImageButton) findViewById(R.id.ibZ));
     }
 
-    public void modeJeu1Joueur(View v) {
+    public void modeJeu1Joueur(View v, String motAChercher) {
         String id = String.valueOf(getResources().getResourceEntryName(v.getId()));
         char lettre = id.charAt(2);
         if (nbErreurs < 10) {
@@ -191,4 +217,16 @@ public class MainJeu extends AppCompatActivity {
             builder.show();
         }
     }
+/*
+    @Override
+    protected void onResume() {
+        categorieDAO.open();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        categorieDAO.close();
+        super.onPause();
+    }*/
 }

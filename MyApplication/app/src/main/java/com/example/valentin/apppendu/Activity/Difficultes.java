@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 import com.example.valentin.apppendu.R;
@@ -33,7 +34,7 @@ public class Difficultes extends Activity {
     public static final String DIFFICULTE_PARTIE = "DIFFICULTE";
 
     /** Categorie des mots  */
-    private String categorie;
+    private int categorie;
 
     /** Nom du joueur de la partie */
     private String joueur;
@@ -81,7 +82,7 @@ public class Difficultes extends Activity {
 
         Bundle extras = getIntent().getExtras();
         if(extras!= null){
-            categorie = extras.getString(MainCategories.CATEGORIE_PARTIE);
+            //categorie = Integer.parseInt(extras.getString(MainCategories.CATEGORIE_PARTIE));
             joueur = extras.getString(MainCategories.JOUEUR_PARTIE);
         }
         // Clique sur l'imageButton facile

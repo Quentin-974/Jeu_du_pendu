@@ -27,7 +27,7 @@ public class MainCategories extends AppCompatActivity {
     /** Identifiant pour le passage de donnée */
     public static final String JOUEUR_PARTIE = "JOUEUR";
 
-    private String categorie;
+    private int categorie;
 
     private String nomJoueur;
 
@@ -117,8 +117,7 @@ public class MainCategories extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 curseur.moveToPosition(position);
-                categorie = curseur.getString(curseur.getColumnIndex("nom"));
-                Toast.makeText(MainCategories.this,categorie.toString(),Toast.LENGTH_SHORT).show();
+                categorie = Integer.parseInt(curseur.getString(curseur.getColumnIndex("_id")));
                 Intent intent = new Intent(MainCategories.this, Difficultes.class);
                 intent.putExtra(CATEGORIE_PARTIE, categorie);
                 intent.putExtra(JOUEUR_PARTIE,nomJoueur);
