@@ -28,17 +28,12 @@ public class Historique extends AppCompatActivity {
         setContentView(R.layout.activity_historique);
         daoHistorique = new HistoriqueDAO(this);
         joueurDAO = new JoueurDAO(this);
-        //historique.add(new Score(1,"01/03/2017","11h06",5,new Joueur(1,"Michel"), 1));
-        //historique.add(new Score(2,"01/03/2017","11h00",9,new Joueur(2,"Robert"), 1));
         daoHistorique.open();
         joueurDAO.open();
-        //historique = daoHistorique.recuperer10();
-        Cursor cursor = daoHistorique.getAllHistorique();
-        // Cursor cursor = joueurDAO.getAllJoueurs();
-        cursor.moveToFirst();
-        // Toast.makeText(this, "" + cursor.getString(cursor.getColumnIndex(GestionBDJoueur.JOUEUR_NOM)), Toast.LENGTH_SHORT).show();
+        historique = daoHistorique.recuperer10();
+
         if(historique.size() > 0 ){
-            CustomListAdapter adapter = new CustomListAdapter(this,historique);
+            CustomListAdapter adapter = new CustomListAdapter(this,historique,true);
             listeHistorique = (ListView) findViewById(R.id.listeHistorique);
             listeHistorique.setAdapter(adapter);
         }

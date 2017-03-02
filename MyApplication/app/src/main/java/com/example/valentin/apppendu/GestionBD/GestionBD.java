@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class GestionBD extends SQLiteOpenHelper {
 
     /** Numéro de version de la base de données */
-    private static final int VERSION = 16;
+    private static final int VERSION = 17;
 
     /** Nom de la base de données dans laquelle seront conservé les catégories */
     private static final String NOM_BD = "pendu.db";

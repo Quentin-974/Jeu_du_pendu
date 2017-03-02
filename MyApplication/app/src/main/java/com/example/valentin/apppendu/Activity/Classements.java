@@ -92,21 +92,21 @@ public class Classements extends AppCompatActivity {
                 Toast.makeText(Classements.this, et.getText(), Toast.LENGTH_SHORT);
                 scores = daoHistorique.recupererScore(et.getText().toString(),0);
                 if(scores != null ){
-                    CustomListAdapter adapter=new CustomListAdapter(Classements.this,scores);
+                    CustomListAdapter adapter=new CustomListAdapter(Classements.this,scores,false);
                     listeFacile = (ListView) findViewById(R.id.ListeFacile);
                     listeFacile.setAdapter(adapter);
                 }
 
                 scores = daoHistorique.recupererScore(et.getText().toString(),1);
                 if(scores != null ){
-                    CustomListAdapter adapter=new CustomListAdapter(Classements.this,scores);
+                    CustomListAdapter adapter=new CustomListAdapter(Classements.this,scores,false);
                     listeNormal = (ListView) findViewById(R.id.ListeNormal);
                     listeNormal.setAdapter(adapter);
                 }
 
                 scores = daoHistorique.recupererScore(et.getText().toString(),2);
                 if(scores != null ){
-                    CustomListAdapter adapter=new CustomListAdapter(Classements.this,scores);
+                    CustomListAdapter adapter=new CustomListAdapter(Classements.this,scores,false);
                     listeDifficile = (ListView) findViewById(R.id.ListeDifficile);
                     listeDifficile.setAdapter(adapter);
                 }

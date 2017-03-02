@@ -20,29 +20,48 @@ public class CustomListAdapter extends ArrayAdapter<Score> {
 
     private final Activity context;
     private final ArrayList<Score> itemname;
+    private boolean historique;
 
-    public CustomListAdapter(Activity context, ArrayList<Score> itemname) {
+    public CustomListAdapter(Activity context, ArrayList<Score> itemname,boolean historique) {
         super(context, R.layout.liste_historique, itemname);
         // TODO Auto-generated constructor stub
 
         this.context=context;
         this.itemname=itemname;
+        this.historique = historique;
     }
 
     public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.liste_historique, null,true);
 
-        TextView txtJoueur = (TextView) rowView.findViewById(R.id.nomJoueur);
-        txtJoueur.setText(itemname.get(position).getJoueur().getNom());
+        if(historique) {
+            LayoutInflater inflater = context.getLayoutInflater();
+            View rowView = inflater.inflate(R.layout.liste_historique, null, true);
 
-        TextView txtDate = (TextView) rowView.findViewById(R.id.datePartie);
-        txtDate.setText(itemname.get(position).getDate() + " " + itemname.get(position).getHeure());
+            TextView txtJoueur = (TextView) rowView.findViewById(R.id.nomJoueur);
+            txtJoueur.setText(itemname.get(position).getJoueur().getNom());
 
-        TextView txtScore = (TextView) rowView.findViewById(R.id.scoreJoueur);
-        txtScore.setText(String.valueOf(itemname.get(position).getNbMotsTrouve()));
+            TextView txtDate = (TextView) rowView.findViewById(R.id.datePartie);
+            txtDate.setText(itemname.get(position).getDate() + " " + itemname.get(position).getHeure());
 
-        return rowView;
+            TextView txtScore = (TextView) rowView.findViewById(R.id.scoreJoueur);
+            txtScore.setText(String.valueOf(itemname.get(position).getNbMotsTrouve()));
+
+            return rowView;
+        } else {
+            LayoutInflater inflater = context.getLayoutInflater();
+            View rowView = inflater.inflate(R.layout.liste_historique, null, true);
+
+            TextView txtJoueur = (TextView) rowView.findViewById(R.id.nomJoueur);
+            txtJoueur.setText(itemname.get(position).getJoueur().getNom());
+
+            TextView txtDate = (TextView) rowView.findViewById(R.id.datePartie);
+            txtDate.setText(itemname.get(position).getDate());
+
+            TextView txtScore = (TextView) rowView.findViewById(R.id.scoreJoueur);
+            txtScore.setText(String.valueOf(itemname.get(position).getNbMotsTrouve()));
+
+            return rowView;
+        }
 
     }
 }
