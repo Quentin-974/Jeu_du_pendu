@@ -17,6 +17,9 @@ public class Difficultes extends Activity {
     /** Identifiant pour le passage de donnée */
     public static final String JOUEUR_PARTIE = "JOUEUR";
 
+    /** Identifiant pour le passage de donnée */
+    public static final String MODE_PARTIE = "MODE";
+
     /** Bouton pour la difficulté facile */
     private ImageButton btnFacile;
     /** Bouton pour la difficulté Moyen */
@@ -34,6 +37,11 @@ public class Difficultes extends Activity {
 
     /** Nom du joueur de la partie */
     private String joueur;
+
+
+    /** Si false mode jeu à 1 joueur*/
+    public final static boolean modePartie = false;
+
 
     /** Difficulté de la partie
      * 1 -> Facile
@@ -83,6 +91,7 @@ public class Difficultes extends Activity {
             intent.putExtra(DIFFICULTE_PARTIE, difficulte);
             intent.putExtra(CATEGORIE_PARTIE,categorie);
             intent.putExtra(JOUEUR_PARTIE,joueur);
+            intent.putExtra(MODE_PARTIE,modePartie);
             startActivity(intent);
         // Clique sur l'imageButton moyen
         } else if(bouton.getId() == R.id.imgMoyen) {
@@ -91,6 +100,7 @@ public class Difficultes extends Activity {
             intent.putExtra(DIFFICULTE_PARTIE, difficulte);
             intent.putExtra(CATEGORIE_PARTIE,categorie);
             intent.putExtra(JOUEUR_PARTIE,joueur);
+            intent.putExtra(MODE_PARTIE,modePartie);
             startActivity(intent);
             // Clique sur l'imageButton difficile
         } else {
@@ -99,6 +109,7 @@ public class Difficultes extends Activity {
             intent.putExtra(DIFFICULTE_PARTIE, difficulte);
             intent.putExtra(CATEGORIE_PARTIE,categorie);
             intent.putExtra(JOUEUR_PARTIE,joueur);
+            intent.putExtra(MODE_PARTIE,modePartie);
             startActivity(intent);
         }
     }

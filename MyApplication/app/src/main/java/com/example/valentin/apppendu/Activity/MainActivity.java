@@ -35,4 +35,14 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, Aide.class);
         startActivity(intent);
     }
+
+    public void voirScore(View view){
+        Intent intent = new Intent(MainActivity.this, Classements.class);
+        startActivity(intent);
+    }
+
+    public void historique(View view){
+        Intent intent = new Intent(MainActivity.this,Historique.class);
+        startActivity(intent);
+    }
 }

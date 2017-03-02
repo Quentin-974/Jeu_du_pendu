@@ -21,8 +21,11 @@ public class GestionBDHistorique {
     /** Nom du champ correspondant aux nombres de coups gagnés */
     public static final String HISTORIQUE_NB_GAGNES = "nb_gagnes";
 
-    /** Nom du champ correspondant aux nombres de coups gagnés */
+    /** Nom du champ correspondant à l'id du joueur */
     public static final String HISTORIQUE_JOUEUR = "joueur";
+
+    /** Nom du champ correspondant à l'id de la catégorie */
+    public static final String HISTORIQUE_DIFFICULTE = "difficulte";
 
     /** Requête de création de la table mot */
     public static final String CREATION_TABLE_HISTORIQUE =
@@ -32,6 +35,7 @@ public class GestionBDHistorique {
                     + HISTORIQUE_HEURE + " TEXT NOT NULL, "
                     + HISTORIQUE_NB_GAGNES + "INTEGER NOT NULL, "
                     + HISTORIQUE_JOUEUR + "INTEGER NOT NULL, "
+                    + HISTORIQUE_DIFFICULTE + "INTEGER NOT NULL, "
                     + "FOREIGN KEY (" + HISTORIQUE_JOUEUR
                     + ") REFERENCES " + GestionBDJoueur.NOM_TABLE_JOUEUR + " ("
                     + GestionBDJoueur.JOUEUR_CLEF + "));";
@@ -43,7 +47,8 @@ public class GestionBDHistorique {
                     + HISTORIQUE_DATE + ", "
                     + HISTORIQUE_HEURE + ", "
                     + HISTORIQUE_NB_GAGNES + ", "
-                    + HISTORIQUE_JOUEUR
+                    + HISTORIQUE_JOUEUR + ", "
+                    + HISTORIQUE_DIFFICULTE
                     + " FROM " + NOM_TABLE_HISTORIQUE
                     + " ORDER BY " + HISTORIQUE_DATE + ", " + HISTORIQUE_HEURE + ";";
 

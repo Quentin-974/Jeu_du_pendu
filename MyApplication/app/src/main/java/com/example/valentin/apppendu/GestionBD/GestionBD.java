@@ -45,13 +45,156 @@ public class GestionBD extends SQLiteOpenHelper {
 
         // Insertion des mots de base dans la catégorie Autre
         enregistrement.put(GestionBDMot.MOT_NOM, "mot");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "0");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "1");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "ble");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "0");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "1");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "roux");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "0");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "1");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "soleil");
         enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "1");
         enregistrement.put(GestionBDMot.MOT_CATEGORIE, "1");
         db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
 
-        enregistrement.put(GestionBDMot.MOT_NOM, "mot2");
+        enregistrement.put(GestionBDMot.MOT_NOM, "atomes");
         enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "1");
         enregistrement.put(GestionBDMot.MOT_CATEGORIE, "1");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "stylos");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "1");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "1");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "tableaux");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "1");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "1");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "constitution");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "2");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "1");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "electronique");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "2");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "1");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "multijoueur");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "2");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "1");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        // Insertion des mots de base dans la catégorie Musique
+        enregistrement.put(GestionBDMot.MOT_NOM, "jazz");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "0");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "2");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "rock");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "0");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "2");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "voix");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "0");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "2");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "chanson");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "1");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "2");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "album");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "1");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "2");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "concert");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "1");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "2");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "melodie");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "1");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "2");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "synthetiseur");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "2");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "2");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "musicographie");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "2");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "2");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "electroacoustique");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "2");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "2");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+
+        // Insertion des mots de base dans la catégorie Sport
+        enregistrement.put(GestionBDMot.MOT_NOM, "golf");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "0");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "3");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "surf");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "0");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "3");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "boxe");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "0");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "3");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "tennis");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "1");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "3");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "curling");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "1");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "3");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "natation");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "1");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "3");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "taekwondo");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "1");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "3");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "equitation");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "2");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "3");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "halterophilie");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "2");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "3");
+        db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        enregistrement.put(GestionBDMot.MOT_NOM, "gymnastique");
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "2");
+        enregistrement.put(GestionBDMot.MOT_CATEGORIE, "3");
         db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
     }
 

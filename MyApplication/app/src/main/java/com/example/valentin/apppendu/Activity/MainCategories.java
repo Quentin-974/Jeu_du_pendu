@@ -79,13 +79,15 @@ public class MainCategories extends AppCompatActivity {
                     Toast.makeText(MainCategories.this, et.getText(), Toast.LENGTH_SHORT);
                     nomJoueur = et.getText().toString();
                 }
+
             });
 
             //On crée un bouton "Annuler" à notre AlertDialog et on lui affecte un évènement
             adb.setNegativeButton(R.string.boutonNegatif, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     //Lorsque l'on cliquera sur annuler on quittera l'application
-                    finish();
+                    Toast.makeText(MainCategories.this,R.string.messageSansNom,Toast.LENGTH_SHORT).show();
+                    nomJoueur = null;
                 }
             });
             adb.show();

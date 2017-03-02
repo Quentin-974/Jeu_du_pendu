@@ -24,14 +24,15 @@
         app:srcCompat="@mipmap/ic_launcher"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:id="@+id/imageButtonScores"/>
+        android:id="@+id/imageButtonScores"
+        android:onClick="voirScore"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        app:srcCompat="@mipmap/ic_launcher"
+        android:src="@drawable/ic_aide"
         android:id="@+id/imageButtonAide"
         android:onClick="pageAide" />
 
@@ -74,6 +75,6 @@
         android:id="@+id/buttonHistorique"
         android:layout_below="@+id/buttonParametres"
         android:layout_alignParentStart="true"
-        android:onClick="parametres"/>
+        android:onClick="historique"/>
 
 </RelativeLayout>

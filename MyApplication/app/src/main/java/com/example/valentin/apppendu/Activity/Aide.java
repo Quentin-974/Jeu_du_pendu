@@ -44,6 +44,4 @@ public class Aide extends AppCompatActivity {
         Intent intent = new Intent(Aide.this, MainActivity.class);
         startActivity(intent);
     }
-
-
 }

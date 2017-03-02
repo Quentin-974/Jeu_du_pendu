@@ -123,19 +123,26 @@ public class Mots2Joueurs extends Activity {
             for (int i = 0; i < nbCoup; i++) {
                 if (!(tab_mots[i].getText().toString().equals(""))) {
                     String noAccent = sansAccent(tab_mots[i].getText().toString().trim());
-                    listeJ1.add(noAccent);
+                    if (noAccent.matches("^[a-zA-Z]+$")) {
+                        listeJ1.add(noAccent);
+                    }
                    // Toast.makeText(this, listeJ1.get(i), Toast.LENGTH_SHORT).show();
                 }
             }
-            // Incrementation du compteur pour avoir l'affichage de la page pour le joueur 2
-            compteur++;
-            Intent intent = new Intent(Mots2Joueurs.this, Mots2Joueurs.class);
-            intent.putExtra(Accueil2Joueurs.NOM_JOUEUR1, joueur1);
-            intent.putExtra(Accueil2Joueurs.NOM_JOUEUR2, joueur2);
-            intent.putExtra(Accueil2Joueurs.COMPTEUR_PAGE, compteur);
-            intent.putExtra(Accueil2Joueurs.NBCOUPS, nbCoup);
-            intent.putStringArrayListExtra(LISTE_J1, listeJ1);
-            startActivity(intent);
+            if (listeJ1.size() == nbCoup) {
+                // Incrementation du compteur pour avoir l'affichage de la page pour le joueur 2
+                compteur++;
+                Intent intent = new Intent(Mots2Joueurs.this, Mots2Joueurs.class);
+                intent.putExtra(Accueil2Joueurs.NOM_JOUEUR1, joueur1);
+                intent.putExtra(Accueil2Joueurs.NOM_JOUEUR2, joueur2);
+                intent.putExtra(Accueil2Joueurs.COMPTEUR_PAGE, compteur);
+                intent.putExtra(Accueil2Joueurs.NBCOUPS, nbCoup);
+                intent.putStringArrayListExtra(LISTE_J1, listeJ1);
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.message_saisie_non_complete),
+                        Toast.LENGTH_LONG).show();
+            }
 
         } else {
             // Page de saisie du joueur 2
@@ -144,16 +151,23 @@ public class Mots2Joueurs extends Activity {
             for (int i = 0; i < nbCoup; i++) {
                 if (!(tab_mots[i].getText().toString().equals(""))) {
                     String noAccent = sansAccent(tab_mots[i].getText().toString().trim());
-                    listeJ2.add(noAccent);
+                    if (noAccent.matches("^[a-zA-Z]+$")) {
+                        listeJ2.add(noAccent);
+                    }
                   //  Toast.makeText(this, listeJ2.get(i), Toast.LENGTH_SHORT).show();
                 }
             }
-            Intent intent = new Intent(Mots2Joueurs.this, MainActivity.class);
-            intent.putExtra(Accueil2Joueurs.NOM_JOUEUR1, joueur1);
-            intent.putExtra(Accueil2Joueurs.NOM_JOUEUR2, joueur2);
-            intent.putStringArrayListExtra(LISTE_J1, listeJ1);
-            intent.putStringArrayListExtra(LISTE_J2, listeJ2);
-            startActivity(intent);
+            if (listeJ2.size() == nbCoup) {
+                Intent intent = new Intent(Mots2Joueurs.this, MainJeu.class);
+                intent.putExtra(Accueil2Joueurs.NOM_JOUEUR1, joueur1);
+                intent.putExtra(Accueil2Joueurs.NOM_JOUEUR2, joueur2);
+                intent.putStringArrayListExtra(LISTE_J1, listeJ1);
+                intent.putStringArrayListExtra(LISTE_J2, listeJ2);
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.message_saisie_non_complete),
+                        Toast.LENGTH_LONG).show();
+            }
         }
 
     }

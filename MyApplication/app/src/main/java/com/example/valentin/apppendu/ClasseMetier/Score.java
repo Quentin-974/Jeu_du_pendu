@@ -12,13 +12,15 @@ public class Score {
     private String heure;
     private int nbMotsTrouve;
     private Joueur joueur;
+    private int difficulte;
 
-    public Score(int id, String date, String heure, int nbMotsTrouve, int classement, Joueur joueur){
+    public Score(int id, String date, String heure, int nbMotsTrouve, Joueur joueur, int difficulte){
         this.id = id;
         this.date = date;
         this.heure = heure;
         this.nbMotsTrouve = nbMotsTrouve;
         this.joueur = joueur;
+        this.difficulte = difficulte;
     }
 
     public Score() {
@@ -27,6 +29,7 @@ public class Score {
         heure = "Undefined";
         nbMotsTrouve = -1;
         joueur = null;
+        difficulte = -1;
     }
 
     public int getId() {
@@ -67,5 +70,13 @@ public class Score {
 
     public void setJoueur(Joueur joueur) {
         this.joueur = joueur;
+    }
+
+    public int getDifficulte() {
+        return difficulte;
+    }
+
+    public void setDifficulte(int difficulte) {
+        this.difficulte = difficulte;
     }
 }

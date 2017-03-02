@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.valentin.apppendu.Classements">
+    tools:context="com.example.valentin.apppendu.Activity.Classements">
 
     <TabHost
         android:id="@+id/tableOnglet"
@@ -102,7 +102,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="@string/label_onglet2"
+                        android:text="@string/label_onglet3"
                         android:textSize="25dp"/>
                     <ListView
                         android:layout_width="wrap_content"
@@ -111,6 +111,7 @@
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" />
+
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>

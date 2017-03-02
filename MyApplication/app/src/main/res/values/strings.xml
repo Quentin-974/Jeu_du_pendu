@@ -10,9 +10,9 @@
     <string name="label_onglet3">Difficile</string>
     <string name="label_score">Votre score :</string>
     <string name="titre2Joueur">2 Joueurs</string>
-    <string name="nomJoueur1">Joueur 1</string>
-    <string name="nomJoueur2">Joueur 2</string>
-    <string name="nombreMots">Nombre de mots</string>
+    <string name="nomJoueur1">Joueur 1 : </string>
+    <string name="nomJoueur2">Joueur 2 : </string>
+    <string name="nombreMots">Nombre de mots : </string>
 
     <!-- Pages difficultés -->
     <string name="titreDifficulte">DIFFICULTÉS</string>
@@ -41,8 +41,10 @@
     <string name="titreNom">Entrez votre nom!</string>
     <string name="boutonPositif">Ok </string>
     <string name="boutonNegatif">Annuler </string>
-    <string name="texteSaisieNom">Veuillez entrez votre nom pour jouer</string>
+    <string name="texteSaisieNom">Veuillez entrez votre nom.</string>
 
+    <string name="messageSansNom">Votre score ne sera pas enregistré</string>
+    <string name="messageSansScore">Vous ne pouvez pas accéder à vos scores</string>
 
     <!-- Boite de dialogue -->
     <string name="titre_boite_dialog_modification">Modification Catégorie</string>
@@ -56,4 +58,7 @@
     <string name="modif_reussie">Modification effectuée</string>
     <string name="ajout_categorie">Ajouter la catégorie : </string>
 
+    <!-- Message d'avertissement via Toast -->
+    <string name="message_saisie_non_complete">Veuillez compléter tous les champs pour pouvoir continuer</string>
+    <string name="message_saisie_joueur">Veuillez saisir les noms des deux joueurs pour pouvoir continuer</string>
 </resources>

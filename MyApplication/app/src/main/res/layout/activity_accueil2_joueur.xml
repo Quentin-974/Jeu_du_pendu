@@ -28,37 +28,56 @@
         android:layout_below="@id/titre2Joueurs"
         android:background="#0000FF" />
 
-    <EditText
-        android:id="@+id/nomJoueur1"
+    <TextView
+        android:id="@+id/libelleJoueur1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/nomJoueur1"
         android:layout_below="@id/barre"
-        android:layout_marginTop="30dip"
-        android:hint="@string/nomJoueur1" />
+        android:layout_marginTop="@dimen/margeTopTitre"
+        android:textSize="@dimen/tailleLibelle"/>
+
+    <EditText
+        android:id="@+id/nomJoueur1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/libelleJoueur1"
+        android:layout_alignBaseline="@id/libelleJoueur1"/>
+
+    <TextView
+        android:id="@+id/libelleJoueur2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nomJoueur2"
+        android:layout_below="@id/libelleJoueur1"
+        android:layout_marginTop="@dimen/margeTopTitre"
+        android:textSize="@dimen/tailleLibelle"/>
 
     <EditText
         android:id="@+id/nomJoueur2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/nomJoueur1"
-        android:layout_marginTop="30dip"
-        android:hint="@string/nomJoueur2" />
+        android:layout_toRightOf="@id/libelleJoueur2"
+        android:layout_alignBaseline="@id/libelleJoueur2"/>
 
     <TextView
         android:id="@+id/texteNombreMots"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nombreMots"
-        android:layout_below="@id/nomJoueur2"
-        android:layout_marginTop="90dp"
-        android:textSize="15dp"/>
+        android:layout_below="@id/libelleJoueur2"
+        android:layout_marginTop="@dimen/margeTopNumberP"
+        android:textSize="@dimen/tailleLibelle"/>
 
     <NumberPicker
         android:id="@+id/nombreMots"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/nomJoueur2"
+        android:layout_marginLeft="@dimen/margeLeftNumberP"
+        android:layout_toRightOf="@id/texteNombreMots"
+        android:layout_below="@id/libelleJoueur2"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
         />
 
 

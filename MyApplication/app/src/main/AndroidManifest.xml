@@ -22,6 +22,9 @@
         <activity android:name=".Activity.MainCategories" />
         <activity android:name=".Activity.Mots2Joueurs"></activity>
         <activity android:name=".Activity.MainJeu"/>
+        <activity android:name=".Activity.Historique"/>
+        <activity android:name=".Activity.Aide"/>
+        <activity android:name=".Activity.Classements"/>
     </application>
 
 </manifest>
