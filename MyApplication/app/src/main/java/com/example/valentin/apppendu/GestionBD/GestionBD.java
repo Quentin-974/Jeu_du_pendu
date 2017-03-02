@@ -196,6 +196,28 @@ public class GestionBD extends SQLiteOpenHelper {
         enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "2");
         enregistrement.put(GestionBDMot.MOT_CATEGORIE, "3");
         db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
+
+        // AJOUT lignes JOUEURS
+        enregistrement.put(GestionBDJoueur.JOUEUR_NOM, "Patrick");
+        db.insert(GestionBDJoueur.NOM_TABLE_JOUEUR, GestionBDJoueur.JOUEUR_NOM, enregistrement);
+
+        enregistrement.put(GestionBDJoueur.JOUEUR_NOM, "ZENNNN");
+        db.insert(GestionBDJoueur.NOM_TABLE_JOUEUR, GestionBDJoueur.JOUEUR_NOM, enregistrement);
+
+        // AJOUT lignes HISTORIQUE
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_DATE, "01/03/2017");
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_HEURE, "11h06");
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_NB_GAGNES, 5);
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_JOUEUR, 1);
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_DIFFICULTE, 0);
+        db.insert(GestionBDHistorique.NOM_TABLE_HISTORIQUE, GestionBDHistorique.HISTORIQUE_DATE, enregistrement);
+
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_DATE, "15/10/2017");
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_HEURE, "17h35");
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_NB_GAGNES, 3);
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_JOUEUR, 2);
+        enregistrement.put(GestionBDHistorique.HISTORIQUE_DIFFICULTE, 2);
+        db.insert(GestionBDHistorique.NOM_TABLE_HISTORIQUE, GestionBDHistorique.HISTORIQUE_DATE, enregistrement);
     }
 
     @Override
