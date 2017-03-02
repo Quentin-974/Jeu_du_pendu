@@ -15,15 +15,15 @@ public class Historique extends AppCompatActivity {
 
     private ListView listeHistorique;
     private ArrayList<Score> historique = new ArrayList<Score>();
-    private HistoriqueDAO daoHistorique = new HistoriqueDAO(this);
+    private HistoriqueDAO daoHistorique;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historique);
-
-        // historique.add(new Score(1,"01/03/2017","11h06",5,new Joueur(1,"Michel"), 1));
-        // historique.add(new Score(2,"01/03/2017","11h00",9,new Joueur(2,"Robert"), 1));
+        daoHistorique = new HistoriqueDAO(this);
+        //historique.add(new Score(1,"01/03/2017","11h06",5,new Joueur(1,"Michel"), 1));
+        //historique.add(new Score(2,"01/03/2017","11h00",9,new Joueur(2,"Robert"), 1));
         daoHistorique.open();
         historique = daoHistorique.recuperer10();
         if(historique != null ){

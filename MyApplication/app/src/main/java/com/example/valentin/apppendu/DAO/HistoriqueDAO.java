@@ -78,9 +78,9 @@ public class HistoriqueDAO {
     }
 
     public ArrayList<Score> recuperer10(){
-        Cursor curseur = database.rawQuery("Select * FROM " + GestionBDHistorique.NOM_TABLE_HISTORIQUE+ " JOIN "
-                        + GestionBDJoueur.NOM_TABLE_JOUEUR + " ON " +  GestionBDHistorique.HISTORIQUE_JOUEUR + " = " + GestionBDJoueur.JOUEUR_CLEF +
-                        " ORDER BY DESC " +  GestionBDHistorique.HISTORIQUE_CLEF + " LIMIT 10 ",null);
+        Cursor curseur = database.rawQuery("Select * FROM " + GestionBDHistorique.NOM_TABLE_HISTORIQUE,null); /** + " JOIN "
+                + GestionBDJoueur.NOM_TABLE_JOUEUR + " ON " +  GestionBDHistorique.NOM_TABLE_HISTORIQUE + "." + GestionBDHistorique.HISTORIQUE_JOUEUR + " = " + GestionBDJoueur.NOM_TABLE_JOUEUR + "." + GestionBDJoueur.JOUEUR_CLEF +
+                " ORDER BY DESC " +  GestionBDHistorique.NOM_TABLE_HISTORIQUE + "." + GestionBDHistorique.HISTORIQUE_CLEF + " LIMIT 10;"*/
         ArrayList<Score> listeScore = new ArrayList<Score>();
         for(curseur.moveToFirst(); !curseur.isAfterLast(); curseur.moveToNext()){
             Score score = new Score(curseur.getInt(curseur.getColumnIndex(GestionBDHistorique.HISTORIQUE_CLEF)),

@@ -33,9 +33,9 @@ public class GestionBDHistorique {
                     + HISTORIQUE_CLEF + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + HISTORIQUE_DATE + " TEXT NOT NULL, "
                     + HISTORIQUE_HEURE + " TEXT NOT NULL, "
-                    + HISTORIQUE_NB_GAGNES + "INTEGER NOT NULL, "
-                    + HISTORIQUE_JOUEUR + "INTEGER NOT NULL, "
-                    + HISTORIQUE_DIFFICULTE + "INTEGER NOT NULL, "
+                    + HISTORIQUE_NB_GAGNES + " INTEGER NOT NULL, "
+                    + HISTORIQUE_JOUEUR + " INTEGER NOT NULL, "
+                    + HISTORIQUE_DIFFICULTE + " INTEGER NOT NULL, "
                     + "FOREIGN KEY (" + HISTORIQUE_JOUEUR
                     + ") REFERENCES " + GestionBDJoueur.NOM_TABLE_JOUEUR + " ("
                     + GestionBDJoueur.JOUEUR_CLEF + "));";
