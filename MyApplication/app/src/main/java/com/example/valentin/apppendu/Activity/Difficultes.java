@@ -86,7 +86,7 @@ public class Difficultes extends Activity {
         }
         // Clique sur l'imageButton facile
         if(bouton.getId() == R.id.imgFacile) {
-            difficulte = 1;
+            difficulte = 0;
             Intent intent = new Intent(Difficultes.this, MainJeu.class);
             intent.putExtra(DIFFICULTE_PARTIE, difficulte);
             intent.putExtra(CATEGORIE_PARTIE,categorie);
@@ -95,7 +95,7 @@ public class Difficultes extends Activity {
             startActivity(intent);
         // Clique sur l'imageButton moyen
         } else if(bouton.getId() == R.id.imgMoyen) {
-            difficulte = 2;
+            difficulte = 1;
             Intent intent = new Intent(Difficultes.this, MainJeu.class);
             intent.putExtra(DIFFICULTE_PARTIE, difficulte);
             intent.putExtra(CATEGORIE_PARTIE,categorie);
@@ -104,7 +104,7 @@ public class Difficultes extends Activity {
             startActivity(intent);
             // Clique sur l'imageButton difficile
         } else {
-            difficulte = 3;
+            difficulte = 2;
             Intent intent = new Intent(Difficultes.this, MainJeu.class);
             intent.putExtra(DIFFICULTE_PARTIE, difficulte);
             intent.putExtra(CATEGORIE_PARTIE,categorie);
