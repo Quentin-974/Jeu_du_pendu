@@ -224,7 +224,7 @@ public class GestionBD extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int ancienneVersion, int nouvelleVersion) {
-        if (ancienneVersion < 4) {
+        if (ancienneVersion < VERSION) {
             db.execSQL(GestionBDMot.SUPPRIMER_TABLE_MOT);	// Destruction de la table
             db.execSQL(GestionBDCategorie.SUPPRIMER_TABLE_CATEGORIE);	// Destruction de la table
             db.execSQL(GestionBDHistorique.SUPPRIMER_TABLE_HISTORIQUE);
