@@ -43,6 +43,7 @@
     <string name="boutonNegatif">Annuler </string>
     <string name="texteSaisieNom">Veuillez entrez votre nom pour jouer</string>
 
+    <string name="messageSansScore">Votre score ne sera pas enregistré</string>
 
     <!-- Boite de dialogue -->
     <string name="titre_boite_dialog_modification">Modification Catégorie</string>

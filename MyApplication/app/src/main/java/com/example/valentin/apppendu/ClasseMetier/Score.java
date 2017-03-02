@@ -13,7 +13,7 @@ public class Score {
     private int nbMotsTrouve;
     private Joueur joueur;
 
-    public Score(int id, String date, String heure, int nbMotsTrouve, int classement, Joueur joueur){
+    public Score(int id, String date, String heure, int nbMotsTrouve,Joueur joueur){
         this.id = id;
         this.date = date;
         this.heure = heure;
