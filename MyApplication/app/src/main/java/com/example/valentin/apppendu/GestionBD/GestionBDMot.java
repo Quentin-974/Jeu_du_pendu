@@ -50,6 +50,11 @@ public class GestionBDMot {
     public static final String REQUETE_MOTS_CATEGORIE =
             "SELECT * FROM " + NOM_TABLE_MOT + " WHERE " + MOT_CATEGORIE + " = ?";
 
+    /** Requête pour sélectionner tous les mots d'une catgéorie pour une difficulté donnée */
+    public static final String REQUETE_MOTS_CAT_DIFF =
+            "SELECT * FROM " + NOM_TABLE_MOT + " WHERE " + MOT_CATEGORIE + " = ? AND "
+                    + MOT_DIFFICULTE + " = ?";
+
     public static final String SUPPRIMER_TABLE_MOT =
             "DROP TABLE IF EXISTS " + NOM_TABLE_MOT + ";";
 }

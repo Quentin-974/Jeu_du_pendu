@@ -76,4 +76,10 @@ public class MotDAO {
         return cursor;
     }
 
+    public Cursor getMotsCategorie(int idCategorie, int difficulte) {
+        String[] param = {String.valueOf(idCategorie), String.valueOf(difficulte)};
+        Cursor cursor = database.rawQuery(GestionBDMot.REQUETE_MOTS_CAT_DIFF, param);
+        return cursor;
+    }
+
 }
