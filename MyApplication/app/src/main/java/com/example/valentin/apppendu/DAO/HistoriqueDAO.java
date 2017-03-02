@@ -97,7 +97,7 @@ public class HistoriqueDAO {
 
     }
 
-    public ArrayList<Score> recupererScore(String nom,String difficulte){
+    public ArrayList<Score> recupererScore(String nom,int difficulte){
         Cursor curseur = database.rawQuery("Select * FROM " + GestionBDHistorique.NOM_TABLE_HISTORIQUE + " JOIN " + GestionBDJoueur.NOM_TABLE_JOUEUR + " ON " +
                                             GestionBDHistorique.HISTORIQUE_JOUEUR + " = " + GestionBDJoueur.JOUEUR_CLEF + " WHERE " + GestionBDJoueur.JOUEUR_NOM + " = ?;",
                                             new String[]{nom});
