@@ -36,21 +36,13 @@ public class GestionBDHistorique {
                     + HISTORIQUE_NB_GAGNES + " INTEGER NOT NULL, "
                     + HISTORIQUE_JOUEUR + " INTEGER NOT NULL, "
                     + HISTORIQUE_DIFFICULTE + " INTEGER NOT NULL, "
-                    + "FOREIGN KEY (" + HISTORIQUE_JOUEUR
-                    + ") REFERENCES " + GestionBDJoueur.NOM_TABLE_JOUEUR + " ("
-                    + GestionBDJoueur.JOUEUR_CLEF + "));";
+                    + "FOREIGN KEY (" + HISTORIQUE_JOUEUR + ")"
+                    + " REFERENCES " + GestionBDJoueur.NOM_TABLE_JOUEUR
+                    + " (" + GestionBDJoueur.JOUEUR_CLEF + "));";
 
     /** Requête pour sélectionner toutes les catégories */
     public static final String REQUETE_HISTORIQUE_ALL =
-            "SELECT "
-                    + HISTORIQUE_CLEF + ", "
-                    + HISTORIQUE_DATE + ", "
-                    + HISTORIQUE_HEURE + ", "
-                    + HISTORIQUE_NB_GAGNES + ", "
-                    + HISTORIQUE_JOUEUR + ", "
-                    + HISTORIQUE_DIFFICULTE
-                    + " FROM " + NOM_TABLE_HISTORIQUE
-                    + " ORDER BY " + HISTORIQUE_DATE + ", " + HISTORIQUE_HEURE + ";";
+            "SELECT * FROM " + NOM_TABLE_HISTORIQUE;
 
     public static final String SUPPRIMER_TABLE_HISTORIQUE =
             "DROP TABLE IF EXISTS " + NOM_TABLE_HISTORIQUE + ";";

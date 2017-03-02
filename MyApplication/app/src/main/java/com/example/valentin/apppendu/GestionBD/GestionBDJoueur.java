@@ -18,14 +18,12 @@ public class GestionBDJoueur {
     /** Requête de création de la table mot */
     public static final String CREATION_TABLE_JOUEUR =
             "CREATE TABLE " + NOM_TABLE_JOUEUR + " ("
-                    + JOUEUR_CLEF + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + JOUEUR_NOM + " TEXT NOT NULL);";
+                + JOUEUR_CLEF + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + JOUEUR_NOM + " TEXT NOT NULL);";
 
     /** Requête pour sélectionner toutes les catégories */
     public static final String REQUETE_JOUEUR_ALL =
-            "SELECT "
-                    + JOUEUR_CLEF + ", "
-                    + JOUEUR_NOM + " FROM " + NOM_TABLE_JOUEUR
+            "SELECT * FROM " + NOM_TABLE_JOUEUR
                     + " ORDER BY " + JOUEUR_NOM + ";";
 
     public static final String SUPPRIMER_TABLE_JOUEUR =

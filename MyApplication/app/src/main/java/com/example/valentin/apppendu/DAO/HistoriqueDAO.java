@@ -77,6 +77,11 @@ public class HistoriqueDAO {
         return cursor;
     }
 
+    public Cursor getAllHistorique() {
+        Cursor cursor = database.rawQuery(GestionBDHistorique.REQUETE_HISTORIQUE_ALL, null);
+        return cursor;
+    }
+
     public ArrayList<Score> recuperer10(){
         Cursor curseur = database.rawQuery("Select * FROM " + GestionBDHistorique.NOM_TABLE_HISTORIQUE,null); /** + " JOIN "
                 + GestionBDJoueur.NOM_TABLE_JOUEUR + " ON " +  GestionBDHistorique.NOM_TABLE_HISTORIQUE + "." + GestionBDHistorique.HISTORIQUE_JOUEUR + " = " + GestionBDJoueur.NOM_TABLE_JOUEUR + "." + GestionBDJoueur.JOUEUR_CLEF +
