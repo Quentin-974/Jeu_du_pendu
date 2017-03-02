@@ -21,8 +21,8 @@ public class Historique extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historique);
 
-        historique.add(new Score(1,"01/03/2017","11h06",5,new Joueur(1,"Le Noir")));
-        historique.add(new Score(2,"01/03/2017","11h00",9,new Joueur(2,"BAT")));
+        historique.add(new Score(1,"01/03/2017","11h06",5,new Joueur(1,"Michel")));
+        historique.add(new Score(2,"01/03/2017","11h00",9,new Joueur(2,"Robert")));
         CustomListAdapter adapter=new CustomListAdapter(this,historique);
         listeHistorique = (ListView) findViewById(R.id.listeHistorique);
         listeHistorique.setAdapter(adapter);

@@ -11,6 +11,8 @@ import com.example.valentin.apppendu.GestionBD.GestionBD;
 import com.example.valentin.apppendu.GestionBD.GestionBDHistorique;
 import com.example.valentin.apppendu.GestionBD.GestionBDJoueur;
 
+import java.util.ArrayList;
+
 /**
  * Created by thibaut on 01/03/2017.
  */
@@ -70,5 +72,32 @@ public class HistoriqueDAO {
     public Cursor getAllJoueurs() {
         Cursor cursor = database.rawQuery(GestionBDJoueur.REQUETE_JOUEUR_ALL, null);
         return cursor;
+    }
+
+    public ArrayList<Score> recuperer10(){
+        Cursor curseur = database.rawQuery("Select * FROM " + GestionBDHistorique.NOM_TABLE_HISTORIQUE+ " JOIN "
+                        + GestionBDJoueur.NOM_TABLE_JOUEUR + " ON " +  GestionBDHistorique.HISTORIQUE_JOUEUR + " = " + GestionBDJoueur.JOUEUR_CLEF +
+                        " ORDER BY DESC " +  GestionBDHistorique.HISTORIQUE_CLEF + " LIMIT 10 ",null);
+        ArrayList<Score> listeScore = new ArrayList<Score>();
+        for(curseur.moveToFirst(); !curseur.isAfterLast(); curseur.moveToNext()){
+            Score score = new Score(curseur.getInt(0),curseur.getString(1),curseur.getString(2),curseur.getInt(3),new Joueur(curseur.getInt(4),curseur.getString(5)));
+            listeScore.add(score);
+        }
+        curseur.close();
+        return listeScore;
+
+    }
+
+    public ArrayList<Score> recupererScore(String nom,String difficulte){
+        Cursor curseur = database.rawQuery("Select * FROM " + GestionBDHistorique.NOM_TABLE_HISTORIQUE + " JOIN " + GestionBDJoueur.NOM_TABLE_JOUEUR + " ON " +
+                                            GestionBDHistorique.HISTORIQUE_JOUEUR + " = " + GestionBDJoueur.JOUEUR_CLEF + " WHERE " + GestionBDJoueur.JOUEUR_NOM + " = ?;",
+                                            new String[]{nom});
+        ArrayList<Score> listeScore = new ArrayList<Score>();
+        for(curseur.moveToFirst(); !curseur.isAfterLast(); curseur.moveToNext()){
+            Score score = new Score(curseur.getInt(0),curseur.getString(1),curseur.getString(2),curseur.getInt(3),new Joueur(curseur.getInt(4),curseur.getString(5)));
+            listeScore.add(score);
+        }
+        curseur.close();
+        return listeScore;
     }
 }

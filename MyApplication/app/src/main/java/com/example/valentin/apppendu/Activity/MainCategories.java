@@ -86,7 +86,7 @@ public class MainCategories extends AppCompatActivity {
             adb.setNegativeButton(R.string.boutonNegatif, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     //Lorsque l'on cliquera sur annuler on quittera l'application
-                    Toast.makeText(MainCategories.this,R.string.messageSansScore,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainCategories.this,R.string.messageSansNom,Toast.LENGTH_SHORT).show();
                     nomJoueur = null;
                 }
             });
