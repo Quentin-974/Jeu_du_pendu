@@ -227,6 +227,8 @@ public class GestionBD extends SQLiteOpenHelper {
         if (ancienneVersion < 4) {
             db.execSQL(GestionBDMot.SUPPRIMER_TABLE_MOT);	// Destruction de la table
             db.execSQL(GestionBDCategorie.SUPPRIMER_TABLE_CATEGORIE);	// Destruction de la table
+            db.execSQL(GestionBDHistorique.SUPPRIMER_TABLE_HISTORIQUE);
+            db.execSQL(GestionBDJoueur.SUPPRIMER_TABLE_JOUEUR);
             onCreate(db);
         }
 

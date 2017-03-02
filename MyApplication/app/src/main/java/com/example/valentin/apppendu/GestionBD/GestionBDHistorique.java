@@ -52,6 +52,6 @@ public class GestionBDHistorique {
                     + " FROM " + NOM_TABLE_HISTORIQUE
                     + " ORDER BY " + HISTORIQUE_DATE + ", " + HISTORIQUE_HEURE + ";";
 
-    private static final String SUPPRIMER_TABLE_HISTORIQUE =
+    public static final String SUPPRIMER_TABLE_HISTORIQUE =
             "DROP TABLE IF EXISTS " + NOM_TABLE_HISTORIQUE + ";";
 }
