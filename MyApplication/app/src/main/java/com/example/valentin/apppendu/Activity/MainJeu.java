@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.valentin.apppendu.ClasseMetier.Categorie;
 import com.example.valentin.apppendu.R;
 
 import org.w3c.dom.Text;
@@ -32,6 +34,14 @@ public class MainJeu extends AppCompatActivity {
     private int nbErreurs = 0;
     /** ImageView qui affiche le pendu en fonction du nombre d'erreurs */
     private ImageView imagePendu;
+    /** Nom du joueur actif */
+    private String nomJoueur;
+    /** Catégorie des mot */
+    private Categorie categorie;
+    /** Difficulté des mot */
+    private int difficulte;
+    /** Mode de jeu 1 ou 2 joueurs */
+    private boolean modeJeu;
 
     /**
      * @param savedInstanceState
@@ -41,57 +51,42 @@ public class MainJeu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_jeu);
 
+        /*
+            TO DO :
+             - Récupérer les valeurs pour la catégorie du mot
+             - Générer une liste de mot aléatoire avec les valeurs récupérées
+             - Séparer les execution en fonction d'un boolean qui détermine si 1 ou 2 joueurs
+         */
+
         initImageButton();
         TextViewMotAChercher = (TextView) findViewById(R.id.tvMot);
         imagePendu = (ImageView) findViewById(R.id.imageViewPendu);
         String nbTirets = "";
+
+        // set le mode jeu
+        modeJeu = false;
+
         for (int i = 0 ; i<motAChercher.length() ; i++){
             nbTirets += "_";
         }
         TextViewMotAChercher.setText(nbTirets);
 
-        for (final ImageButton ib : listImageButton) {
-            ib.setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            String id = String.valueOf(getResources().getResourceEntryName(v.getId()));
-                            char lettre = id.charAt(2);
-                            if (nbErreurs < 10) {
-                                if (motAChercher.indexOf(lettre) != -1) {
-                                    for (int i = 0; i < motAChercher.length(); i++)
-                                        if (motAChercher.charAt(i) == lettre) {
-                                            StringBuilder tmp = new StringBuilder(TextViewMotAChercher.getText());
-                                            tmp.setCharAt(i, lettre);
-                                            TextViewMotAChercher.setText(tmp);
-                                            if (motAChercher.equals(TextViewMotAChercher.getText())) {
-                                                Toast.makeText(MainJeu.this, "T'as gagné gg!", Toast.LENGTH_SHORT).show();
-                                                // TO DO appel de l'activité avec le nouveau mot
-                                            }
-                                        }
-                                } else {
-                                    nbErreurs++;
-                                    String nomImage = "pendu" + nbErreurs;
-                                    int resID = getResources().getIdentifier(nomImage, "drawable", getPackageName());
-                                    imagePendu.setImageResource(resID);
-                                }
-                            } else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(MainJeu.this);
-                                builder.setTitle("T'as fait trop d'erreurs")
-                                        .setMessage("T'es pas bon")
-                                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                Intent intention = new Intent(MainJeu.this, MainActivity.class);
-                                                startActivity(intention);
-                                            }
-                                        });
-                                builder.show();
+        if(!modeJeu) {
+            for (final ImageButton ib : listImageButton) {
+                ib.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                modeJeu1Joueur(v);
                             }
                         }
-                    }
-            );
+                );
+            }
+        } else {
+            // mode 2 joueur
         }
+
+
 
         ibQuitter = (ImageButton) findViewById(R.id.imageButtonQuitter);
 
@@ -145,5 +140,41 @@ public class MainJeu extends AppCompatActivity {
         listImageButton.add((ImageButton) findViewById(R.id.ibX));
         listImageButton.add((ImageButton) findViewById(R.id.ibY));
         listImageButton.add((ImageButton) findViewById(R.id.ibZ));
+    }
+
+    public void modeJeu1Joueur(View v) {
+        String id = String.valueOf(getResources().getResourceEntryName(v.getId()));
+        char lettre = id.charAt(2);
+        if (nbErreurs < 10) {
+            if (motAChercher.indexOf(lettre) != -1) {
+                for (int i = 0; i < motAChercher.length(); i++)
+                    if (motAChercher.charAt(i) == lettre) {
+                        StringBuilder tmp = new StringBuilder(TextViewMotAChercher.getText());
+                        tmp.setCharAt(i, lettre);
+                        TextViewMotAChercher.setText(tmp);
+                        if (motAChercher.equals(TextViewMotAChercher.getText())) {
+                            Toast.makeText(MainJeu.this, "T'as gagné en "+ nbErreurs + " erreurs.", Toast.LENGTH_SHORT).show();
+                            // TO DO appel de l'activité avec le nouveau mot
+                        }
+                    }
+            } else {
+                nbErreurs++;
+                String nomImage = "pendu" + nbErreurs;
+                int resID = getResources().getIdentifier(nomImage, "drawable", getPackageName());
+                imagePendu.setImageResource(resID);
+            }
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainJeu.this);
+            builder.setTitle("T'as fait trop d'erreurs")
+                    .setMessage("T'es pas bon")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intention = new Intent(MainJeu.this, MainActivity.class);
+                            startActivity(intention);
+                        }
+                    });
+            builder.show();
+        }
     }
 }
