@@ -53,7 +53,7 @@
                     <ListView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:id="@+id/lvFacile"></ListView>
+                        android:id="@+id/ListeFacile"></ListView>
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" />
@@ -80,7 +80,7 @@
                     <ListView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:id="@+id/lvNormal"></ListView>
+                        android:id="@+id/ListeNormal"></ListView>
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" />
@@ -107,7 +107,7 @@
                     <ListView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:id="@+id/lvDifficile"></ListView>
+                        android:id="@+id/ListeDifficile"></ListView>
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" />

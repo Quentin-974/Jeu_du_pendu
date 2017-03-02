@@ -7,21 +7,37 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.Toast;
 
+import com.example.valentin.apppendu.ClasseMetier.Score;
+import com.example.valentin.apppendu.DAO.HistoriqueDAO;
 import com.example.valentin.apppendu.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Classements extends AppCompatActivity {
 
     private TabHost lesOnglets;
+
+    private ArrayList<Score> scores = new ArrayList<Score>();
+
+    private ListView listeFacile;
+    private ListView listeNormal;
+    private ListView listeDifficile;
+
+    private HistoriqueDAO daoHistorique = new HistoriqueDAO(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classements);
-
+        daoHistorique.open();
         lesOnglets = (TabHost) findViewById(R.id.tableOnglet);
         lesOnglets.setup();
+
 
         TabHost.TabSpec specification = lesOnglets.newTabSpec("Facile");
         specification.setIndicator(getResources().getString(R.string.label_onglet1));
@@ -73,6 +89,27 @@ public class Classements extends AppCompatActivity {
                 //Lorsque l'on cliquera sur le bouton "OK", on récupère l'EditText correspondant à notre vue personnalisée (cad à alertDialogView)
                 EditText et = (EditText) alertDialogView.findViewById(R.id.EditText1);
                 Toast.makeText(Classements.this, et.getText(), Toast.LENGTH_SHORT);
+                scores = daoHistorique.recupererScore(et.getText().toString(),0);
+                if(scores != null ){
+                    CustomListAdapter adapter=new CustomListAdapter(Classements.this,scores);
+                    listeFacile = (ListView) findViewById(R.id.ListeFacile);
+                    listeFacile.setAdapter(adapter);
+                }
+
+                scores = daoHistorique.recupererScore(et.getText().toString(),1);
+                if(scores != null ){
+                    CustomListAdapter adapter=new CustomListAdapter(Classements.this,scores);
+                    listeNormal = (ListView) findViewById(R.id.ListeNormal);
+                    listeNormal.setAdapter(adapter);
+                }
+
+                scores = daoHistorique.recupererScore(et.getText().toString(),2);
+                if(scores != null ){
+                    CustomListAdapter adapter=new CustomListAdapter(Classements.this,scores);
+                    listeDifficile = (ListView) findViewById(R.id.ListeDifficile);
+                    listeDifficile.setAdapter(adapter);
+                }
+                daoHistorique.close();
             }
 
         });

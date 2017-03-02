@@ -64,13 +64,13 @@ public class MainJeu extends AppCompatActivity {
         String nbTirets = "";
 
         // Recupère les infos de l'activité précédente
-        Intent intent = getIntent();
-
-        modeJeu = intent.getBooleanExtra("modePartie", false);
-        categorie = intent.getIntExtra("categorie", 0);
-        difficulte = intent.getIntExtra("difficulte", 1);
-        nomJoueur = intent.getStringExtra("joueur");
-
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            modeJeu = extras.getBoolean(Difficultes.MODE_PARTIE);
+            categorie = extras.getInt(Difficultes.CATEGORIE_PARTIE);
+            difficulte = extras.getInt(Difficultes.DIFFICULTE_PARTIE);
+            nomJoueur = extras.getString(Difficultes.JOUEUR_PARTIE);
+        }
         Toast.makeText(this, "mode de jeu : " + String.valueOf(modeJeu), Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "catgegorie : " + categorie, Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "difficulte : " + String.valueOf(difficulte), Toast.LENGTH_SHORT).show();

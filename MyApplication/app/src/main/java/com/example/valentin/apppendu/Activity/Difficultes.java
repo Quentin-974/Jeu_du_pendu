@@ -30,7 +30,7 @@ public class Difficultes extends Activity {
     private ImageButton btnPrecedent;
 
     /** Identifiant pour le passage de donnée */
-    private final String DIFFICULTE_PARTIE = "DIFFICULTE";
+    public static final String DIFFICULTE_PARTIE = "DIFFICULTE";
 
     /** Categorie des mots  */
     private String categorie;
