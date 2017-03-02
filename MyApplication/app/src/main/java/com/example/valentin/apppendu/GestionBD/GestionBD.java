@@ -30,6 +30,8 @@ public class GestionBD extends SQLiteOpenHelper {
         // Création des tables
         db.execSQL(GestionBDCategorie.CREATION_TABLE_CATEGORIE);
         db.execSQL(GestionBDMot.CREATION_TABLE_MOT);
+        db.execSQL(GestionBDJoueur.CREATION_TABLE_JOUEUR);
+        db.execSQL(GestionBDHistorique.CREATION_TABLE_HISTORIQUE);
 
         ContentValues enregistrement = new ContentValues();
 

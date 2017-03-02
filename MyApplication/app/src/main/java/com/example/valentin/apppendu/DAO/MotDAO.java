@@ -60,6 +60,7 @@ public class MotDAO {
         ContentValues enregistrement = new ContentValues();
 
         enregistrement.put(GestionBDMot.MOT_NOM, mot.getLibelle());
+        enregistrement.put(GestionBDMot.MOT_DIFFICULTE, Mot.difficultes(mot.getLibelle()));
         String[] param = {String.valueOf(mot.getId())};
         database.update(GestionBDMot.NOM_TABLE_MOT, enregistrement, GestionBDMot.MOT_CLEF + " = ?", param);
     }

@@ -27,6 +27,8 @@ import com.example.valentin.apppendu.DAO.MotDAO;
 import com.example.valentin.apppendu.GestionBD.GestionBDMot;
 import com.example.valentin.apppendu.R;
 
+import static com.example.valentin.apppendu.Activity.Mots2Joueurs.sansAccent;
+
 public class GestionMots extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     /** Bouton d'ajout d'un mot dans la catégorie */
@@ -310,11 +312,20 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
                     public void onClick(DialogInterface dialog, int leBouton) {
                         EditText ajout = (EditText) boiteDialog.findViewById(R.id.editTextAjoutCategorie);
                         String saisie = ajout.getText().toString();   // Nom de la catégorie ajoutée
+
                         if (!saisie.equals("")) {
-                            // APPEL METHODE BD (ajout)
-                            motDAO.createMot(saisie, identifiantCategorie);
-                            refreshListe();
-                            Toast.makeText(GestionMots.this, "\"" + saisie + "\" a été ajouté", Toast.LENGTH_SHORT).show();
+
+                            String noAccent = sansAccent(saisie.trim());
+                            if (noAccent.matches("^[a-zA-Z]+$")) {
+                                // APPEL METHODE BD (ajout)
+                                motDAO.createMot(saisie, identifiantCategorie);
+                                refreshListe();
+                                Toast.makeText(GestionMots.this, "\"" + saisie + "\" a été ajouté", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(GestionMots.this, "Le mot contient des caractères interdit", Toast.LENGTH_SHORT).show();
+                            }
+
+
                         } else {
                             Toast.makeText(GestionMots.this, "Erreur lors de l'ajout du mot", Toast.LENGTH_SHORT).show();
                         }
