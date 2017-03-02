@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class GestionBD extends SQLiteOpenHelper {
 
     /** Numéro de version de la base de données */
-    private static final int VERSION = 6;
+    private static final int VERSION = 12;
 
     /** Nom de la base de données dans laquelle seront conservé les catégories */
     private static final String NOM_BD = "pendu.db";
@@ -224,11 +224,9 @@ public class GestionBD extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int ancienneVersion, int nouvelleVersion) {
-        if (ancienneVersion < VERSION) {
+        if (ancienneVersion < 4) {
             db.execSQL(GestionBDMot.SUPPRIMER_TABLE_MOT);	// Destruction de la table
             db.execSQL(GestionBDCategorie.SUPPRIMER_TABLE_CATEGORIE);	// Destruction de la table
-            db.execSQL(GestionBDHistorique.SUPPRIMER_TABLE_HISTORIQUE);
-            db.execSQL(GestionBDJoueur.SUPPRIMER_TABLE_JOUEUR);
             onCreate(db);
         }
 

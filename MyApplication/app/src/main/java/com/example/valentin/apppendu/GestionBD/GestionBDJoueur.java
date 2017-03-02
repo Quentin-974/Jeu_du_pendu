@@ -25,8 +25,7 @@ public class GestionBDJoueur {
     public static final String REQUETE_JOUEUR_ALL =
             "SELECT "
                     + JOUEUR_CLEF + ", "
-                    + JOUEUR_NOM + " "
-                    + " FROM " + NOM_TABLE_JOUEUR
+                    + JOUEUR_NOM + " FROM " + NOM_TABLE_JOUEUR
                     + " ORDER BY " + JOUEUR_NOM + ";";
 
     public static final String SUPPRIMER_TABLE_JOUEUR =

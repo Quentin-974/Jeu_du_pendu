@@ -28,12 +28,13 @@ public class Classements extends AppCompatActivity {
     private ListView listeNormal;
     private ListView listeDifficile;
 
-    private HistoriqueDAO daoHistorique = new HistoriqueDAO(this);
+    private HistoriqueDAO daoHistorique;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classements);
+        daoHistorique = new HistoriqueDAO(this);
         daoHistorique.open();
         lesOnglets = (TabHost) findViewById(R.id.tableOnglet);
         lesOnglets.setup();
