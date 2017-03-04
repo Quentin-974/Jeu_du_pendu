@@ -51,6 +51,8 @@ public class Mots2Joueurs extends Activity {
     private ArrayList<String> listeJ1;
     /** Liste des mots saisie par le joueur 1 */
     private ArrayList<String> listeJ2;
+    /** Si true mode jeu à 2 joueurs */
+    public final static boolean MODE_DE_JEU = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,7 +163,7 @@ public class Mots2Joueurs extends Activity {
                 Intent intent = new Intent(Mots2Joueurs.this, MainJeu.class);
                 intent.putExtra(Accueil2Joueurs.NOM_JOUEUR1, joueur1);
                 intent.putExtra(Accueil2Joueurs.NOM_JOUEUR2, joueur2);
-                intent.putExtra(Difficultes.MODE_PARTIE,Difficultes.modePartie);
+                intent.putExtra(Difficultes.MODE_PARTIE,MODE_DE_JEU);
                 intent.putStringArrayListExtra(LISTE_J1, listeJ1);
                 intent.putStringArrayListExtra(LISTE_J2, listeJ2);
                 startActivity(intent);
