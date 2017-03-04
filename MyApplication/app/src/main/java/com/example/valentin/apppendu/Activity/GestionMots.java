@@ -260,7 +260,7 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
         dialogSuppression.setView(boiteDialog);
 
         TextView textViewDialog = (TextView) boiteDialog.findViewById(R.id.textViewSuppressionDialog);
-        textViewDialog.setText("Voulez vous vraiment supprimer \"" + nom + "\" de la catégorie \""+ nomCategorie + "\" ?");
+        textViewDialog.setText("Voulez vous vraiment supprimer \"" + motSupprimer.getLibelle() + "\" de la catégorie \""+ nomCategorie + "\" ?");
 
         dialogSuppression.setPositiveButton(getResources().getString(R.string.oui),
                 new DialogInterface.OnClickListener() {

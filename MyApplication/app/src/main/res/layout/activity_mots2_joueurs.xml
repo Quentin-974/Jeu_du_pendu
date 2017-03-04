@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_nomJoueur"
         android:textSize="@dimen/tailleTitre"
+        android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margeTopTitre"/>
 
@@ -31,19 +32,20 @@
 
     <ImageButton
         android:id="@+id/imgPrecedentMots"
-        android:layout_width="@dimen/tailleImgEssai"
-        android:layout_height="@dimen/tailleImgEssai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/fleche"/>
+        android:src="@drawable/ic_retour_blanc"
+        android:backgroundTint="@color/colorPrimary"/>
 
     <ImageButton
         android:id="@+id/imgSuivantMots"
-        android:layout_width="@dimen/tailleImgEssai"
-        android:layout_height="@dimen/tailleImgEssai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:src="@drawable/fleche"
-        android:rotation="180"
+        android:src="@drawable/ic_suivant_blanc"
+        android:backgroundTint="@color/colorPrimary"
         android:onClick="clicSuivantMots"/>
 
 </RelativeLayout>

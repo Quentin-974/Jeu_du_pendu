@@ -17,83 +17,58 @@
         android:layout_height="wrap_content"
         android:text="@string/titre2Joueur"
         android:layout_centerHorizontal="true"
-        android:textSize="50dp"/>
-
-    <View
-        android:id="@+id/barre"
-        android:layout_width="fill_parent"
-        android:layout_height="2dip"
-        android:layout_marginTop="30dip"
-        android:layout_marginBottom="15dip"
-        android:layout_below="@id/titre2Joueurs"
-        android:background="#0000FF" />
-
-    <TextView
-        android:id="@+id/libelleJoueur1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nomJoueur1"
-        android:layout_below="@id/barre"
-        android:layout_marginTop="@dimen/margeTopTitre"
-        android:textSize="@dimen/tailleLibelle"/>
+        android:textStyle="bold"
+        android:textSize="25dp"/>
 
     <EditText
         android:id="@+id/nomJoueur1"
         android:layout_width="match_parent"
+        android:hint="@string/nomJoueur1"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/libelleJoueur1"
-        android:layout_alignBaseline="@id/libelleJoueur1"/>
-
-    <TextView
-        android:id="@+id/libelleJoueur2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nomJoueur2"
-        android:layout_below="@id/libelleJoueur1"
-        android:layout_marginTop="@dimen/margeTopTitre"
-        android:textSize="@dimen/tailleLibelle"/>
+        android:layout_below="@id/titre2Joueurs"/>
 
     <EditText
         android:id="@+id/nomJoueur2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/libelleJoueur2"
-        android:layout_alignBaseline="@id/libelleJoueur2"/>
+        android:hint="@string/nomJoueur2"
+        android:layout_below="@+id/nomJoueur1"/>
 
     <TextView
         android:id="@+id/texteNombreMots"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nombreMots"
-        android:layout_below="@id/libelleJoueur2"
-        android:layout_marginTop="@dimen/margeTopNumberP"
+        android:layout_below="@id/nomJoueur2"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
         android:textSize="@dimen/tailleLibelle"/>
 
     <NumberPicker
         android:id="@+id/nombreMots"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margeLeftNumberP"
-        android:layout_toRightOf="@id/texteNombreMots"
-        android:layout_below="@id/libelleJoueur2"
-        android:scaleX="0.8"
-        android:scaleY="0.8"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/texteNombreMots"
         />
 
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:text="Precedent "
+        android:src="@drawable/ic_retour_blanc"
+        android:backgroundTint="@color/colorPrimary"
         android:layout_alignParentBottom="true"
         android:onClick="pagePrecedente"/>
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="Suivant "
+        android:src="@drawable/ic_suivant_blanc"
+        android:backgroundTint="@color/colorPrimary"
         android:onClick="pageSuivante"/>
 </RelativeLayout>

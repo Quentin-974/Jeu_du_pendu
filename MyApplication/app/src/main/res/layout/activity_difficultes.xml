@@ -16,37 +16,47 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:textSize="@dimen/tailleTitre"
+        android:textStyle="bold"
         android:text="@string/titreDifficulte"
         android:id="@+id/textView" />
 
-    <ImageButton
+    <Button
         android:id="@+id/imgMoyen"
         android:layout_width="@dimen/tailleImgEssai"
         android:layout_marginLeft="@dimen/margeImgGauche"
         android:layout_height="@dimen/tailleImgEssai"
+        android:textStyle="bold"
+        android:backgroundTint="@color/colorDarkGray"
+        android:text="@string/libelleMoyen"
+        android:textColor="@color/colorWhite"
         android:layout_centerVertical="true"
-        android:src="@drawable/dab"
         android:layout_centerHorizontal="true"
         android:onClick="clicDifficulte"/>
 
 
-    <ImageButton
+    <Button
         android:id="@+id/imgFacile"
         android:layout_width="@dimen/tailleImgEssai"
         android:layout_height="@dimen/tailleImgEssai"
+        android:textStyle="bold"
+        android:backgroundTint="@color/colorGreen"
         android:layout_toLeftOf="@id/imgMoyen"
+        android:text="@string/libelleFacile"
+        android:textColor="@color/colorWhite"
         android:layout_centerVertical="true"
-        android:src="@drawable/dab"
         android:onClick="clicDifficulte" />
 
 
-    <ImageButton
+    <Button
         android:id="@+id/imgDifficile"
+        android:textStyle="bold"
+        android:backgroundTint="@color/colorRed"
+        android:text="@string/libelleDifficile"
+        android:textColor="@color/colorWhite"
         android:layout_width="@dimen/tailleImgEssai"
         android:layout_height="@dimen/tailleImgEssai"
         android:layout_marginLeft="@dimen/margeImgGauche"
         android:layout_toRightOf="@id/imgMoyen"
-        android:src="@drawable/dab"
         android:layout_centerVertical="true"
         android:onClick="clicDifficulte"/>
 
@@ -60,30 +70,5 @@
         android:layout_centerVertical="true"
         android:onClick="clicPrecedent"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/libelleFacile"
-        android:lines="2"
-        android:layout_alignLeft="@id/imgFacile"
-        android:layout_below="@id/imgFacile"
-        android:layout_toStartOf="@+id/imgMoyen" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:lines="2"
-        android:text="@string/libelleMoyen"
-        android:layout_alignLeft="@id/imgMoyen"
-        android:layout_below="@id/imgFacile"
-        android:layout_toStartOf="@+id/imgDifficile" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:lines="2"
-        android:text="@string/libelleDifficile"
-        android:layout_below="@id/imgFacile"
-        android:layout_toEndOf="@+id/textView" />
 
 </RelativeLayout>
