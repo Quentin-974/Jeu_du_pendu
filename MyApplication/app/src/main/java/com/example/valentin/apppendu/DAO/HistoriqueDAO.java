@@ -77,10 +77,15 @@ public class HistoriqueDAO {
         return cursor;
     }
 
+    public Cursor getAllHistorique() {
+        Cursor cursor = database.rawQuery(GestionBDHistorique.REQUETE_HISTORIQUE_ALL, null);
+        return cursor;
+    }
+
     public ArrayList<Score> recuperer10(){
-        Cursor curseur = database.rawQuery("Select * FROM " + GestionBDHistorique.NOM_TABLE_HISTORIQUE+ " JOIN "
-                        + GestionBDJoueur.NOM_TABLE_JOUEUR + " ON " +  GestionBDHistorique.HISTORIQUE_JOUEUR + " = " + GestionBDJoueur.JOUEUR_CLEF +
-                        " ORDER BY DESC " +  GestionBDHistorique.HISTORIQUE_CLEF + " LIMIT 10 ",null);
+        Cursor curseur = database.rawQuery("Select * FROM " + GestionBDHistorique.NOM_TABLE_HISTORIQUE + " JOIN "
+                + GestionBDJoueur.NOM_TABLE_JOUEUR + " ON " +  GestionBDHistorique.NOM_TABLE_HISTORIQUE + "." + GestionBDHistorique.HISTORIQUE_JOUEUR + " = " + GestionBDJoueur.NOM_TABLE_JOUEUR + "."
+                + GestionBDJoueur.JOUEUR_CLEF + " LIMIT 10;",null);
         ArrayList<Score> listeScore = new ArrayList<Score>();
         for(curseur.moveToFirst(); !curseur.isAfterLast(); curseur.moveToNext()){
             Score score = new Score(curseur.getInt(curseur.getColumnIndex(GestionBDHistorique.HISTORIQUE_CLEF)),
@@ -98,9 +103,10 @@ public class HistoriqueDAO {
     }
 
     public ArrayList<Score> recupererScore(String nom,int difficulte){
-        Cursor curseur = database.rawQuery("Select * FROM " + GestionBDHistorique.NOM_TABLE_HISTORIQUE + " JOIN " + GestionBDJoueur.NOM_TABLE_JOUEUR + " ON " +
-                                            GestionBDHistorique.HISTORIQUE_JOUEUR + " = " + GestionBDJoueur.JOUEUR_CLEF + " WHERE " + GestionBDJoueur.JOUEUR_NOM + " = ?;",
-                                            new String[]{nom});
+        Cursor curseur = database.rawQuery("Select * FROM " + GestionBDHistorique.NOM_TABLE_HISTORIQUE + " JOIN "
+                        + GestionBDJoueur.NOM_TABLE_JOUEUR + " ON " +  GestionBDHistorique.NOM_TABLE_HISTORIQUE + "." + GestionBDHistorique.HISTORIQUE_JOUEUR + " = " + GestionBDJoueur.NOM_TABLE_JOUEUR + "."
+                        + GestionBDJoueur.JOUEUR_CLEF + " WHERE " +  GestionBDJoueur.NOM_TABLE_JOUEUR + "."
+                + GestionBDJoueur.JOUEUR_NOM + " = ? AND " + GestionBDHistorique.HISTORIQUE_DIFFICULTE + " = ? ;", new String[]{nom,String.valueOf(difficulte)});
         ArrayList<Score> listeScore = new ArrayList<Score>();
         for(curseur.moveToFirst(); !curseur.isAfterLast(); curseur.moveToNext()){
             Score score = new Score(curseur.getInt(curseur.getColumnIndex(GestionBDHistorique.HISTORIQUE_CLEF)),

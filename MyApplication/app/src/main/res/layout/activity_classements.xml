@@ -51,8 +51,8 @@
                         android:text="@string/label_onglet1"
                         android:textSize="25dp"/>
                     <ListView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
                         android:id="@+id/ListeFacile"></ListView>
                     <ImageButton
                         android:layout_width="wrap_content"
@@ -78,8 +78,8 @@
                         android:text="@string/label_onglet2"
                         android:textSize="25dp"/>
                     <ListView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
                         android:id="@+id/ListeNormal"></ListView>
                     <ImageButton
                         android:layout_width="wrap_content"
@@ -105,8 +105,8 @@
                         android:text="@string/label_onglet3"
                         android:textSize="25dp"/>
                     <ListView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
                         android:id="@+id/ListeDifficile"></ListView>
                     <ImageButton
                         android:layout_width="wrap_content"

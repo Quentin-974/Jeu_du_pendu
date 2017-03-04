@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class GestionBD extends SQLiteOpenHelper {
 
     /** Numéro de version de la base de données */
-    private static final int VERSION = 6;
+    private static final int VERSION = 17;
 
     /** Nom de la base de données dans laquelle seront conservé les catégories */
     private static final String NOM_BD = "pendu.db";
@@ -44,6 +44,13 @@ public class GestionBD extends SQLiteOpenHelper {
 
         enregistrement.put(GestionBDCategorie.CATEGORIE_NOM, "Sport");
         db.insert(GestionBDCategorie.NOM_TABLE_CATEGORIE, GestionBDCategorie.CATEGORIE_NOM, enregistrement);
+
+        enregistrement.put(GestionBDJoueur.JOUEUR_NOM, "Patrick");
+        db.insert(GestionBDJoueur.NOM_TABLE_JOUEUR, GestionBDJoueur.JOUEUR_NOM, enregistrement);
+
+        enregistrement.put(GestionBDJoueur.JOUEUR_NOM, "ZENNNN");
+        db.insert(GestionBDJoueur.NOM_TABLE_JOUEUR, GestionBDJoueur.JOUEUR_NOM, enregistrement);
+
 
         // Insertion des mots de base dans la catégorie Autre
         enregistrement.put(GestionBDMot.MOT_NOM, "mot");
@@ -147,7 +154,6 @@ public class GestionBD extends SQLiteOpenHelper {
         enregistrement.put(GestionBDMot.MOT_CATEGORIE, "2");
         db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
 
-
         // Insertion des mots de base dans la catégorie Sport
         enregistrement.put(GestionBDMot.MOT_NOM, "golf");
         enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "0");
@@ -199,27 +205,22 @@ public class GestionBD extends SQLiteOpenHelper {
         enregistrement.put(GestionBDMot.MOT_CATEGORIE, "3");
         db.insert(GestionBDMot.NOM_TABLE_MOT, GestionBDMot.MOT_NOM, enregistrement);
 
-        // AJOUT lignes JOUEURS
-        enregistrement.put(GestionBDJoueur.JOUEUR_NOM, "Patrick");
-        db.insert(GestionBDJoueur.NOM_TABLE_JOUEUR, GestionBDJoueur.JOUEUR_NOM, enregistrement);
-
-        enregistrement.put(GestionBDJoueur.JOUEUR_NOM, "ZENNNN");
-        db.insert(GestionBDJoueur.NOM_TABLE_JOUEUR, GestionBDJoueur.JOUEUR_NOM, enregistrement);
-
         // AJOUT lignes HISTORIQUE
-        enregistrement.put(GestionBDHistorique.HISTORIQUE_DATE, "01/03/2017");
-        enregistrement.put(GestionBDHistorique.HISTORIQUE_HEURE, "11h06");
-        enregistrement.put(GestionBDHistorique.HISTORIQUE_NB_GAGNES, 5);
-        enregistrement.put(GestionBDHistorique.HISTORIQUE_JOUEUR, 1);
-        enregistrement.put(GestionBDHistorique.HISTORIQUE_DIFFICULTE, 0);
-        db.insert(GestionBDHistorique.NOM_TABLE_HISTORIQUE, GestionBDHistorique.HISTORIQUE_DATE, enregistrement);
+        ContentValues values = new ContentValues();
 
-        enregistrement.put(GestionBDHistorique.HISTORIQUE_DATE, "15/10/2017");
-        enregistrement.put(GestionBDHistorique.HISTORIQUE_HEURE, "17h35");
-        enregistrement.put(GestionBDHistorique.HISTORIQUE_NB_GAGNES, 3);
-        enregistrement.put(GestionBDHistorique.HISTORIQUE_JOUEUR, 2);
-        enregistrement.put(GestionBDHistorique.HISTORIQUE_DIFFICULTE, 2);
-        db.insert(GestionBDHistorique.NOM_TABLE_HISTORIQUE, GestionBDHistorique.HISTORIQUE_DATE, enregistrement);
+        values.put(GestionBDHistorique.HISTORIQUE_DATE, "01/03/2017");
+        values.put(GestionBDHistorique.HISTORIQUE_HEURE, "11h06");
+        values.put(GestionBDHistorique.HISTORIQUE_NB_GAGNES, 5);
+        values.put(GestionBDHistorique.HISTORIQUE_JOUEUR, 1);
+        values.put(GestionBDHistorique.HISTORIQUE_DIFFICULTE, 0);
+        db.insert(GestionBDHistorique.NOM_TABLE_HISTORIQUE, GestionBDHistorique.HISTORIQUE_DATE, values);
+
+        values.put(GestionBDHistorique.HISTORIQUE_DATE, "15/10/2017");
+        values.put(GestionBDHistorique.HISTORIQUE_HEURE, "17h35");
+        values.put(GestionBDHistorique.HISTORIQUE_NB_GAGNES, 3);
+        values.put(GestionBDHistorique.HISTORIQUE_JOUEUR, 2);
+        values.put(GestionBDHistorique.HISTORIQUE_DIFFICULTE, 2);
+        db.insert(GestionBDHistorique.NOM_TABLE_HISTORIQUE, GestionBDHistorique.HISTORIQUE_DATE, values);
     }
 
     @Override
