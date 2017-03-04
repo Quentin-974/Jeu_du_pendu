@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.valentin.apppendu.DAO.CategorieDAO;
 import com.example.valentin.apppendu.GestionBD.GestionBD;
 import com.example.valentin.apppendu.GestionBD.GestionBDCategorie;
 import com.example.valentin.apppendu.R;
@@ -31,13 +32,7 @@ public class MainCategories extends AppCompatActivity {
 
     private String nomJoueur;
 
-    // TODO passer par le DAO
-
-    /** Instance de la classe de gestion des categories dans la base de données */
-    private GestionBD gestionBD;
-
-    /** Base de données crée */
-    private SQLiteDatabase base;
+    private CategorieDAO categorieDAO;
 
     /** Curseur utilisé pour la lecture de données dans la base de données */
     private Cursor curseur;
@@ -48,6 +43,17 @@ public class MainCategories extends AppCompatActivity {
     /** Liste contenant les valeurs présentes dans la table catégorie */
     private ListView listeView;
 
+    @Override
+    protected void onResume() {
+        categorieDAO.open();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        categorieDAO.close();
+        super.onPause();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +62,7 @@ public class MainCategories extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         // Si je joueur n'a pas de nom on lui affiche une boite de dialogue
-        if(extras== null) {
-
+        if(extras == null) {
 
             //On instancie notre layout en tant que View
             LayoutInflater factory = LayoutInflater.from(this);
@@ -97,14 +102,11 @@ public class MainCategories extends AppCompatActivity {
         }
         listeView = (ListView) findViewById(R.id.listeView_categorie);
 
-        // Gestionnaire de la table et création de la base de données si elle n'existe pas
-        gestionBD = GestionBD.getInstance(this);
-
-        // Récupération de la base de données
-        base = gestionBD.getWritableDatabase();
+        categorieDAO = new CategorieDAO(this);
+        categorieDAO.open();
 
         // Initialisation d'un curseur pour récupérer toutes les données de la table
-        curseur = base.rawQuery(GestionBDCategorie.REQUETE_CATEGORIE_ALL, null);
+        curseur = categorieDAO.getAllCategories();
 
         adaptateur = new SimpleCursorAdapter(this,
                 R.layout.ligne_liste, curseur,
@@ -121,6 +123,7 @@ public class MainCategories extends AppCompatActivity {
                 Intent intent = new Intent(MainCategories.this, Difficultes.class);
                 intent.putExtra(CATEGORIE_PARTIE, categorie);
                 intent.putExtra(JOUEUR_PARTIE,nomJoueur);
+                categorieDAO.close();
                 startActivity(intent);
             }
         });
