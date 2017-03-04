@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 import com.example.valentin.apppendu.R;
@@ -80,7 +81,7 @@ public class Difficultes extends Activity {
     public void clicDifficulte(View bouton) {
 
         Bundle extras = getIntent().getExtras();
-        if(extras != null){
+        if(extras!= null){
             categorie = extras.getInt(MainCategories.CATEGORIE_PARTIE);
             joueur = extras.getString(MainCategories.JOUEUR_PARTIE);
         }

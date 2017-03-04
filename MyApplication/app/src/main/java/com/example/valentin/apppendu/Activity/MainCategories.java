@@ -118,7 +118,6 @@ public class MainCategories extends AppCompatActivity {
                                     long id) {
                 curseur.moveToPosition(position);
                 categorie = curseur.getInt(curseur.getColumnIndex(GestionBDCategorie.CATEGORIE_CLEF));
-                //Toast.makeText(MainCategories.this,categorie,Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainCategories.this, Difficultes.class);
                 intent.putExtra(CATEGORIE_PARTIE, categorie);
                 intent.putExtra(JOUEUR_PARTIE,nomJoueur);
