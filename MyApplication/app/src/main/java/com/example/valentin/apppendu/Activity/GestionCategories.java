@@ -93,10 +93,8 @@ public class GestionCategories extends Activity implements View.OnClickListener,
         // Adapatateur qui permet de faire le lien entre la listeView et le curseur
         adaptateur = new SimpleCursorAdapter(this,
                                                 R.layout.ligne_liste, curseur,
-                                                new String[] {GestionBDCategorie.CATEGORIE_CLEF,
-                                                              GestionBDCategorie.CATEGORIE_NOM},
-                                                new int[] {R.id.id_categorie,
-                                                           R.id.nom_categorie}, 0);
+                                                new String[] {GestionBDCategorie.CATEGORIE_NOM},
+                                                new int[] {R.id.nom_categorie}, 0);
 
         listeView.setAdapter(adaptateur);
 

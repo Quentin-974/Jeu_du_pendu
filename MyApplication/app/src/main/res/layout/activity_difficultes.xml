@@ -52,10 +52,11 @@
 
     <ImageButton
         android:id="@+id/imgPrecedent"
-        android:layout_width="@dimen/tailleImgEssai"
-        android:layout_height="@dimen/tailleImgEssai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/fleche"
+        android:src="@drawable/ic_retour_blanc"
+        android:backgroundTint="@color/colorPrimary"
         android:layout_centerVertical="true"
         android:onClick="clicPrecedent"/>
 

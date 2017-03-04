@@ -15,7 +15,8 @@
         android:id="@+id/textViewTitreGestionCategorie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
         android:gravity="center"
         android:layout_marginBottom="20dp"
         android:text="@string/libelle_GestionCategorie"/>
@@ -24,16 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:srcCompat="@mipmap/ic_launcher"
+        android:src="@drawable/ic_retour_blanc"
+        android:backgroundTint="@color/colorPrimary"
         android:id="@+id/buttonRetourGestionCategoriesMenu" />
-
-    <ListView
-        android:id="@+id/listeView_categorie"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/buttonRetourGestionCategoriesMenu"
-        android:layout_marginBottom="5dp"
-        android:layout_below="@+id/textViewTitreGestionCategorie"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabCategories"
@@ -44,6 +38,13 @@
         android:src="@drawable/ic_add_white_24dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
+
+    <ListView
+        android:id="@+id/listeView_categorie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewTitreGestionCategorie"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
