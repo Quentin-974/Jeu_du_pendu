@@ -37,7 +37,7 @@
     <string name="libelle_menu_supprimer_categories">Supprimer</string>
 
     <!-- Main categorie -->
-    <string name="libelle_MainCategorie">Categories</string>
+    <string name="libelle_MainCategorie">Sélectionnez une catégorie</string>
     <string name="titreNom">Entrez votre nom!</string>
     <string name="boutonPositif">Ok </string>
     <string name="boutonNegatif">Annuler </string>

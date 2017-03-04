@@ -24,7 +24,8 @@
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/fleche"
+        app:srcCompat="@drawable/ic_retour_blanc"
+        android:backgroundTint="@color/colorPrimary"
         android:id="@+id/imageButtonQuitter" />
 
     <ImageButton
@@ -33,6 +34,7 @@
         app:srcCompat="@drawable/d_gris"
         android:layout_alignTop="@+id/ibC"
         android:layout_centerHorizontal="true"
+        android:background="@null"
         android:id="@+id/ibD" />
 
     <ImageButton
@@ -41,6 +43,7 @@
         app:srcCompat="@drawable/e_gris"
         android:layout_alignTop="@+id/ibD"
         android:layout_toEndOf="@+id/ibD"
+        android:background="@null"
         android:id="@+id/ibE" />
 
     <ImageButton
@@ -49,6 +52,7 @@
         app:srcCompat="@drawable/f_gris"
         android:layout_alignTop="@+id/ibE"
         android:layout_toEndOf="@+id/ibE"
+        android:background="@null"
         android:id="@+id/ibF" />
 
     <ImageButton
@@ -57,6 +61,7 @@
         app:srcCompat="@drawable/k_gris"
         android:id="@+id/ibK"
         android:layout_below="@+id/ibD"
+        android:background="@null"
         android:layout_alignStart="@+id/ibD" />
 
     <ImageButton
@@ -65,6 +70,7 @@
         app:srcCompat="@drawable/l_gris"
         android:layout_below="@+id/ibE"
         android:layout_toEndOf="@+id/ibD"
+        android:background="@null"
         android:id="@+id/ibL" />
 
     <ImageButton
@@ -73,6 +79,7 @@
         app:srcCompat="@drawable/n_gris"
         android:layout_below="@+id/ibG"
         android:layout_toEndOf="@+id/ibF"
+        android:background="@null"
         android:id="@+id/ibN" />
 
     <ImageButton
@@ -81,6 +88,7 @@
         app:srcCompat="@drawable/m_gris"
         android:id="@+id/ibM"
         android:layout_below="@+id/ibE"
+        android:background="@null"
         android:layout_toEndOf="@+id/ibE" />
 
     <ImageButton
@@ -89,6 +97,7 @@
         app:srcCompat="@drawable/g_gris"
         android:id="@+id/ibG"
         android:layout_alignTop="@+id/ibF"
+        android:background="@null"
         android:layout_toEndOf="@+id/ibF" />
 
     <ImageButton
@@ -97,6 +106,7 @@
         app:srcCompat="@drawable/j_gris"
         android:id="@+id/ibJ"
         android:layout_below="@+id/ibC"
+        android:background="@null"
         android:layout_toStartOf="@+id/ibD" />
 
     <ImageButton
@@ -105,6 +115,7 @@
         app:srcCompat="@drawable/c_gris"
         android:id="@+id/ibC"
         android:layout_alignTop="@+id/ibB"
+        android:background="@null"
         android:layout_toStartOf="@+id/ibD" />
 
     <ImageButton
@@ -113,6 +124,7 @@
         app:srcCompat="@drawable/b_gris"
         android:id="@+id/ibB"
         android:layout_above="@+id/ibH"
+        android:background="@null"
         android:layout_toStartOf="@+id/ibJ" />
 
     <ImageButton
@@ -121,6 +133,7 @@
         app:srcCompat="@drawable/i_gris"
         android:id="@+id/ibI"
         android:layout_below="@+id/ibB"
+        android:background="@null"
         android:layout_toEndOf="@+id/ibH" />
 
     <ImageButton
@@ -128,6 +141,7 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/y_gris"
         android:id="@+id/ibY"
+        android:background="@null"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/ibX" />
 
@@ -136,6 +150,7 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/z_gris"
         android:id="@+id/ibZ"
+        android:background="@null"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/ibY" />
 
@@ -144,6 +159,7 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/x_gris"
         android:id="@+id/ibX"
+        android:background="@null"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/ibW" />
 
@@ -152,6 +168,7 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/w_gris"
         android:id="@+id/ibW"
+        android:background="@null"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/ibP" />
 
@@ -160,6 +177,7 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/v_gris"
         android:id="@+id/ibV"
+        android:background="@null"
         android:layout_alignParentBottom="true"
         android:layout_toStartOf="@+id/ibW" />
 
@@ -168,6 +186,7 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/p_gris"
         android:id="@+id/ibP"
+        android:background="@null"
         android:layout_above="@+id/ibW"
         android:layout_toEndOf="@+id/ibO" />
 
@@ -176,6 +195,7 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/q_gris"
         android:id="@+id/ibQ"
+        android:background="@null"
         android:layout_alignTop="@+id/ibP"
         android:layout_toEndOf="@+id/ibV" />
 
@@ -184,6 +204,7 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/r_gris"
         android:id="@+id/ibR"
+        android:background="@null"
         android:layout_above="@+id/ibY"
         android:layout_toEndOf="@+id/ibW" />
 
@@ -192,6 +213,7 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/s_gris"
         android:id="@+id/ibS"
+        android:background="@null"
         android:layout_alignTop="@+id/ibR"
         android:layout_toEndOf="@+id/ibR" />
 
@@ -200,6 +222,7 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/t_gris"
         android:id="@+id/ibT"
+        android:background="@null"
         android:layout_above="@+id/ibZ"
         android:layout_toEndOf="@+id/ibS" />
 
@@ -208,6 +231,7 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/u_gris"
         android:id="@+id/ibU"
+        android:background="@null"
         android:layout_alignTop="@+id/ibT"
         android:layout_toEndOf="@+id/ibZ" />
 
@@ -216,6 +240,7 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/o_gris"
         android:id="@+id/ibO"
+        android:background="@null"
         android:layout_alignTop="@+id/ibP"
         android:layout_alignStart="@+id/ibH" />
 
@@ -224,6 +249,7 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/h_gris"
         android:id="@+id/ibH"
+        android:background="@null"
         android:layout_above="@+id/ibO"
         android:layout_toStartOf="@+id/ibB" />
 
@@ -258,6 +284,7 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/a_gris"
         android:id="@+id/ibA"
+        android:background="@null"
         android:layout_below="@+id/linearMot"
         android:layout_alignStart="@+id/ibH" />
 

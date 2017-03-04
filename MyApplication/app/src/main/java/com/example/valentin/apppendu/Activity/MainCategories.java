@@ -31,6 +31,8 @@ public class MainCategories extends AppCompatActivity {
 
     private String nomJoueur;
 
+    // TODO passer par le DAO
+
     /** Instance de la classe de gestion des categories dans la base de données */
     private GestionBD gestionBD;
 
@@ -106,10 +108,8 @@ public class MainCategories extends AppCompatActivity {
 
         adaptateur = new SimpleCursorAdapter(this,
                 R.layout.ligne_liste, curseur,
-                new String[] {GestionBDCategorie.CATEGORIE_CLEF,
-                        GestionBDCategorie.CATEGORIE_NOM},
-                new int[] {R.id.id_categorie,
-                        R.id.nom_categorie}, 0);
+                new String[] {GestionBDCategorie.CATEGORIE_NOM},
+                new int[] {R.id.nom_categorie}, 0);
 
         listeView.setAdapter(adaptateur);
         listeView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

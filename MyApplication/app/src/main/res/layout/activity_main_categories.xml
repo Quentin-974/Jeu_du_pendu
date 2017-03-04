@@ -15,7 +15,8 @@
         android:id="@+id/textViewTitreGestionCategorie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
         android:gravity="center"
         android:layout_marginBottom="20dp"
         android:text="@string/libelle_MainCategorie"/>
@@ -24,7 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:srcCompat="@drawable/fleche"
+        android:src="@drawable/ic_retour_blanc"
+        android:backgroundTint="@color/colorPrimary"
         android:id="@+id/buttonRetourGestionCategories"
         android:onClick="vueAccueil"/>
 

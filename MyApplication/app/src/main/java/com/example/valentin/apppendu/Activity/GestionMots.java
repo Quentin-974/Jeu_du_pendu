@@ -108,11 +108,9 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
 
         // Adaptateur qui permet de faire le lien entre la listView et le curseur
         adaptateur = new SimpleCursorAdapter(this,
-                R.layout.ligne_liste, curseur,
-                new String[] {GestionBDMot.MOT_NOM,
-                        GestionBDMot.MOT_CATEGORIE},
-                new int[] {R.id.id_categorie,
-                        R.id.nom_categorie}, 0);
+                R.layout.ligne_liste_mots, curseur,
+                new String[] {GestionBDMot.MOT_NOM},
+                new int[] {R.id.nom_categorie}, 0);
 
         listeView.setAdapter(adaptateur);
 

@@ -13,15 +13,18 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        app:srcCompat="@color/colorPrimaryDark"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/button1Joueur"
         android:layout_centerHorizontal="true"
+        android:src="@drawable/background"
         android:id="@+id/imageViewPendu" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
+        app:srcCompat="@drawable/ic_trophy_variant"
+        android:background="@null"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:id="@+id/imageButtonScores"
@@ -44,38 +47,50 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/imageViewPendu"
+        android:layout_above="@+id/button2Joueurs"
         android:id="@+id/button1Joueur"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@color/colorWhite"
+        android:drawableEnd="@drawable/ic_un_joueur"
         android:onClick="choixCategorie"/>
 
     <Button
         android:text="@string/libelleButton2Joueur"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/button1Joueur"
+        android:textColor="@color/colorWhite"
+        android:layout_above="@+id/buttonParametres"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:drawableEnd="@drawable/ic_deux_joueurs"
         android:layout_centerHorizontal="true"
         android:id="@+id/button2Joueurs"
         android:onClick="page2Joueur" />
 
     <Button
         android:text="@string/libelleButtonParametres"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:id="@+id/buttonParametres"
-        android:layout_below="@+id/button2Joueurs"
+        android:backgroundTint="@color/colorDarkGray"
+        android:textColor="@color/colorWhite"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
+        android:layout_marginBottom="20dp"
         android:onClick="parametres"/>
 
     <Button
         android:text="@string/libelleButtonHistorique"
         android:layout_width="match_parent"
+        android:backgroundTint="@color/colorDarkGray"
         android:layout_height="45dp"
+        android:textColor="@color/colorWhite"
         android:layout_marginTop="10dp"
         android:id="@+id/buttonHistorique"
-        android:layout_below="@+id/buttonParametres"
-        android:layout_alignParentStart="true"
+        android:layout_toRightOf="@id/buttonParametres"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
         android:onClick="historique"/>
 
 </RelativeLayout>
