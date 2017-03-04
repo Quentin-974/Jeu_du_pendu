@@ -246,8 +246,8 @@
         android:layout_alignStart="@+id/ibA">
         <TextView
             android:id="@+id/tvMot"
-            android:textSize="40dp"
-            android:letterSpacing="0.5"
+            android:textSize="25dp"
+            android:letterSpacing="0.3"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

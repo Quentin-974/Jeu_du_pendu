@@ -34,7 +34,7 @@ public class Difficultes extends Activity {
     public static final String DIFFICULTE_PARTIE = "DIFFICULTE";
 
     /** Categorie des mots  */
-    private String categorie;
+    private int categorie;
 
     /** Nom du joueur de la partie */
     private String joueur;
@@ -81,13 +81,13 @@ public class Difficultes extends Activity {
     public void clicDifficulte(View bouton) {
 
         Bundle extras = getIntent().getExtras();
-        if(extras != null){
+        if(extras!= null){
             categorie = extras.getInt(MainCategories.CATEGORIE_PARTIE);
             joueur = extras.getString(MainCategories.JOUEUR_PARTIE);
         }
         // Clique sur l'imageButton facile
         if(bouton.getId() == R.id.imgFacile) {
-            difficulte = 1;
+            difficulte = 0;
             Intent intent = new Intent(Difficultes.this, MainJeu.class);
             intent.putExtra(DIFFICULTE_PARTIE, difficulte);
             intent.putExtra(CATEGORIE_PARTIE,categorie);
@@ -96,7 +96,7 @@ public class Difficultes extends Activity {
             startActivity(intent);
         // Clique sur l'imageButton moyen
         } else if(bouton.getId() == R.id.imgMoyen) {
-            difficulte = 2;
+            difficulte = 1;
             Intent intent = new Intent(Difficultes.this, MainJeu.class);
             intent.putExtra(DIFFICULTE_PARTIE, difficulte);
             intent.putExtra(CATEGORIE_PARTIE,categorie);
@@ -105,7 +105,7 @@ public class Difficultes extends Activity {
             startActivity(intent);
             // Clique sur l'imageButton difficile
         } else {
-            difficulte = 3;
+            difficulte = 2;
             Intent intent = new Intent(Difficultes.this, MainJeu.class);
             intent.putExtra(DIFFICULTE_PARTIE, difficulte);
             intent.putExtra(CATEGORIE_PARTIE,categorie);

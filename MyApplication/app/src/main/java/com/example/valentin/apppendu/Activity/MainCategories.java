@@ -117,7 +117,7 @@ public class MainCategories extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 curseur.moveToPosition(position);
-                categorie = Integer.parseInt(curseur.getString(curseur.getColumnIndex("_id")));
+                categorie = curseur.getInt(curseur.getColumnIndex(GestionBDCategorie.CATEGORIE_CLEF));
                 Intent intent = new Intent(MainCategories.this, Difficultes.class);
                 intent.putExtra(CATEGORIE_PARTIE, categorie);
                 intent.putExtra(JOUEUR_PARTIE,nomJoueur);

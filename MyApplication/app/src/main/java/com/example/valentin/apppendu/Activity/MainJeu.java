@@ -6,23 +6,25 @@ import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.DateTimeKeyListener;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.valentin.apppendu.ClasseMetier.Categorie;
-import com.example.valentin.apppendu.DAO.CategorieDAO;
+import com.example.valentin.apppendu.ClasseMetier.Joueur;
+import com.example.valentin.apppendu.DAO.HistoriqueDAO;
+import com.example.valentin.apppendu.DAO.JoueurDAO;
 import com.example.valentin.apppendu.DAO.MotDAO;
 import com.example.valentin.apppendu.GestionBD.GestionBDMot;
 import com.example.valentin.apppendu.R;
 
-import org.w3c.dom.Text;
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Activité du tableau de jeu
@@ -44,6 +46,9 @@ public class MainJeu extends AppCompatActivity {
     /** ImageView qui affiche le pendu en fonction du nombre d'erreurs */
     private ImageView imagePendu;
 
+    /** TextView du score en cours du joueur */
+    private TextView tvScore;
+
     /** Nom du joueur actif */
     private String nomJoueur;
 
@@ -57,10 +62,13 @@ public class MainJeu extends AppCompatActivity {
     private boolean modeJeu;
 
     /** DAO */
-    private CategorieDAO categorieDAO;
+    private MotDAO motDAO;
 
     /** Liste des mots à trouver pour un joueur */
     private ArrayList<String> listeMot1Joueur;
+
+    /** Score du joueur en mode 1 joueur */
+    private int score1Joueur = 0;
 
     /**
      * @param savedInstanceState
@@ -70,17 +78,13 @@ public class MainJeu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_jeu);
 
-        /*
-            TODO :
-             - Récupérer les valeurs pour la catégorie du mot
-             - Générer une liste de mot aléatoire avec les valeurs récupérées
-             - Séparer les execution en fonction d'un boolean qui détermine si 1 ou 2 joueurs
-         */
-        MotDAO categorieDAO = new MotDAO(this);
-        categorieDAO.open();
+        motDAO = new MotDAO(this);
+        this.motDAO.open();
         initImageButton();
         TextViewMotAChercher = (TextView) findViewById(R.id.tvMot);
         imagePendu = (ImageView) findViewById(R.id.imageViewPendu);
+        tvScore = (TextView) findViewById(R.id.tvScore);
+
 
         // Recupère les infos de l'activité précédente
         Bundle extras = getIntent().getExtras();
@@ -89,41 +93,53 @@ public class MainJeu extends AppCompatActivity {
             categorie = extras.getInt(Difficultes.CATEGORIE_PARTIE);
             difficulte = extras.getInt(Difficultes.DIFFICULTE_PARTIE);
             nomJoueur = extras.getString(Difficultes.JOUEUR_PARTIE);
+            if (extras.getInt("score") > 0) {
+                score1Joueur = extras.getInt("score");
+            }
         }
-        Toast.makeText(this, String.valueOf(categorie), Toast.LENGTH_SHORT).show();
 
+        tvScore.setText("Score : " + String.valueOf(score1Joueur));
+
+        listeMot1Joueur = new ArrayList<String>();
 
         if(!modeJeu) {
-            //TODO générer une liste de mot à trouver
-            Cursor curseur = categorieDAO.getMotsCategorie(1, difficulte);
 
-            for(curseur.moveToFirst(); !curseur.isAfterLast(); curseur.moveToNext()) {
-                listeMot1Joueur.add(curseur.getString(curseur.getColumnIndex(GestionBDMot.MOT_NOM)));
+            if (extras.getStringArrayList("listeMotUtilises") != null) {
+                listeMot1Joueur = extras.getStringArrayList("listeMotUtilises");
+            } else {
+                Cursor curseur = this.motDAO.getMotsCategorie(categorie, difficulte);
+                for(curseur.moveToFirst(); !curseur.isAfterLast(); curseur.moveToNext()) {
+                    listeMot1Joueur.add(curseur.getString(curseur.getColumnIndex(GestionBDMot.MOT_NOM)));
+                }
             }
 
             final int nombreMot = listeMot1Joueur.size();
+            Random r = new Random();
+            int tmp = r.nextInt(nombreMot);
+            final String motAChercher = listeMot1Joueur.get(tmp);
+
+            listeMot1Joueur.remove(tmp);
+
+            Toast.makeText(this, motAChercher, Toast.LENGTH_LONG).show();
+            String nbTirets = "";
+
+            for (int i = 0 ; i<motAChercher.length() ; i++){
+                nbTirets += "_";
+            }
+            TextViewMotAChercher.setText(nbTirets);
 
             for (final ImageButton ib : listImageButton) {
                 ib.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Random r = new Random();
-                                int tmp = r.nextInt(nombreMot);
-                                String motAChercher = listeMot1Joueur.get(tmp);
-                                String nbTirets = "";
-
-                                for (int i = 0 ; i<motAChercher.length() ; i++){
-                                    nbTirets += "_";
-                                }
-                                TextViewMotAChercher.setText(nbTirets);
-                                modeJeu1Joueur(v, motAChercher);
+                                modeJeu1Joueur(v, motAChercher.toUpperCase());
                             }
                         }
                 );
             }
         } else {
-            // mode 2 joueur
+            // TODO mode 2 joueurs by QuentinMS
         }
 
 
@@ -194,7 +210,17 @@ public class MainJeu extends AppCompatActivity {
                         TextViewMotAChercher.setText(tmp);
                         if (motAChercher.equals(TextViewMotAChercher.getText())) {
                             Toast.makeText(MainJeu.this, "T'as gagné en "+ nbErreurs + " erreurs.", Toast.LENGTH_SHORT).show();
-                            // TO DO appel de l'activité avec le nouveau mot
+                            score1Joueur += 10 - nbErreurs;
+
+                            finish();
+                            Intent intent = new Intent(MainJeu.this, MainJeu.class);
+                            intent.putExtra("score", score1Joueur);
+                            intent.putExtra("listeMotUtilises",listeMot1Joueur);
+                            intent.putExtra("DIFFICULTE", difficulte);
+                            intent.putExtra("CATEGORIE",categorie);
+                            intent.putExtra("JOUEUR",nomJoueur);
+                            intent.putExtra("MODE", modeJeu);
+                            startActivity(intent);
                         }
                     }
             } else {
@@ -204,9 +230,30 @@ public class MainJeu extends AppCompatActivity {
                 imagePendu.setImageResource(resID);
             }
         } else {
+            HistoriqueDAO historiqueDAO = new HistoriqueDAO(this);
+            historiqueDAO.open();
+            JoueurDAO joueurDAO = new JoueurDAO(this);
+            joueurDAO.open();
+
+            long idJoueur = joueurDAO.createJoueur(nomJoueur);
+            Joueur joueur = new Joueur((int) idJoueur, nomJoueur);
+
+            Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR);
+            int min = c.get(Calendar.MINUTE);
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int date = c.get(Calendar.DATE);
+
+            // TODO la date - Tester si le joueur n'a saisie son nom
+            Date currentDate = new Date(year, month+1, date);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+            String currentData = sdf.format(currentDate);
+
+            historiqueDAO.createHistorique(currentData, hour+1 + "h" + min, score1Joueur, joueur, difficulte);
             AlertDialog.Builder builder = new AlertDialog.Builder(MainJeu.this);
-            builder.setTitle("T'as fait trop d'erreurs")
-                    .setMessage("T'es pas bon")
+            builder.setTitle("Vous avez perdu")
+                    .setMessage("Votre score est de :" + score1Joueur + " puntos.")
                     .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -217,16 +264,16 @@ public class MainJeu extends AppCompatActivity {
             builder.show();
         }
     }
-/*
+
     @Override
     protected void onResume() {
-        categorieDAO.open();
+        motDAO.open();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        categorieDAO.close();
+        motDAO.close();
         super.onPause();
-    }*/
+    }
 }
