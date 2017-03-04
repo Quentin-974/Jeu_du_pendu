@@ -248,7 +248,7 @@ public class GestionCategories extends Activity implements View.OnClickListener,
         dialogSuppression.setView(boiteDialog);
 
         TextView textViewDialog = (TextView) boiteDialog.findViewById(R.id.textViewSuppressionDialog);
-        textViewDialog.setText("Voulez vous vraiment supprimer " + nom + " des catégories ?");
+        textViewDialog.setText("Voulez vous vraiment supprimer " + categorieSupprimer.getLibelle() + " des catégories ?");
 
         dialogSuppression.setPositiveButton(getResources().getString(R.string.oui),
                 new DialogInterface.OnClickListener() {

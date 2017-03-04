@@ -23,7 +23,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_trophy_variant"
+        android:src="@drawable/ic_trophy_variant_yellow"
         android:background="@null"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -43,7 +43,7 @@
     <Button
         android:text="@string/libelleButton1Joueur"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
@@ -70,12 +70,14 @@
     <Button
         android:text="@string/libelleButtonParametres"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:id="@+id/buttonParametres"
         android:backgroundTint="@color/colorDarkGray"
         android:textColor="@color/colorWhite"
         android:layout_alignParentBottom="true"
+        android:drawableEnd="@drawable/ic_param"
+        android:drawablePadding="10dp"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="20dp"
         android:onClick="parametres"/>
@@ -84,13 +86,14 @@
         android:text="@string/libelleButtonHistorique"
         android:layout_width="match_parent"
         android:backgroundTint="@color/colorDarkGray"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:textColor="@color/colorWhite"
         android:layout_marginTop="10dp"
         android:id="@+id/buttonHistorique"
         android:layout_toRightOf="@id/buttonParametres"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
+        android:drawableEnd="@drawable/ic_historique"
         android:onClick="historique"/>
 
 </RelativeLayout>

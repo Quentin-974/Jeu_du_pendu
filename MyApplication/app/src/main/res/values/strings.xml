@@ -9,16 +9,16 @@
     <string name="label_onglet2">Normal</string>
     <string name="label_onglet3">Difficile</string>
     <string name="label_score">Votre score :</string>
-    <string name="titre2Joueur">2 Joueurs</string>
-    <string name="nomJoueur1">Joueur 1 : </string>
-    <string name="nomJoueur2">Joueur 2 : </string>
+    <string name="titre2Joueur">Mode 2 joueurs</string>
+    <string name="nomJoueur1">Joueur 1 </string>
+    <string name="nomJoueur2">Joueur 2 </string>
     <string name="nombreMots">Nombre de mots : </string>
 
     <!-- Pages difficultés -->
-    <string name="titreDifficulte">DIFFICULTÉS</string>
-    <string name="libelleFacile">Moins de 5 lettres</string>
-    <string name="libelleMoyen">Entre 5 et 10 lettres</string>
-    <string name="libelleDifficile">Plus de 10 lettres</string>
+    <string name="titreDifficulte">Choisissez une difficulté</string>
+    <string name="libelleFacile">Facile</string>
+    <string name="libelleMoyen">Moyen</string>
+    <string name="libelleDifficile">Difficile</string>
 
     <!-- Main Activity -->
     <string name="libelleButton1Joueur">1 Joueur</string>

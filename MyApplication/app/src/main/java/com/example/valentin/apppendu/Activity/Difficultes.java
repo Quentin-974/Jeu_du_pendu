@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -22,11 +23,11 @@ public class Difficultes extends Activity {
     public static final String MODE_PARTIE = "MODE";
 
     /** Bouton pour la difficulté facile */
-    private ImageButton btnFacile;
+    private Button btnFacile;
     /** Bouton pour la difficulté Moyen */
-    private ImageButton btnMoyen;
+    private Button btnMoyen;
     /** Bouton pour la difficulté difficile */
-    private ImageButton btnDifficile;
+    private Button btnDifficile;
     /** Bouton pour le retour à la page précédente */
     private ImageButton btnPrecedent;
 
@@ -58,9 +59,9 @@ public class Difficultes extends Activity {
         setContentView(R.layout.activity_difficultes);
 
         // Récupération des accès sur les widgets
-        btnFacile = (ImageButton) findViewById(R.id.imgFacile);
-        btnMoyen = (ImageButton) findViewById(R.id.imgMoyen);
-        btnDifficile = (ImageButton) findViewById(R.id.imgDifficile);
+        btnFacile = (Button) findViewById(R.id.imgFacile);
+        btnMoyen = (Button) findViewById(R.id.imgMoyen);
+        btnDifficile = (Button) findViewById(R.id.imgDifficile);
         btnPrecedent = (ImageButton) findViewById(R.id.imgPrecedent);
     }
 
