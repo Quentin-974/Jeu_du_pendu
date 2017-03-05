@@ -25,6 +25,7 @@
     <string name="libelleButton2Joueur">2 Joueurs</string>
     <string name="libelleButtonParametres">Paramètres</string>
     <string name="libelleButtonHistorique">Historique</string>
+    <string name="libelleAide">Aide</string>
 
     <!-- GestionCategories -->
     <string name="libelle_GestionCategorie">Gestion des catégories</string>

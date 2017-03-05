@@ -34,10 +34,11 @@ public class Aide extends AppCompatActivity {
         TextView txtFileName=(TextView)findViewById(R.id.Aide);
         try{
             InputStream fichier = getResources().openRawResource(R.raw.aide);
+            String ligne;
 
             BufferedReader fichierTexte = new BufferedReader(new InputStreamReader(fichier));
-            while((fichierTexte.readLine()) != null){
-                txtFileName.setText(txtFileName.getText() + fichierTexte.readLine() +"\n");
+            while((ligne = fichierTexte.readLine()) != null){
+                txtFileName.setText(txtFileName.getText() + ligne +"\n");
             }
             fichier.close();
         } catch (FileNotFoundException e){
@@ -45,11 +46,6 @@ public class Aide extends AppCompatActivity {
         } catch (IOException e){
             Log.e("Zen", "Problème de lecture");
         }
-    }
-
-    public void vueAccueil(View view){
-        Intent intent = new Intent(Aide.this, MainActivity.class);
-        startActivity(intent);
     }
 
     @Override
