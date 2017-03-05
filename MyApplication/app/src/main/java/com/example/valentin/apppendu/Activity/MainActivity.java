@@ -2,17 +2,33 @@ package com.example.valentin.apppendu.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.valentin.apppendu.R;
 
 public class MainActivity extends Activity {
 
+    private ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        imageView = (ImageView) findViewById(R.id.imageViewPendu);
+
+        imageView.setBackgroundResource(R.drawable.anim);
+
+        // Get the background, which has been compiled to an AnimationDrawable object.
+        AnimationDrawable frameAnimation = (AnimationDrawable) imageView.getBackground();
+        // Start the animation (looped playback by default).
+        frameAnimation.start();
+
 
     }
 
