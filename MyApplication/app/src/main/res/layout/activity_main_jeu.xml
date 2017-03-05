@@ -22,236 +22,11 @@
         android:id="@+id/tvScore" />
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_retour_blanc"
         android:backgroundTint="@color/colorPrimary"
         android:id="@+id/imageButtonQuitter" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/d_gris"
-        android:layout_alignTop="@+id/ibC"
-        android:layout_centerHorizontal="true"
-        android:background="@null"
-        android:id="@+id/ibD" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/e_gris"
-        android:layout_alignTop="@+id/ibD"
-        android:layout_toEndOf="@+id/ibD"
-        android:background="@null"
-        android:id="@+id/ibE" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/f_gris"
-        android:layout_alignTop="@+id/ibE"
-        android:layout_toEndOf="@+id/ibE"
-        android:background="@null"
-        android:id="@+id/ibF" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/k_gris"
-        android:id="@+id/ibK"
-        android:layout_below="@+id/ibD"
-        android:background="@null"
-        android:layout_alignStart="@+id/ibD" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/l_gris"
-        android:layout_below="@+id/ibE"
-        android:layout_toEndOf="@+id/ibD"
-        android:background="@null"
-        android:id="@+id/ibL" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/n_gris"
-        android:layout_below="@+id/ibG"
-        android:layout_toEndOf="@+id/ibF"
-        android:background="@null"
-        android:id="@+id/ibN" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/m_gris"
-        android:id="@+id/ibM"
-        android:layout_below="@+id/ibE"
-        android:background="@null"
-        android:layout_toEndOf="@+id/ibE" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/g_gris"
-        android:id="@+id/ibG"
-        android:layout_alignTop="@+id/ibF"
-        android:background="@null"
-        android:layout_toEndOf="@+id/ibF" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/j_gris"
-        android:id="@+id/ibJ"
-        android:layout_below="@+id/ibC"
-        android:background="@null"
-        android:layout_toStartOf="@+id/ibD" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/c_gris"
-        android:id="@+id/ibC"
-        android:layout_alignTop="@+id/ibB"
-        android:background="@null"
-        android:layout_toStartOf="@+id/ibD" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/b_gris"
-        android:id="@+id/ibB"
-        android:layout_above="@+id/ibH"
-        android:background="@null"
-        android:layout_toStartOf="@+id/ibJ" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/i_gris"
-        android:id="@+id/ibI"
-        android:layout_below="@+id/ibB"
-        android:background="@null"
-        android:layout_toEndOf="@+id/ibH" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/y_gris"
-        android:id="@+id/ibY"
-        android:background="@null"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/ibX" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/z_gris"
-        android:id="@+id/ibZ"
-        android:background="@null"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/ibY" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/x_gris"
-        android:id="@+id/ibX"
-        android:background="@null"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/ibW" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/w_gris"
-        android:id="@+id/ibW"
-        android:background="@null"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/ibP" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/v_gris"
-        android:id="@+id/ibV"
-        android:background="@null"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/ibW" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/p_gris"
-        android:id="@+id/ibP"
-        android:background="@null"
-        android:layout_above="@+id/ibW"
-        android:layout_toEndOf="@+id/ibO" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/q_gris"
-        android:id="@+id/ibQ"
-        android:background="@null"
-        android:layout_alignTop="@+id/ibP"
-        android:layout_toEndOf="@+id/ibV" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/r_gris"
-        android:id="@+id/ibR"
-        android:background="@null"
-        android:layout_above="@+id/ibY"
-        android:layout_toEndOf="@+id/ibW" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/s_gris"
-        android:id="@+id/ibS"
-        android:background="@null"
-        android:layout_alignTop="@+id/ibR"
-        android:layout_toEndOf="@+id/ibR" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/t_gris"
-        android:id="@+id/ibT"
-        android:background="@null"
-        android:layout_above="@+id/ibZ"
-        android:layout_toEndOf="@+id/ibS" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/u_gris"
-        android:id="@+id/ibU"
-        android:background="@null"
-        android:layout_alignTop="@+id/ibT"
-        android:layout_toEndOf="@+id/ibZ" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/o_gris"
-        android:id="@+id/ibO"
-        android:background="@null"
-        android:layout_alignTop="@+id/ibP"
-        android:layout_alignStart="@+id/ibH" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/h_gris"
-        android:id="@+id/ibH"
-        android:background="@null"
-        android:layout_above="@+id/ibO"
-        android:layout_toStartOf="@+id/ibB" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -260,16 +35,14 @@
         android:id="@+id/imageViewPendu"
         android:layout_weight="0.25"
         android:layout_below="@+id/imageButtonQuitter"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/linearMot" />
+        />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/linearMot"
-        android:layout_above="@+id/ibD"
-        android:layout_alignStart="@+id/ibA">
+        android:layout_below="@+id/imageViewPendu">
         <TextView
             android:id="@+id/tvMot"
             android:textSize="25dp"
@@ -279,14 +52,328 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/a_gris"
-        android:id="@+id/ibA"
-        android:background="@null"
-        android:layout_below="@+id/linearMot"
-        android:layout_alignStart="@+id/ibH" />
+    <TableLayout
+        android:id="@+id/clavier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1,6"
+        android:layout_alignParentBottom="true">
+
+        <TableRow>
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="A"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:id="@+id/ibA"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="B"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:id="@+id/ibB"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="C"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:id="@+id/ibC"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="D"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:id="@+id/ibD"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="E"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:id="@+id/ibE"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="F"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:id="@+id/ibF"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="G"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:id="@+id/ibG"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="H"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibH"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="I"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibI"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="J"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibJ"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="K"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibK"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="L"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibL"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="M"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibM"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="N"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibN"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="O"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibO"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="P"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibP"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Q"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibQ"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="R"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibR"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:text="S"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibS"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:text="T"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibT"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:text="U"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibU"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:text="V"
+                android:layout_column="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibV"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:text="W"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibW"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:text="X"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibX"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:text="Y"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibY"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:text="Z"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/ibZ"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"/>
+        </TableRow>
+
+
+    </TableLayout>
+
+
 
 
 </RelativeLayout>

@@ -6,9 +6,8 @@ import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.method.DateTimeKeyListener;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,7 +38,7 @@ public class MainJeu extends AppCompatActivity {
     private TextView TextViewMotAChercher;
 
     /** Liste contenant les images button des lettres */
-    private ArrayList<ImageButton> listImageButton;
+    private ArrayList<Button> listButton;
 
     /** Le nombre d'erreur commises par l'utilisateur */
     private int nbErreurs = 0;
@@ -157,7 +156,7 @@ public class MainJeu extends AppCompatActivity {
             }
             TextViewMotAChercher.setText(nbTirets);
 
-            for (final ImageButton ib : listImageButton) {
+            for (final Button ib : listButton) {
                 ib.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
@@ -194,7 +193,7 @@ public class MainJeu extends AppCompatActivity {
             TextViewMotAChercher.setText(nbTirets);
 
             // Mise en place de l'évènement lors du clique sur une des lettres du clavier
-            for (final ImageButton ib : listImageButton) {
+            for (final Button ib : listButton) {
                 ib.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
@@ -230,34 +229,34 @@ public class MainJeu extends AppCompatActivity {
 
 
     private void initImageButton() {
-        listImageButton = new ArrayList<>();
+        listButton = new ArrayList<>();
 
-        listImageButton.add((ImageButton) findViewById(R.id.ibA));
-        listImageButton.add((ImageButton) findViewById(R.id.ibB));
-        listImageButton.add((ImageButton) findViewById(R.id.ibC));
-        listImageButton.add((ImageButton) findViewById(R.id.ibD));
-        listImageButton.add((ImageButton) findViewById(R.id.ibE));
-        listImageButton.add((ImageButton) findViewById(R.id.ibF));
-        listImageButton.add((ImageButton) findViewById(R.id.ibG));
-        listImageButton.add((ImageButton) findViewById(R.id.ibH));
-        listImageButton.add((ImageButton) findViewById(R.id.ibI));
-        listImageButton.add((ImageButton) findViewById(R.id.ibJ));
-        listImageButton.add((ImageButton) findViewById(R.id.ibK));
-        listImageButton.add((ImageButton) findViewById(R.id.ibL));
-        listImageButton.add((ImageButton) findViewById(R.id.ibM));
-        listImageButton.add((ImageButton) findViewById(R.id.ibN));
-        listImageButton.add((ImageButton) findViewById(R.id.ibO));
-        listImageButton.add((ImageButton) findViewById(R.id.ibP));
-        listImageButton.add((ImageButton) findViewById(R.id.ibQ));
-        listImageButton.add((ImageButton) findViewById(R.id.ibR));
-        listImageButton.add((ImageButton) findViewById(R.id.ibS));
-        listImageButton.add((ImageButton) findViewById(R.id.ibT));
-        listImageButton.add((ImageButton) findViewById(R.id.ibU));
-        listImageButton.add((ImageButton) findViewById(R.id.ibV));
-        listImageButton.add((ImageButton) findViewById(R.id.ibW));
-        listImageButton.add((ImageButton) findViewById(R.id.ibX));
-        listImageButton.add((ImageButton) findViewById(R.id.ibY));
-        listImageButton.add((ImageButton) findViewById(R.id.ibZ));
+        listButton.add((Button) findViewById(R.id.ibA));
+        listButton.add((Button) findViewById(R.id.ibB));
+        listButton.add((Button) findViewById(R.id.ibC));
+        listButton.add((Button) findViewById(R.id.ibD));
+        listButton.add((Button) findViewById(R.id.ibE));
+        listButton.add((Button) findViewById(R.id.ibF));
+        listButton.add((Button) findViewById(R.id.ibG));
+        listButton.add((Button) findViewById(R.id.ibH));
+        listButton.add((Button) findViewById(R.id.ibI));
+        listButton.add((Button) findViewById(R.id.ibJ));
+        listButton.add((Button) findViewById(R.id.ibK));
+        listButton.add((Button) findViewById(R.id.ibL));
+        listButton.add((Button) findViewById(R.id.ibM));
+        listButton.add((Button) findViewById(R.id.ibN));
+        listButton.add((Button) findViewById(R.id.ibO));
+        listButton.add((Button) findViewById(R.id.ibP));
+        listButton.add((Button) findViewById(R.id.ibQ));
+        listButton.add((Button) findViewById(R.id.ibR));
+        listButton.add((Button) findViewById(R.id.ibS));
+        listButton.add((Button) findViewById(R.id.ibT));
+        listButton.add((Button) findViewById(R.id.ibU));
+        listButton.add((Button) findViewById(R.id.ibV));
+        listButton.add((Button) findViewById(R.id.ibW));
+        listButton.add((Button) findViewById(R.id.ibX));
+        listButton.add((Button) findViewById(R.id.ibY));
+        listButton.add((Button) findViewById(R.id.ibZ));
     }
 
     public void modeJeu1Joueur(View v, String motAChercher) {
