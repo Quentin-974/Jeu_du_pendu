@@ -66,13 +66,13 @@ public class Classements extends AppCompatActivity {
                 new TabHost.OnTabChangeListener(){
                     @Override
                     public void onTabChanged(String tabId){
-                        if(tabId.contains("Facile")){
-                            Toast.makeText(Classements.this,"Facile",Toast.LENGTH_SHORT).show();
-                        } else if (tabId.contains("Normal")){
-                            Toast.makeText(Classements.this,"Normal",Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(Classements.this,"Difficile",Toast.LENGTH_SHORT).show();
-                        }
+                        //if(tabId.contains("Facile")){
+                          //  Toast.makeText(Classements.this,"Facile",Toast.LENGTH_SHORT).show();
+                        //} else if (tabId.contains("Normal")){
+                          //  Toast.makeText(Classements.this,"Normal",Toast.LENGTH_SHORT).show();
+                        //} else {
+                         //   Toast.makeText(Classements.this,"Difficile",Toast.LENGTH_SHORT).show();
+                        //}
                     }
                 }
         );

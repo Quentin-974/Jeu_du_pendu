@@ -149,7 +149,7 @@ public class MainJeu extends AppCompatActivity {
 
             listeMot1Joueur.remove(tmp);
 
-            Toast.makeText(this, motAChercher, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, motAChercher, Toast.LENGTH_LONG).show();
             String nbTirets = "";
 
             for (int i = 0 ; i<motAChercher.length() ; i++){
@@ -271,7 +271,7 @@ public class MainJeu extends AppCompatActivity {
                         tmp.setCharAt(i, lettre);
                         TextViewMotAChercher.setText(tmp);
                         if (motAChercher.equals(TextViewMotAChercher.getText())) {
-                            Toast.makeText(MainJeu.this, "T'as gagné en "+ nbErreurs + " erreurs.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainJeu.this, "Manche gagnée ("+ nbErreurs + " erreur(s))", Toast.LENGTH_SHORT).show();
                             score1Joueur += 10 - nbErreurs;
 
                             finish();
