@@ -507,4 +507,34 @@ public class MainJeu extends AppCompatActivity {
         motDAO.close();
         super.onPause();
     }
+
+    /**
+     *
+     * @param savedInstanceState
+     */
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt("score", score1Joueur);
+        savedInstanceState.putStringArrayList("listeMot", listeMot1Joueur);
+        savedInstanceState.putString("nomJoueur", nomJoueur);
+        savedInstanceState.putInt("nbErreurs", nbErreurs);
+        savedInstanceState.putInt("difficulte", difficulte);
+        savedInstanceState.putInt("categorie", categorie);
+    }
+
+    /**
+     *
+     * @param savedInstanceState
+     */
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        this.score1Joueur = savedInstanceState.getInt("score");
+        this.listeMot1Joueur = savedInstanceState.getStringArrayList("listeMot");
+        this.nomJoueur = savedInstanceState.getString("nomJoueur");
+        this.nbErreurs = savedInstanceState.getInt("nbErreurs");
+        this.difficulte = savedInstanceState.getInt("difficulte");
+        this.categorie = savedInstanceState.getInt("categorie");
+    }
 }
