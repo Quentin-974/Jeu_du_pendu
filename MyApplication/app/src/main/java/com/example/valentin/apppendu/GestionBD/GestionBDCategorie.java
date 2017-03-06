@@ -29,6 +29,11 @@ public class GestionBDCategorie {
                     + " FROM " + NOM_TABLE_CATEGORIE
                     + " ORDER BY '" + CATEGORIE_NOM + "';";
 
+
+    /** Nombres de catégories dans la bd */
+    public static final String REQUETE_COUNT =
+            "SELECT COUNT(DISTINCT(_id)) FROM " + NOM_TABLE_CATEGORIE;
+
     public static final String SUPPRIMER_TABLE_CATEGORIE =
             "DROP TABLE IF EXISTS " + NOM_TABLE_CATEGORIE + ";";
 
