@@ -19,7 +19,7 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-public class Mots2Joueurs extends Activity {
+public class Mots2Joueurs extends Activity implements View.OnClickListener {
 
     /** Identifiant pour le passage de la liste de mot du joueur1 */
     public final static String LISTE_J1 = "MOTS_J1";
@@ -90,6 +90,8 @@ public class Mots2Joueurs extends Activity {
             tab_mots[i].setHint("Mot " + (i+1));
             conteneur.addView(tab_mots[i]);
         }
+
+        btnPrecedent.setOnClickListener(this);
 
     }
 
@@ -223,5 +225,12 @@ public class Mots2Joueurs extends Activity {
         return pattern.matcher(strTemp).replaceAll("");
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.imgPrecedentMots) {
+            Intent intention = new Intent(Mots2Joueurs.this,Accueil2Joueurs.class);
+            startActivity(intention);
+        }
+    }
 
 }

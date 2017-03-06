@@ -178,9 +178,11 @@ public class MainJeu extends AppCompatActivity {
             if (compteur % 2 == 0) {
                 // Joueur 1
                 tvScore.setText(nomJoueur + " " + String.valueOf(score1Joueur) + "pts\n");
+                Toast.makeText(this,"C'est à " + nomJoueur + " de jouer.",Toast.LENGTH_LONG).show();
             } else {
                 // Joueur 2
                 tvScore.setText(joueur2 + " " + String.valueOf(scoreJ2) + "pts\n");
+                Toast.makeText(this,"C'est à " + joueur2 + " de jouer.",Toast.LENGTH_LONG).show();
             }
 
             String nbTirets = "";
