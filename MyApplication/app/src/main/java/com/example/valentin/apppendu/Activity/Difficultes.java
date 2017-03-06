@@ -2,6 +2,7 @@ package com.example.valentin.apppendu.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 
+import com.example.valentin.apppendu.DAO.MotDAO;
 import com.example.valentin.apppendu.R;
 
 public class Difficultes extends Activity {
@@ -40,6 +42,8 @@ public class Difficultes extends Activity {
     /** Nom du joueur de la partie */
     private String joueur;
 
+    /** DAO mots */
+    private MotDAO motDAO;
 
     /** Si false mode jeu à 1 joueur*/
     public final static boolean modePartie = false;
@@ -63,6 +67,39 @@ public class Difficultes extends Activity {
         btnMoyen = (Button) findViewById(R.id.imgMoyen);
         btnDifficile = (Button) findViewById(R.id.imgDifficile);
         btnPrecedent = (ImageButton) findViewById(R.id.imgPrecedent);
+
+
+        Bundle extras = getIntent().getExtras();
+        if(extras!= null){
+            categorie = extras.getInt(MainCategories.CATEGORIE_PARTIE);
+            joueur = extras.getString(MainCategories.JOUEUR_PARTIE);
+        }
+
+        motDAO = new MotDAO(this);
+        motDAO.open();
+
+        // Test du nombres de mots dans la catégorie
+        int nbFaciles = motDAO.getMotsCategorie(categorie, 0).getCount();
+        int nbMoyens = motDAO.getMotsCategorie(categorie, 1).getCount();
+        int nbDifficiles = motDAO.getMotsCategorie(categorie, 2).getCount();
+
+        if (nbFaciles == 0) {
+            btnFacile.setEnabled(false);
+            btnFacile.setVisibility(View.INVISIBLE);
+        }
+
+        if (nbMoyens == 0) {
+            btnMoyen.setEnabled(false);
+            btnMoyen.setVisibility(View.INVISIBLE);
+        }
+
+        if (nbDifficiles == 0) {
+            btnDifficile.setEnabled(false);
+            btnDifficile.setVisibility(View.INVISIBLE);
+        }
+
+        motDAO.close();
+
     }
 
     /**
@@ -81,11 +118,6 @@ public class Difficultes extends Activity {
      */
     public void clicDifficulte(View bouton) {
 
-        Bundle extras = getIntent().getExtras();
-        if(extras!= null){
-            categorie = extras.getInt(MainCategories.CATEGORIE_PARTIE);
-            joueur = extras.getString(MainCategories.JOUEUR_PARTIE);
-        }
         // Clique sur l'imageButton facile
         if(bouton.getId() == R.id.imgFacile) {
             difficulte = 0;
