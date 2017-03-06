@@ -45,7 +45,7 @@
     <string name="texteSaisieNom">Veuillez entrez votre nom.</string>
 
     <string name="messageSansNom">Votre score ne sera pas enregistré</string>
-    <string name="messageSansScore">Vous ne pouvez pas accéder à vos scores</string>
+    <string name="messageSansScore">Aucun joueur sélectionné</string>
 
     <!-- Boite de dialogue -->
     <string name="titre_boite_dialog_modification">Modification Catégorie</string>
