@@ -1,5 +1,6 @@
 package com.example.valentin.apppendu.Activity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -41,6 +42,7 @@ public class Classements extends AppCompatActivity {
 
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Scores");
 
         setContentView(R.layout.activity_classements);
         daoHistorique = new HistoriqueDAO(this);
@@ -128,7 +130,8 @@ public class Classements extends AppCompatActivity {
         adb.setNegativeButton(R.string.boutonNegatif, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 //Lorsque l'on cliquera sur annuler
-                Toast.makeText(Classements.this,R.string.messageSansScore,Toast.LENGTH_SHORT).show();
+                // Toast.makeText(Classements.this,R.string.messageSansScore,Toast.LENGTH_SHORT).show();
+                Classements.this.finish();
             }
         });
         adb.show();

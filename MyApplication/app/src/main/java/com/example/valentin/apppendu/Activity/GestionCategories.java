@@ -262,7 +262,7 @@ public class GestionCategories extends Activity implements View.OnClickListener,
                             Toast.makeText(GestionCategories.this, "\"" + categorieSupprimer.getLibelle() + "\" supprimée", Toast.LENGTH_SHORT).show();
                             refreshListe();
                         } else {
-                            Toast.makeText(GestionCategories.this, "Erreur lors de la suppression", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GestionCategories.this, "Erreur lors de la suppression ", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

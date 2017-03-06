@@ -17,19 +17,9 @@
         android:paddingTop="@dimen/activity_vertical_margin">
 
         <TextView
-            android:id="@+id/titreAide"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:text="@string/libelleAide"
-            android:gravity="center"
-            android:textStyle="bold"/>
-
-        <TextView
             android:id="@+id/Aide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titreAide"
             android:textSize="15dp"/>
 
     </RelativeLayout>

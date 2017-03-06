@@ -30,6 +30,7 @@ public class Aide extends AppCompatActivity {
 
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle(getResources().getString(R.string.libelleAide));
 
         TextView txtFileName=(TextView)findViewById(R.id.Aide);
         try{

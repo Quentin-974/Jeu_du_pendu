@@ -46,15 +46,19 @@ public class CategorieDAO {
 
     public int deleteCategorie(Categorie categorie) {
         int id = categorie.getId();
+        int nbLignesSupp = 0;
 
-        // Suppression des mots dans la catégorie
-        int nbLignesSuppM = database.delete(GestionBDMot.NOM_TABLE_MOT,
-                GestionBDMot.MOT_CATEGORIE + "= ?", new String[] {String.valueOf(id)});
+        // Test du nombre de catégories
+        if (getAllCategories().getCount() > 3) {
+            // Suppression des mots dans la catégorie
+            int nbLignesSuppM = database.delete(GestionBDMot.NOM_TABLE_MOT,
+                    GestionBDMot.MOT_CATEGORIE + "= ?", new String[] {String.valueOf(id)});
 
-        // Suppression de la catégorie
-        int nbLignesSupp = database.delete(GestionBDCategorie.NOM_TABLE_CATEGORIE,
-                GestionBDCategorie.CATEGORIE_CLEF + " = ?",
-                new String[] {String.valueOf(id)});
+            // Suppression de la catégorie
+            nbLignesSupp = database.delete(GestionBDCategorie.NOM_TABLE_CATEGORIE,
+                    GestionBDCategorie.CATEGORIE_CLEF + " = ?",
+                    new String[] {String.valueOf(id)});
+        }
 
         return nbLignesSupp;
     }
