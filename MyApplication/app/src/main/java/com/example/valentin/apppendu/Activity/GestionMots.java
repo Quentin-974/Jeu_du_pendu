@@ -287,7 +287,7 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
 
 
         final View boiteDialog =
-                getLayoutInflater().inflate(R.layout.ajout_categorie_dialog, null);
+                getLayoutInflater().inflate(R.layout.ajout_mot_dialog, null);
 
         // Alert Dialog
         AlertDialog.Builder dialogAjout = new AlertDialog.Builder(this);
