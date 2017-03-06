@@ -73,7 +73,7 @@
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="B"
                     android:backgroundTint="@color/colorPrimary"
@@ -84,7 +84,7 @@
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="C"
                     android:backgroundTint="@color/colorPrimary"
@@ -95,7 +95,7 @@
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="D"
                     android:backgroundTint="@color/colorPrimary"
@@ -106,7 +106,7 @@
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="E"
                     android:backgroundTint="@color/colorPrimary"
@@ -117,7 +117,7 @@
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="F"
                     android:backgroundTint="@color/colorPrimary"
@@ -128,7 +128,7 @@
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="G"
                     android:backgroundTint="@color/colorPrimary"
@@ -143,7 +143,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="H"
                 android:backgroundTint="@color/colorPrimary"
@@ -165,7 +165,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="J"
                 android:backgroundTint="@color/colorPrimary"
@@ -176,7 +176,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="K"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimary"
@@ -187,7 +187,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="L"
                 android:backgroundTint="@color/colorPrimary"
@@ -198,7 +198,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="M"
                 android:backgroundTint="@color/colorPrimary"
@@ -209,7 +209,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="N"
                 android:backgroundTint="@color/colorPrimary"
@@ -224,7 +224,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="O"
                 android:backgroundTint="@color/colorPrimary"
@@ -235,7 +235,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="P"
                 android:backgroundTint="@color/colorPrimary"
@@ -257,7 +257,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="R"
                 android:backgroundTint="@color/colorPrimary"
@@ -269,7 +269,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="S"
                 android:backgroundTint="@color/colorPrimary"
                 android:textColor="@color/colorWhite"
@@ -280,7 +280,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="T"
                 android:backgroundTint="@color/colorPrimary"
                 android:textColor="@color/colorWhite"
@@ -291,7 +291,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="U"
                 android:backgroundTint="@color/colorPrimary"
                 android:textColor="@color/colorWhite"
@@ -306,12 +306,12 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="50dp"/>
+                android:layout_height="wrap_content"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="V"
                 android:layout_column="1"
                 android:backgroundTint="@color/colorPrimary"
@@ -323,7 +323,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="W"
                 android:backgroundTint="@color/colorPrimary"
                 android:textColor="@color/colorWhite"
@@ -334,7 +334,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="X"
                 android:backgroundTint="@color/colorPrimary"
                 android:textColor="@color/colorWhite"
@@ -345,7 +345,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="Y"
                 android:backgroundTint="@color/colorPrimary"
                 android:textColor="@color/colorWhite"
@@ -356,7 +356,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="Z"
                 android:backgroundTint="@color/colorPrimary"
                 android:textColor="@color/colorWhite"
