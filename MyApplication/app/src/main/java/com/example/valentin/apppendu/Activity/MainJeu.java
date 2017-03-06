@@ -142,13 +142,19 @@ public class MainJeu extends AppCompatActivity {
             }
 
             final int nombreMot = listeMot1Joueur.size();
-            Random r = new Random();
-            int tmp = r.nextInt(nombreMot);
-            final String motAChercher = listeMot1Joueur.get(tmp);
+            String motTmp = "";
 
-            listeMot1Joueur.remove(tmp);
+            if (nombreMot != 0) {
+                Random r = new Random();
+                int tmp = r.nextInt(nombreMot);
+                motTmp = listeMot1Joueur.get(tmp);
+                listeMot1Joueur.remove(tmp);
+            } else {
+                finPartie1Joueur();
+            }
 
-            //Toast.makeText(this, motAChercher, Toast.LENGTH_LONG).show();
+            final String motAChercher = motTmp;
+
             String nbTirets = "";
 
             for (int i = 0 ; i<motAChercher.length() ; i++){
@@ -291,38 +297,23 @@ public class MainJeu extends AppCompatActivity {
                 imagePendu.setImageResource(resID);
             }
         } else {
-            HistoriqueDAO historiqueDAO = new HistoriqueDAO(this);
-            historiqueDAO.open();
-            JoueurDAO joueurDAO = new JoueurDAO(this);
-            joueurDAO.open();
-
-            long idJoueur = joueurDAO.createJoueur(nomJoueur);
-            Joueur joueur = new Joueur((int) idJoueur, nomJoueur);
-
-            Calendar c = Calendar.getInstance();
-            int hour = c.get(Calendar.HOUR);
-            int min = c.get(Calendar.MINUTE);
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int date = c.get(Calendar.DATE);
-
-            // TODO la date - Tester si le joueur n'a saisie son nom
-            Date currentDate = new Date(year, month+1, date);
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-            String currentData = sdf.format(currentDate);
-
-            historiqueDAO.createHistorique(currentData, hour+1 + "h" + min, score1Joueur, joueur, difficulte);
-            AlertDialog.Builder builder = new AlertDialog.Builder(MainJeu.this);
-            builder.setTitle("Vous avez perdu")
-                    .setMessage("Votre score est de :" + score1Joueur + " puntos.")
-                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intention = new Intent(MainJeu.this, MainActivity.class);
-                            startActivity(intention);
-                        }
-                    });
-            builder.show();
+            // Si le joueur n'as pas entrer son nom
+            if (nomJoueur == null) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainJeu.this);
+                builder.setTitle("Vous avez perdu")
+                        .setMessage("Votre score est de :" + score1Joueur + " puntos.")
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(MainJeu.this, "Vous n'avez pas entrer votre nom, votre score n'as donc pas été pris en compte.", Toast.LENGTH_SHORT).show();
+                                Intent intention = new Intent(MainJeu.this, MainActivity.class);
+                                startActivity(intention);
+                            }
+                        });
+                builder.show();
+            } else {
+                finPartie1Joueur();
+            }
         }
     }
 
@@ -419,6 +410,51 @@ public class MainJeu extends AppCompatActivity {
             }
         }
         return mot;
+    }
+
+    /**
+     * Méthode appellée àa la fin de la partie en mode 1 joueur
+     * Elle aafiche une boite de dialogue récapitulant le score du joueur.
+     */
+    public void finPartie1Joueur() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainJeu.this);
+        builder.setTitle("Vous avez perdu")
+                .setMessage("Votre score est de :" + score1Joueur + " puntos.")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        HistoriqueDAO historiqueDAO = new HistoriqueDAO(MainJeu.this);
+                        historiqueDAO.open();
+                        JoueurDAO joueurDAO = new JoueurDAO(MainJeu.this);
+                        joueurDAO.open();
+
+                        long idJoueur = joueurDAO.createJoueur(nomJoueur);
+                        Joueur joueur = new Joueur((int) idJoueur, nomJoueur);
+
+                        Calendar c = Calendar.getInstance();
+                        int hour = c.get(Calendar.HOUR);
+                        int min = c.get(Calendar.MINUTE);
+                        int year = c.get(Calendar.YEAR);
+                        int month = c.get(Calendar.MONTH);
+                        int date = c.get(Calendar.DATE);
+
+                        String currrentDate = date + "/" + month + "/" + year;
+
+                        historiqueDAO.createHistorique(currrentDate, hour+1 + "h" + min, score1Joueur, joueur, difficulte);
+                        Intent intention = new Intent(MainJeu.this, MainActivity.class);
+                        startActivity(intention);
+                    }
+                })
+                .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(MainJeu.this, "Votre score n'a pas été enregitré.", Toast.LENGTH_SHORT).show();
+                        Intent intention = new Intent(MainJeu.this, MainActivity.class);
+                        startActivity(intention);
+                    }
+                })
+        ;
+        builder.show();
     }
 
     /**
