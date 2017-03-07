@@ -30,7 +30,7 @@ import com.example.valentin.apppendu.R;
 
 public class GestionCategories extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
-    /** Boouton d'ajout d'une catégorie */
+    /** Bouton d'ajout d'une catégorie */
     private FloatingActionButton floatingActionButton;
 
     /** Bouton de retour vers le menu */
@@ -129,10 +129,10 @@ public class GestionCategories extends Activity implements View.OnClickListener,
         String nomCategorie = curseur.getString(curseur.getColumnIndex(GestionBDCategorie.CATEGORIE_NOM));
 
         // Lancement de l'activité de gestion des mots d'une catégorie
-        Intent intent = new Intent(GestionCategories.this, GestionMots.class);
-        intent.putExtra(ID_CATEGORIE, identifiant);
-        intent.putExtra(NOM_CATEGORIE, nomCategorie);
-        startActivity(intent);
+            Intent intent = new Intent(GestionCategories.this, GestionMots.class);
+            intent.putExtra(ID_CATEGORIE, identifiant);
+            intent.putExtra(NOM_CATEGORIE, nomCategorie);
+            startActivity(intent);
 
     }
 
@@ -200,11 +200,37 @@ public class GestionCategories extends Activity implements View.OnClickListener,
                     public void onClick(DialogInterface dialog, int leBouton) {
                         EditText modifSaisie = (EditText) boiteDialog.findViewById(R.id.editTextDialog);
                         String saisie = modifSaisie.getText().toString();   // Nom de la catégorie modifiée
-                        // APPEL METHODE BD (modifier)
-                        categorieModif.setLibelle(saisie);
-                        categorieDAO.updateCategorie(categorieModif);
-                        refreshListe();
-                        Toast.makeText(GestionCategories.this, "Catégorie modifiée", Toast.LENGTH_SHORT).show();
+                        // Teste pour voir si il existe déjà la catégorie
+
+                        if (!saisie.equals("")) {
+
+                            // Test pour savoir si la categorie à supprimer est la catégorie "Tous"
+                            if (categorieModif.getId() != 4) {
+                                // Mise en majuscule de la première lettre
+                                StringBuilder result = new StringBuilder(saisie);
+                                result.replace(0, 1, result.substring(0, 1).toUpperCase());
+                                saisie = result.toString();
+
+                                if (categorieDAO.recherchePresenceCategorie(saisie) == 0) {
+                                    // APPEL METHODE BD (modifier)
+                                    categorieModif.setLibelle(saisie);
+                                    categorieDAO.updateCategorie(categorieModif);
+                                    refreshListe();
+                                    Toast.makeText(GestionCategories.this, "Catégorie modifiée", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(GestionCategories.this, "La catégorie " + saisie + " existe déjà", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                Toast.makeText(GestionCategories.this, "Le nom de cette catégorie ne peut être modifié", Toast.LENGTH_SHORT).show();
+                            }
+
+
+                        } else {
+                            Toast.makeText(GestionCategories.this, "Le nom de la catégorie ne peut être vide", Toast.LENGTH_SHORT).show();
+                        }
+
+
+
                     }
                 });
 
@@ -253,17 +279,24 @@ public class GestionCategories extends Activity implements View.OnClickListener,
         dialogSuppression.setPositiveButton(getResources().getString(R.string.oui),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int leBouton) {
-                        // APPEL METHODE BD (supprimer)
-                        int nbLignesSupp = 0;
-                        // TODO Suppression en cascade
-                        nbLignesSupp = categorieDAO.deleteCategorie(categorieSupprimer);
 
-                        if (nbLignesSupp >= 1) {
-                            Toast.makeText(GestionCategories.this, "\"" + categorieSupprimer.getLibelle() + "\" supprimée", Toast.LENGTH_SHORT).show();
-                            refreshListe();
+                        // Test pour savoir si la categorie à supprimer est la catégorie "Tous"
+                        if (categorieSupprimer.getId() != 4) {
+                            // APPEL METHODE BD (supprimer)
+                            int nbLignesSupp = 0;
+                            nbLignesSupp = categorieDAO.deleteCategorie(categorieSupprimer);
+
+                            if (nbLignesSupp >= 1) {
+                                Toast.makeText(GestionCategories.this, "\"" + categorieSupprimer.getLibelle() + "\" supprimée", Toast.LENGTH_SHORT).show();
+                                refreshListe();
+                            } else {
+                                Toast.makeText(GestionCategories.this, "Erreur lors de la suppression ", Toast.LENGTH_SHORT).show();
+                            }
                         } else {
-                            Toast.makeText(GestionCategories.this, "Erreur lors de la suppression ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GestionCategories.this, "La catégorie ne peut être supprimée", Toast.LENGTH_SHORT).show();
                         }
+
+
                     }
                 });
 
@@ -297,11 +330,23 @@ public class GestionCategories extends Activity implements View.OnClickListener,
                     public void onClick(DialogInterface dialog, int leBouton) {
                         EditText ajout = (EditText) boiteDialog.findViewById(R.id.editTextAjoutCategorie);
                         String saisie = ajout.getText().toString();   // Nom de la catégorie ajoutée
+
                         if (!saisie.equals("")) {
-                            // APPEL METHODE BD (ajout)
-                            long id = categorieDAO.createCategorie(saisie);
-                            refreshListe();
-                            Toast.makeText(GestionCategories.this, "\"" + saisie + "\" a été ajoutée", Toast.LENGTH_SHORT).show();
+
+                            // Mise en majuscule de la première lettre
+                            StringBuilder result = new StringBuilder(saisie);
+                            result.replace(0, 1, result.substring(0, 1).toUpperCase());
+                            saisie = result.toString();
+
+                            if (categorieDAO.recherchePresenceCategorie(saisie) == 0) {
+                                // APPEL METHODE BD (ajout)
+                                long id = categorieDAO.createCategorie(saisie);
+                                refreshListe();
+                                Toast.makeText(GestionCategories.this, "\"" + saisie + "\" a été ajoutée", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(GestionCategories.this, "La catégorie " + saisie + " existe déjà", Toast.LENGTH_SHORT).show();
+                            }
+
                         } else {
                             Toast.makeText(GestionCategories.this, "Erreur lors de l'ajout de la catégorie", Toast.LENGTH_SHORT).show();
                         }

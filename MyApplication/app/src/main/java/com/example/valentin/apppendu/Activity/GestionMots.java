@@ -210,11 +210,17 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
                     public void onClick(DialogInterface dialog, int leBouton) {
                         EditText modifSaisie = (EditText) boiteDialog.findViewById(R.id.editTextDialog);
                         String saisie = modifSaisie.getText().toString();   // Nom de la catégorie modifiée
-                        // APPEL METHODE BD
-                        motModif.setLibelle(saisie);
-                        motDAO.updateMot(motModif);
-                        refreshListe();
-                        Toast.makeText(GestionMots.this, "Mot modifié", Toast.LENGTH_SHORT).show();
+
+                        if (motDAO.recherchePresenceMot(saisie, identifiantCategorie) == 0) {
+                            // APPEL METHODE BD
+                            motModif.setLibelle(saisie);
+                            motDAO.updateMot(motModif);
+                            refreshListe();
+                            Toast.makeText(GestionMots.this, "Mot modifié", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(GestionMots.this, "Un mot similaire existe déjà dans cette catégorie", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 });
 
@@ -315,10 +321,16 @@ public class GestionMots extends Activity implements View.OnClickListener, Adapt
 
                             String noAccent = sansAccent(saisie.trim());
                             if (noAccent.matches("^[a-zA-Z]+$")) {
-                                // APPEL METHODE BD (ajout)
-                                motDAO.createMot(saisie, identifiantCategorie);
-                                refreshListe();
-                                Toast.makeText(GestionMots.this, "\"" + saisie + "\" a été ajouté", Toast.LENGTH_SHORT).show();
+
+                                if (motDAO.recherchePresenceMot(saisie, identifiantCategorie) == 0) {
+                                    // APPEL METHODE BD (ajout)
+                                    motDAO.createMot(saisie, identifiantCategorie);
+                                    refreshListe();
+                                    Toast.makeText(GestionMots.this, "\"" + saisie + "\" a été ajouté", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(GestionMots.this, "Un mot similaire existe déjà dans cette catégorie", Toast.LENGTH_SHORT).show();
+                                }
+
                             } else {
                                 Toast.makeText(GestionMots.this, "Le mot contient des caractères interdit", Toast.LENGTH_SHORT).show();
                             }

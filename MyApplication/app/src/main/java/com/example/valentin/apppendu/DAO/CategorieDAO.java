@@ -76,4 +76,12 @@ public class CategorieDAO {
         return cursor;
     }
 
+    public int recherchePresenceCategorie(String nom) {
+
+        String[] param = {nom};
+        Cursor cursor = database.rawQuery(GestionBDCategorie.REQUETE_CATEGORIE_NOM, param);
+
+        return cursor.getCount();
+    }
+
 }

@@ -26,6 +26,11 @@ public class GestionBDJoueur {
             "SELECT * FROM " + NOM_TABLE_JOUEUR
                     + " ORDER BY " + JOUEUR_NOM + ";";
 
+    /** Requête pour sélectionner toutes les catégories */
+    public static final String REQUETE_JOUEUR =
+            "SELECT * FROM " + NOM_TABLE_JOUEUR
+                    + " WHERE " + JOUEUR_NOM + " = ?;";
+
     public static final String SUPPRIMER_TABLE_JOUEUR =
             "DROP TABLE IF EXISTS " + NOM_TABLE_JOUEUR + ";";
 

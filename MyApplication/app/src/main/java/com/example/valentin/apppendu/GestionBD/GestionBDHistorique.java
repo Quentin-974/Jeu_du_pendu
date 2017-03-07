@@ -40,9 +40,16 @@ public class GestionBDHistorique {
                     + " REFERENCES " + GestionBDJoueur.NOM_TABLE_JOUEUR
                     + " (" + GestionBDJoueur.JOUEUR_CLEF + "));";
 
-    /** Requête pour sélectionner toutes les catégories */
+    /** Requête pour sélectionner tous les historiques */
     public static final String REQUETE_HISTORIQUE_ALL =
             "SELECT * FROM " + NOM_TABLE_HISTORIQUE;
+
+    /** Requête pour supprimer les historiques d'un joueur en fonction de son nom */
+    public static final String REQUETE_DELETE_NOM =
+            "DELETE FROM " + NOM_TABLE_HISTORIQUE + " WHERE "
+            + HISTORIQUE_JOUEUR + " IN ( SELECT " + GestionBDJoueur.JOUEUR_CLEF
+                                        + " FROM " + GestionBDJoueur.NOM_TABLE_JOUEUR + " WHERE "
+                                        + GestionBDJoueur.JOUEUR_CLEF + " = ?)";
 
     public static final String SUPPRIMER_TABLE_HISTORIQUE =
             "DROP TABLE IF EXISTS " + NOM_TABLE_HISTORIQUE + ";";

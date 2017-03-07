@@ -45,6 +45,9 @@ public class GestionBD extends SQLiteOpenHelper {
         enregistrement.put(GestionBDCategorie.CATEGORIE_NOM, "Sport");
         db.insert(GestionBDCategorie.NOM_TABLE_CATEGORIE, GestionBDCategorie.CATEGORIE_NOM, enregistrement);
 
+        enregistrement.put(GestionBDCategorie.CATEGORIE_NOM, "Tous");
+        db.insert(GestionBDCategorie.NOM_TABLE_CATEGORIE, GestionBDCategorie.CATEGORIE_NOM, enregistrement);
+
         // Insertion des mots de base dans la catégorie Autre
         enregistrement.put(GestionBDMot.MOT_NOM, "mot");
         enregistrement.put(GestionBDMot.MOT_DIFFICULTE, "0");

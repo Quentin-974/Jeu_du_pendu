@@ -29,6 +29,12 @@ public class GestionBDCategorie {
                     + " FROM " + NOM_TABLE_CATEGORIE
                     + " ORDER BY '" + CATEGORIE_NOM + "';";
 
+    /** Requête pour sélectionner une catégorie */
+    public static final String REQUETE_CATEGORIE_NOM =
+            "SELECT * FROM " + NOM_TABLE_CATEGORIE + " WHERE "
+                    + CATEGORIE_NOM + " = ?";
+
+
     public static final String SUPPRIMER_TABLE_CATEGORIE =
             "DROP TABLE IF EXISTS " + NOM_TABLE_CATEGORIE + ";";
 

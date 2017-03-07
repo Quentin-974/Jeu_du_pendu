@@ -33,6 +33,8 @@ public class Historique extends AppCompatActivity {
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        actionBar.setTitle(getResources().getString(R.string.libelleButtonHistorique));
+
         setContentView(R.layout.activity_historique);
         daoHistorique = new HistoriqueDAO(this);
         joueurDAO = new JoueurDAO(this);

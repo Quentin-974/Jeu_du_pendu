@@ -48,11 +48,25 @@ public class GestionBDMot {
     public static final String REQUETE_MOTS_CATEGORIE =
             "SELECT * FROM " + NOM_TABLE_MOT + " WHERE " + MOT_CATEGORIE + " = ?";
 
-    /** Requête pour sélectionner tous les mots d'une catgéorie pour une difficulté donnée */
+    /** Requête pour sélectionner tous les mots d'une catégorie pour une difficulté donnée */
     public static final String REQUETE_MOTS_CAT_DIFF =
             "SELECT * FROM " + NOM_TABLE_MOT + " WHERE " + MOT_CATEGORIE + " = ? AND "
                     + MOT_DIFFICULTE + " = ?";
 
+    /** Requête pour sélectionner tous les mots d'une catégorie pour une difficulté donnée */
+    public static final String REQUETE_MOTS_DIFF =
+            "SELECT * FROM " + NOM_TABLE_MOT + " WHERE " + MOT_DIFFICULTE + " = ?";
+
+    public static final String REQUETE_MOT_NOM_CAT =
+            "SELECT * FROM " + NOM_TABLE_MOT + " WHERE "
+                    + MOT_NOM + " = ? AND " + MOT_CATEGORIE + " = ?";
+
     public static final String SUPPRIMER_TABLE_MOT =
             "DROP TABLE IF EXISTS " + NOM_TABLE_MOT + ";";
+
+    public static final String RECUP_NOM_CATEGORIE_MOT =
+            "SELECT " + GestionBDCategorie.NOM_TABLE_CATEGORIE + "." + GestionBDCategorie.CATEGORIE_NOM + " FROM " + NOM_TABLE_MOT + " JOIN "
+            + GestionBDCategorie.NOM_TABLE_CATEGORIE + " ON "
+            + NOM_TABLE_MOT + "." + MOT_CLEF + " = " + GestionBDCategorie.NOM_TABLE_CATEGORIE + "." + GestionBDCategorie.CATEGORIE_CLEF
+            + " WHERE " + GestionBDCategorie.NOM_TABLE_CATEGORIE + "." + GestionBDCategorie.CATEGORIE_CLEF + " = ?";
 }

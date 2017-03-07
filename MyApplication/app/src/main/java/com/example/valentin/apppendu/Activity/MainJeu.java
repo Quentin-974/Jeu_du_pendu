@@ -3,6 +3,7 @@ package com.example.valentin.apppendu.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.valentin.apppendu.ClasseMetier.Joueur;
+import com.example.valentin.apppendu.DAO.CategorieDAO;
 import com.example.valentin.apppendu.DAO.HistoriqueDAO;
 import com.example.valentin.apppendu.DAO.JoueurDAO;
 import com.example.valentin.apppendu.DAO.MotDAO;
@@ -24,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Random;
 
 /**
@@ -82,6 +85,8 @@ public class MainJeu extends AppCompatActivity {
     /** Score du joueur 2 */
     private int scoreJ2 = 0;
 
+    private ActionBar actionBar;
+
     /**
      * @param savedInstanceState
      */
@@ -89,6 +94,8 @@ public class MainJeu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_jeu);
+
+        actionBar = getSupportActionBar();
 
         motDAO = new MotDAO(this);
         this.motDAO.open();
@@ -122,6 +129,11 @@ public class MainJeu extends AppCompatActivity {
                 categorie = extras.getInt(Difficultes.CATEGORIE_PARTIE);
                 difficulte = extras.getInt(Difficultes.DIFFICULTE_PARTIE);
                 nomJoueur = extras.getString(Difficultes.JOUEUR_PARTIE);
+
+                // Recherche du nom de la catégorie
+                String nomCategorie = motDAO.getNomCategorie(categorie);
+                actionBar.setTitle(nomCategorie);
+
                 if (extras.getInt("score") > 0) {
                     score1Joueur = extras.getInt("score");
                 }
@@ -135,7 +147,16 @@ public class MainJeu extends AppCompatActivity {
             if (extras.getStringArrayList("listeMotUtilises") != null) {
                 listeMot1Joueur = extras.getStringArrayList("listeMotUtilises");
             } else {
-                Cursor curseur = this.motDAO.getMotsCategorie(categorie, difficulte);
+
+                Cursor curseur;
+
+                if (categorie != 4) {
+                    curseur = this.motDAO.getMotsCategorie(categorie, difficulte);
+                } else {
+                    curseur = this.motDAO.getAllMotsDifficulte(difficulte);
+                }
+
+
                 for(curseur.moveToFirst(); !curseur.isAfterLast(); curseur.moveToNext()) {
                     listeMot1Joueur.add(curseur.getString(curseur.getColumnIndex(GestionBDMot.MOT_NOM)));
                 }
@@ -177,12 +198,14 @@ public class MainJeu extends AppCompatActivity {
             // Affichage du nom du joueur actif et de son score
             if (compteur % 2 == 0) {
                 // Joueur 1
-                tvScore.setText(nomJoueur + " " + String.valueOf(score1Joueur) + "pts\n");
-                Toast.makeText(this,"C'est à " + nomJoueur + " de jouer.",Toast.LENGTH_LONG).show();
+                tvScore.setText("Score : " + String.valueOf(score1Joueur) + " pts\n");
+                actionBar.setTitle(nomJoueur);
+                // Toast.makeText(this,"C'est à " + nomJoueur + " de jouer.",Toast.LENGTH_LONG).show();
             } else {
                 // Joueur 2
-                tvScore.setText(joueur2 + " " + String.valueOf(scoreJ2) + "pts\n");
-                Toast.makeText(this,"C'est à " + joueur2 + " de jouer.",Toast.LENGTH_LONG).show();
+                tvScore.setText("Score : " + String.valueOf(scoreJ2) + " pts\n");
+                actionBar.setTitle(joueur2);
+                // Toast.makeText(this,"C'est à " + joueur2 + " de jouer.",Toast.LENGTH_LONG).show();
             }
 
             String nbTirets = "";
@@ -302,8 +325,8 @@ public class MainJeu extends AppCompatActivity {
             // Si le joueur n'as pas entrer son nom
             if (nomJoueur == null) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainJeu.this);
-                builder.setTitle("Vous avez perdu")
-                        .setMessage("Votre score est de :" + score1Joueur + " puntos.")
+                builder.setTitle("Vous avez perdu, le mot à trouver était \"" + motAChercher + "\"")
+                        .setMessage("Votre score est de " + score1Joueur + "point(s).")
                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -416,12 +439,12 @@ public class MainJeu extends AppCompatActivity {
 
     /**
      * Méthode appellée àa la fin de la partie en mode 1 joueur
-     * Elle aafiche une boite de dialogue récapitulant le score du joueur.
+     * Elle affiche une boite de dialogue récapitulant le score du joueur.
      */
     public void finPartie1Joueur() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainJeu.this);
         builder.setTitle("Vous avez perdu")
-                .setMessage("Votre score est de :" + score1Joueur + " puntos.")
+                .setMessage("Votre score est de " + score1Joueur + " point(s).")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -434,15 +457,15 @@ public class MainJeu extends AppCompatActivity {
                         Joueur joueur = new Joueur((int) idJoueur, nomJoueur);
 
                         Calendar c = Calendar.getInstance();
-                        int hour = c.get(Calendar.HOUR);
+                        int hour = c.get(Calendar.HOUR_OF_DAY);
                         int min = c.get(Calendar.MINUTE);
                         int year = c.get(Calendar.YEAR);
-                        int month = c.get(Calendar.MONTH);
+                        int month = c.get(Calendar.MONTH) + 1;
                         int date = c.get(Calendar.DATE);
 
                         String currrentDate = date + "/" + month + "/" + year;
 
-                        historiqueDAO.createHistorique(currrentDate, hour+1 + "h" + min, score1Joueur, joueur, difficulte);
+                        historiqueDAO.createHistorique(currrentDate, hour + "h" + min, score1Joueur, joueur, difficulte);
                         Intent intention = new Intent(MainJeu.this, MainActivity.class);
                         startActivity(intention);
                     }

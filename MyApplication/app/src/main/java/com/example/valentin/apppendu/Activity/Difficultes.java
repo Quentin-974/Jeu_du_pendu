@@ -78,28 +78,28 @@ public class Difficultes extends Activity {
         motDAO = new MotDAO(this);
         motDAO.open();
 
-        // Test du nombres de mots dans la catégorie
-        int nbFaciles = motDAO.getMotsCategorie(categorie, 0).getCount();
-        int nbMoyens = motDAO.getMotsCategorie(categorie, 1).getCount();
-        int nbDifficiles = motDAO.getMotsCategorie(categorie, 2).getCount();
+        // Test du nombres de mots dans la catégorie si la catégorie est différente de "Tous"
+        if (categorie != 4) {
+            int nbFaciles = motDAO.getMotsCategorie(categorie, 0).getCount();
+            int nbMoyens = motDAO.getMotsCategorie(categorie, 1).getCount();
+            int nbDifficiles = motDAO.getMotsCategorie(categorie, 2).getCount();
 
-        if (nbFaciles == 0) {
-            btnFacile.setEnabled(false);
-            btnFacile.setVisibility(View.INVISIBLE);
+            if (nbFaciles == 0) {
+                btnFacile.setEnabled(false);
+                btnFacile.setVisibility(View.INVISIBLE);
+            }
+
+            if (nbMoyens == 0) {
+                btnMoyen.setEnabled(false);
+                btnMoyen.setVisibility(View.INVISIBLE);
+            }
+
+            if (nbDifficiles == 0) {
+                btnDifficile.setEnabled(false);
+                btnDifficile.setVisibility(View.INVISIBLE);
+            }
+            motDAO.close();
         }
-
-        if (nbMoyens == 0) {
-            btnMoyen.setEnabled(false);
-            btnMoyen.setVisibility(View.INVISIBLE);
-        }
-
-        if (nbDifficiles == 0) {
-            btnDifficile.setEnabled(false);
-            btnDifficile.setVisibility(View.INVISIBLE);
-        }
-
-        motDAO.close();
-
     }
 
     /**

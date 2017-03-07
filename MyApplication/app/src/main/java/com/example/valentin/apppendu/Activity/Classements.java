@@ -2,10 +2,14 @@ package com.example.valentin.apppendu.Activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.Cursor;
+import android.graphics.Color;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,10 +17,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.valentin.apppendu.ClasseMetier.Categorie;
 import com.example.valentin.apppendu.ClasseMetier.Score;
 import com.example.valentin.apppendu.DAO.HistoriqueDAO;
+import com.example.valentin.apppendu.DAO.JoueurDAO;
+import com.example.valentin.apppendu.GestionBD.GestionBDCategorie;
 import com.example.valentin.apppendu.R;
 
 import java.util.ArrayList;
@@ -34,6 +42,13 @@ public class Classements extends AppCompatActivity {
 
     private HistoriqueDAO daoHistorique;
 
+    private JoueurDAO joueurDAO;
+
+    private String nomJoueur;
+
+    /** Bouton de suppression des scores du joueur*/
+    private FloatingActionButton floatingActionButton;
+
     private ActionBar actionBar;
 
     @Override
@@ -49,6 +64,9 @@ public class Classements extends AppCompatActivity {
         daoHistorique.open();
         lesOnglets = (TabHost) findViewById(R.id.tableOnglet);
         lesOnglets.setup();
+
+        joueurDAO = new JoueurDAO(this);
+        joueurDAO.open();
 
 
         TabHost.TabSpec specification = lesOnglets.newTabSpec("Facile");
@@ -100,6 +118,7 @@ public class Classements extends AppCompatActivity {
 
                 //Lorsque l'on cliquera sur le bouton "OK", on récupère l'EditText correspondant à notre vue personnalisée (cad à alertDialogView)
                 EditText et = (EditText) alertDialogView.findViewById(R.id.EditText1);
+                nomJoueur = et.getText().toString();
                 Toast.makeText(Classements.this, et.getText(), Toast.LENGTH_SHORT);
                 scores = daoHistorique.recupererScore(et.getText().toString(),0);
                 if(scores != null ){
@@ -152,4 +171,51 @@ public class Classements extends AppCompatActivity {
     }
 
 
-}
+    public void supprimerScores(View view) {
+
+        final View boiteDialog =
+                getLayoutInflater().inflate(R.layout.suppression_categorie_dialog, null);
+
+        // Alert Dialog
+        android.app.AlertDialog.Builder dialogSuppression = new android.app.AlertDialog.Builder(this);
+
+
+        // Titre custom du alert dialog
+        TextView title = new TextView(this);
+        title.setText(getResources().getString(R.string.titre_boite_dialog_suppression_Scores));
+        title.setBackgroundColor(Color.DKGRAY);
+        title.setPadding(10, 10, 10, 10);
+        title.setGravity(Gravity.CENTER);
+        title.setTextColor(Color.WHITE);
+        title.setTextSize(20);
+
+        dialogSuppression.setCustomTitle(title);
+
+
+        dialogSuppression.setView(boiteDialog);
+
+        TextView textViewDialog = (TextView) boiteDialog.findViewById(R.id.textViewSuppressionDialog);
+        textViewDialog.setText("Voulez vous vraiment supprimer les scores de " + nomJoueur);
+
+        dialogSuppression.setPositiveButton(getResources().getString(R.string.oui),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int leBouton) {
+                        daoHistorique.open();
+                        int nbLignesSupp = daoHistorique.deleteAllHistoriqueString(nomJoueur);
+                        daoHistorique.close();
+
+                        if (nbLignesSupp > 0) {
+                            Toast.makeText(Classements.this, "Les scores de " + nomJoueur + " ont été supprimés avec succès", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Classements.this, "Aucun score supprimé", Toast.LENGTH_SHORT).show();
+                        }
+                        Classements.this.finish();
+                    }
+                });
+
+        dialogSuppression.setNegativeButton(getResources()
+                .getString(R.string.non), null);
+        dialogSuppression.show();
+    }
+ }
+

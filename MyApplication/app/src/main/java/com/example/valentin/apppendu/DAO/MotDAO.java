@@ -83,4 +83,25 @@ public class MotDAO {
         return cursor;
     }
 
+    public Cursor getAllMotsDifficulte(int difficulte) {
+        String[] param = {String.valueOf(difficulte)};
+        Cursor cursor = database.rawQuery(GestionBDMot.REQUETE_MOTS_DIFF, param);
+        return cursor;
+    }
+
+    public String getNomCategorie(int idCategorie) {
+
+        String[] param = {String.valueOf(idCategorie)};
+
+        Cursor cursor = database.rawQuery(GestionBDMot.RECUP_NOM_CATEGORIE_MOT, param);
+        cursor.moveToFirst();
+        return cursor.getString(cursor.getColumnIndex(GestionBDCategorie.CATEGORIE_NOM));
+    }
+
+    public int recherchePresenceMot(String nom, int categorie) {
+        String[] param = {nom, String.valueOf(categorie)};
+        Cursor cursor = database.rawQuery(GestionBDMot.REQUETE_MOT_NOM_CAT, param);
+
+        return cursor.getCount();
+    }
 }

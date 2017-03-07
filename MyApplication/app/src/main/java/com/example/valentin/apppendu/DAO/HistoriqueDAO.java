@@ -60,6 +60,27 @@ public class HistoriqueDAO {
         return nbLignesSupp;
     }
 
+    public int deleteAllHistorique(int idJoueur) {
+
+        int nbLignesSupp = database.delete(GestionBDHistorique.NOM_TABLE_HISTORIQUE,
+                GestionBDHistorique.HISTORIQUE_CLEF + " = ?",
+                new String[] {String.valueOf(idJoueur)});
+
+        return nbLignesSupp;
+    }
+
+    public int deleteAllHistoriqueString(String nomJoueur) {
+
+        String[] param = {nomJoueur};
+
+        int nbLignesSupp = database.delete(GestionBDHistorique.NOM_TABLE_HISTORIQUE,
+                GestionBDHistorique.HISTORIQUE_JOUEUR + " IN ( SELECT " + GestionBDJoueur.JOUEUR_CLEF
+                        + " FROM " + GestionBDJoueur.NOM_TABLE_JOUEUR + " WHERE "
+                        + GestionBDJoueur.JOUEUR_NOM + " = ?)", param);
+
+        return nbLignesSupp;
+    }
+
     public void updateHistorique(Score score) {
         ContentValues values = new ContentValues();
 
@@ -85,7 +106,7 @@ public class HistoriqueDAO {
     public ArrayList<Score> recuperer10(){
         Cursor curseur = database.rawQuery("Select * FROM " + GestionBDHistorique.NOM_TABLE_HISTORIQUE + " JOIN "
                 + GestionBDJoueur.NOM_TABLE_JOUEUR + " ON " +  GestionBDHistorique.NOM_TABLE_HISTORIQUE + "." + GestionBDHistorique.HISTORIQUE_JOUEUR + " = " + GestionBDJoueur.NOM_TABLE_JOUEUR + "."
-                + GestionBDJoueur.JOUEUR_CLEF + " LIMIT 10;",null);
+                + GestionBDJoueur.JOUEUR_CLEF + " ORDER BY " + GestionBDHistorique.NOM_TABLE_HISTORIQUE + "." + GestionBDHistorique.HISTORIQUE_CLEF + " DESC LIMIT 10;",null);
         ArrayList<Score> listeScore = new ArrayList<Score>();
         for(curseur.moveToFirst(); !curseur.isAfterLast(); curseur.moveToNext()){
             Score score = new Score(curseur.getInt(curseur.getColumnIndex(GestionBDHistorique.HISTORIQUE_CLEF)),
@@ -102,7 +123,7 @@ public class HistoriqueDAO {
 
     }
 
-    public ArrayList<Score> recupererScore(String nom,int difficulte){
+    public ArrayList<Score> recupererScore(String nom, int difficulte){
         Cursor curseur = database.rawQuery("Select * FROM " + GestionBDHistorique.NOM_TABLE_HISTORIQUE + " JOIN "
                         + GestionBDJoueur.NOM_TABLE_JOUEUR + " ON " +  GestionBDHistorique.NOM_TABLE_HISTORIQUE + "." + GestionBDHistorique.HISTORIQUE_JOUEUR + " = " + GestionBDJoueur.NOM_TABLE_JOUEUR + "."
                         + GestionBDJoueur.JOUEUR_CLEF + " WHERE " +  GestionBDJoueur.NOM_TABLE_JOUEUR + "."

@@ -52,6 +52,7 @@
     <string name="titre_boite_dialog_modification_Mot">Modification Mot</string>
     <string name="titre_boite_dialog_suppression">Suppression Catégorie</string>
     <string name="titre_boite_dialog_suppression_Mot">Suppression Mot</string>
+    <string name="titre_boite_dialog_suppression_Scores">Suppression Scores</string>
     <string name="titre_boite_dialog_ajout">Ajout Catégorie</string>
     <string name="titre_boite_dialog_ajout_Mot">Ajout Mot</string>
     <string name="bouton_positif_Valider">Valider</string>
