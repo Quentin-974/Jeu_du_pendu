@@ -171,7 +171,7 @@ public class MainJeu extends AppCompatActivity {
                 motTmp = listeMot1Joueur.get(tmp);
                 listeMot1Joueur.remove(tmp);
             } else {
-                finPartie1Joueur();
+                finPartie1JoueurGagne();
             }
 
             final String motAChercher = motTmp;
@@ -337,7 +337,7 @@ public class MainJeu extends AppCompatActivity {
                         });
                 builder.show();
             } else {
-                finPartie1Joueur();
+                finPartie1JoueurPerdu(motAChercher);
             }
         }
     }
@@ -441,9 +441,51 @@ public class MainJeu extends AppCompatActivity {
      * Méthode appellée àa la fin de la partie en mode 1 joueur
      * Elle affiche une boite de dialogue récapitulant le score du joueur.
      */
-    public void finPartie1Joueur() {
+    public void finPartie1JoueurPerdu(String motChercher) {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainJeu.this);
         builder.setTitle("Vous avez perdu")
+                .setMessage("Votre score est de " + score1Joueur + " point(s).")
+                .setMessage("La mot a trouver été : "+motChercher)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        HistoriqueDAO historiqueDAO = new HistoriqueDAO(MainJeu.this);
+                        historiqueDAO.open();
+                        JoueurDAO joueurDAO = new JoueurDAO(MainJeu.this);
+                        joueurDAO.open();
+
+                        long idJoueur = joueurDAO.createJoueur(nomJoueur);
+                        Joueur joueur = new Joueur((int) idJoueur, nomJoueur);
+
+                        Calendar c = Calendar.getInstance();
+                        int hour = c.get(Calendar.HOUR_OF_DAY);
+                        int min = c.get(Calendar.MINUTE);
+                        int year = c.get(Calendar.YEAR);
+                        int month = c.get(Calendar.MONTH) + 1;
+                        int date = c.get(Calendar.DATE);
+
+                        String currrentDate = date + "/" + month + "/" + year;
+
+                        historiqueDAO.createHistorique(currrentDate, hour + "h" + min, score1Joueur, joueur, difficulte);
+                        Intent intention = new Intent(MainJeu.this, MainActivity.class);
+                        startActivity(intention);
+                    }
+                })
+                .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(MainJeu.this, "Votre score n'a pas été enregitré.", Toast.LENGTH_SHORT).show();
+                        Intent intention = new Intent(MainJeu.this, MainActivity.class);
+                        startActivity(intention);
+                    }
+                })
+        ;
+        builder.show();
+    }
+
+    public void finPartie1JoueurGagne() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainJeu.this);
+        builder.setTitle("Vous avez trouver tout les mots.")
                 .setMessage("Votre score est de " + score1Joueur + " point(s).")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
